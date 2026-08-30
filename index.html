@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>לוח · מערכת תורים</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2D7FF9;--blue-deep:#1667E0;--blue-soft:#DDEBFF;
+  --ink:#16233A;--muted:#8A97AC;--line:#EDF1F7;--field:#F6F9FE;
+  --peach:#FFE9D6;--peach-t:#C7691E;--mint:#D9F2E4;--mint-t:#1F7A55;
+  --lilac:#E6E2FB;--lilac-t:#5B4BC4;--rose:#FFE0E4;--rose-t:#C0374B;
+  --sky:#DDEBFF;--sky-t:#1667E0;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'Heebo',system-ui,sans-serif;color:var(--ink);font-size:14px;
+  background:linear-gradient(180deg,#F7FAFF 0%,#EEF4FD 100%);display:flex;justify-content:center}
+button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+input,select,textarea{font-family:inherit;font-size:15px}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:8px}
+#app{width:100%;max-width:440px;background:#fff;min-height:100vh;display:flex;flex-direction:column;
+  box-shadow:0 0 60px rgba(45,127,249,.13);position:relative}
+main{flex:1;overflow-y:auto;padding:0 18px 110px}
+
+.top{padding:18px 18px 10px;position:sticky;top:0;background:#fff;z-index:20}
+.top .r1{display:flex;align-items:center;gap:12px}
+.ava{width:40px;height:40px;border-radius:50%;background:linear-gradient(140deg,#4E9BFF,#1B5FD0);color:#fff;display:grid;place-items:center;font-weight:600;font-size:14px;flex:none}
+.top h1{font-size:17px;font-weight:600}
+.top .sub{font-size:11.5px;color:var(--muted);margin-top:-2px}
+.top .acts{margin-inline-start:auto;display:flex;gap:6px}
+.icn{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;color:var(--muted)}
+.icn:active,.icn:hover{background:var(--field);color:var(--blue)}
+.icn.fill{background:var(--blue);color:#fff}
+svg{display:block}
+
+.seg{display:flex;background:var(--field);border-radius:13px;padding:3px;margin-top:12px}
+.seg button{flex:1;padding:8px;border-radius:10px;font-size:13px;color:var(--muted)}
+.seg button.on{background:#fff;color:var(--ink);font-weight:500;box-shadow:0 2px 6px rgba(22,35,58,.08)}
+
+.strip{display:flex;gap:6px;overflow-x:auto;padding:12px 0 6px;scrollbar-width:none}
+.strip::-webkit-scrollbar{display:none}
+.sday{flex:none;width:48px;text-align:center;padding:9px 0;border-radius:14px;cursor:pointer;background:var(--field)}
+.sday small{font-size:10px;color:var(--muted);display:block}
+.sday b{font-size:15px;font-weight:500}
+.sday.on{background:var(--blue)}
+.sday.on b,.sday.on small{color:#fff}
+.sday .d{width:5px;height:5px;border-radius:50%;background:var(--blue);margin:4px auto 0}
+.sday.on .d{background:#fff}
+.sday.closed{opacity:.45}
+
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;padding:7px 13px;border-radius:12px;background:var(--field);font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.chips button.on{background:var(--blue);color:#fff;font-weight:500}
+.dotc{width:7px;height:7px;border-radius:50%;flex:none}
+
+.hd{font-size:13px;font-weight:600;margin:14px 0 10px}
+.hd span{color:var(--muted);font-weight:400}
+.ev{display:flex;gap:11px;margin-bottom:9px;align-items:flex-start}
+.evt{width:44px;flex:none;text-align:center;padding-top:7px}
+.evt b{display:block;font-size:18px;font-weight:600;line-height:1}
+.evt small{font-size:10px;color:var(--muted)}
+.card{flex:1;border-radius:15px;padding:12px 13px;min-width:0;cursor:pointer}
+.card:active{transform:scale(.99)}
+.card b{font-size:13.5px;font-weight:600;display:block}
+.card .meta{font-size:11.5px;margin-top:3px;opacity:.85}
+.card .who{font-size:10px;margin-top:6px;background:rgba(255,255,255,.65);display:inline-block;padding:2px 8px;border-radius:7px}
+.card.done{opacity:.5}
+.card.cancelled{opacity:.45;text-decoration:line-through}
+.c-sky{background:var(--sky);color:var(--sky-t)}.c-peach{background:var(--peach);color:var(--peach-t)}
+.c-mint{background:var(--mint);color:var(--mint-t)}.c-lilac{background:var(--lilac);color:var(--lilac-t)}
+.c-rose{background:var(--rose);color:var(--rose-t)}
+.empty{text-align:center;padding:34px 20px;color:var(--muted)}
+.empty b{display:block;font-size:14px;color:var(--ink);margin-bottom:4px}
+.empty small{font-size:12px;line-height:1.6}
+.gap{border-inline-end:2px solid var(--line);padding:2px 12px;margin:2px 0 12px}
+.gap b{display:block;font-size:12.5px;font-weight:500;color:var(--muted)}
+.gap small{font-size:11px;color:#B3BECE}
+
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.dw{text-align:center;font-size:11px;color:var(--muted);padding:6px 0}
+.mcell{height:42px;display:grid;place-items:center;border-radius:12px;font-size:13.5px;cursor:pointer}
+.mcell.out{color:#C7D2E2}
+.mcell.today{box-shadow:0 0 0 2px var(--ink) inset}
+
+.list-item{display:flex;align-items:center;gap:11px;padding:11px 10px;border-radius:15px;cursor:pointer}
+.list-item:active{background:var(--field)}
+.ci{width:38px;height:38px;border-radius:13px;display:grid;place-items:center;font-size:12.5px;font-weight:600;flex:none}
+.list-item b{font-size:13.5px;font-weight:500;display:block}
+.list-item small{font-size:11px;color:var(--muted)}
+.list-item .rt{margin-inline-start:auto;text-align:center;flex:none}
+.list-item .rt b{font-size:13px}.list-item .rt small{font-size:9.5px}
+.list-item .rt.low b{color:var(--rose-t)}
+.ltr{font-size:11px;font-weight:700;color:var(--blue);margin:14px 0 4px;padding-inline-start:10px}
+.srch{display:flex;align-items:center;gap:8px;background:var(--field);border-radius:14px;height:44px;padding:0 13px;margin-bottom:6px}
+.srch input{border:none;background:none;outline:none;width:100%;font-size:14px}
+
+.sw{width:9px;height:28px;border-radius:5px;flex:none}
+.row{display:flex;align-items:center;gap:10px;padding:13px 2px;border-bottom:1px solid var(--line)}
+.row:last-child{border:none}
+.row b{font-size:13.5px;font-weight:500;display:block}
+.row small{font-size:11px;color:var(--muted)}
+.row .val{margin-inline-start:auto;font-size:13px;color:var(--muted)}
+.toggle{width:42px;height:24px;border-radius:12px;background:var(--blue);position:relative;flex:none;margin-inline-start:auto}
+.toggle::after{content:"";position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;top:3px;inset-inline-start:3px;transition:.15s}
+.toggle.off{background:#D8E1EE}
+.toggle.off::after{inset-inline-start:21px}
+
+.fab{position:fixed;bottom:96px;width:56px;height:56px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;box-shadow:0 12px 26px rgba(45,127,249,.45);z-index:30}
+.tabbar{position:sticky;bottom:0;display:flex;justify-content:space-around;padding:11px 0 16px;border-top:1px solid var(--line);background:#fff;z-index:25}
+.tabbar button{color:#C2CDDD;display:grid;place-items:center;gap:3px;font-size:10px;padding:2px 14px}
+.tabbar button.on{color:var(--blue)}
+
+.scrim{position:fixed;inset:0;background:rgba(16,28,48,.44);z-index:40;display:none;justify-content:center;align-items:flex-end}
+.scrim.open{display:flex}
+.sheet{width:100%;max-width:440px;background:#fff;border-radius:26px 26px 0 0;max-height:92vh;overflow-y:auto;padding:8px 18px 26px;animation:up .22s ease}
+@keyframes up{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.grip{width:38px;height:4px;border-radius:2px;background:#DDE5F0;margin:6px auto 12px}
+.sheet h3{font-size:17px;font-weight:600;margin-bottom:2px}
+.sheet .sh-sub{font-size:12px;color:var(--muted);margin-bottom:14px}
+.lbl{font-size:11.5px;color:var(--muted);margin:14px 0 6px}
+.inp{width:100%;height:46px;border-radius:14px;background:var(--field);border:1.5px solid transparent;padding:0 14px;outline:none}
+.inp:focus{border-color:var(--blue);background:#fff}
+textarea.inp{height:74px;padding:12px 14px;resize:none}
+select.inp{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#8A97AC 50%),linear-gradient(135deg,#8A97AC 50%,transparent 50%);background-position:15px 21px,20px 21px;background-size:5px 5px;background-repeat:no-repeat}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{display:flex;align-items:center;gap:10px;padding:11px 13px;border-radius:15px;background:var(--field);margin-bottom:6px;cursor:pointer;border:1.5px solid transparent}
+.opt.on{background:#fff;border-color:var(--blue);box-shadow:0 5px 14px rgba(45,127,249,.14)}
+.opt b{font-size:13.5px;font-weight:500;display:block}
+.opt small{font-size:11px;color:var(--muted)}
+.opt .pr{margin-inline-start:auto;font-size:13px;font-weight:500;flex:none}
+.timegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:190px;overflow-y:auto}
+.timegrid button{height:38px;border-radius:12px;background:var(--field);font-size:13px}
+.timegrid button.busy{background:#FFF1F3;color:#D0899A;text-decoration:line-through}
+.timegrid button.on{background:var(--blue);color:#fff;font-weight:500}
+.alert{background:#FFF1F3;border-radius:16px;padding:13px;margin-top:14px;display:none}
+.alert.show{display:block;animation:sh .3s}
+@keyframes sh{0%,100%{transform:translateX(0)}30%{transform:translateX(-5px)}70%{transform:translateX(5px)}}
+.alert b{display:block;font-size:13px;color:var(--rose-t);margin-bottom:3px}
+.alert p{font-size:12px;color:#A85466;line-height:1.6}
+.alts{display:flex;gap:5px;margin-top:10px;flex-wrap:wrap}
+.alts button{background:#fff;border-radius:10px;padding:6px 11px;font-size:12px;color:var(--rose-t);font-weight:500}
+.okbox{background:#EAF7F1;border-radius:16px;padding:13px;margin-top:14px;font-size:12px;color:var(--mint-t);display:none;gap:8px}
+.okbox.show{display:flex}
+.cta{width:100%;height:50px;border-radius:16px;background:var(--blue);color:#fff;font-size:15px;font-weight:500;margin-top:18px;box-shadow:0 10px 22px rgba(45,127,249,.3)}
+.cta:disabled{background:#C3D6F5;box-shadow:none}
+.cta.ghost{background:var(--field);color:var(--ink);box-shadow:none}
+.cta.danger{background:#FFF1F3;color:var(--rose-t);box-shadow:none}
+.mini{display:flex;gap:8px;margin-top:10px}
+.mini button{flex:1;height:44px;border-radius:14px;background:var(--field);font-size:13px;font-weight:500}
+.mini button.pri{background:var(--blue-soft);color:var(--blue-deep)}
+.toast{position:fixed;bottom:100px;background:#16233A;color:#fff;padding:13px 20px;border-radius:14px;font-size:13px;z-index:60;opacity:0;transform:translateY(10px);transition:.22s;max-width:380px;text-align:center}
+.toast.show{opacity:1;transform:none}
+.pillrow{display:flex;gap:6px;flex-wrap:wrap}
+.pillrow button{padding:9px 14px;border-radius:12px;background:var(--field);font-size:13px;color:var(--muted)}
+.pillrow button.on{background:var(--blue);color:#fff;font-weight:500}
+.stat{display:flex;gap:8px;margin:4px 0 8px}
+.stat div{flex:1;background:var(--field);border-radius:16px;padding:12px}
+.stat b{display:block;font-size:19px;font-weight:600}
+.stat small{font-size:10.5px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="top" id="top"></header>
+  <main id="main"></main>
+  <button class="fab" id="fab" aria-label="תור חדש">
+    <svg width="22" height="22" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M10 4v12M4 10h12"/></svg>
+  </button>
+  <nav class="tabbar" id="tabbar"></nav>
+</div>
+<div class="scrim" id="scrim"><div class="sheet" id="sheet"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================== storage ===================== */
+const KEY='booking_app_v1';
+let mem=null;
+const DB={
+  async load(){
+    try{ if(window.storage){const r=await window.storage.get(KEY); if(r&&r.value) return JSON.parse(r.value)} }catch(e){}
+    try{ const v=localStorage.getItem(KEY); if(v) return JSON.parse(v) }catch(e){}
+    return mem;
+  },
+  async save(s){
+    mem=s;
+    try{ if(window.storage){ await window.storage.set(KEY,JSON.stringify(s)); return } }catch(e){}
+    try{ localStorage.setItem(KEY,JSON.stringify(s)) }catch(e){}
+  },
+  async clear(){
+    mem=null;
+    try{ if(window.storage) await window.storage.delete(KEY) }catch(e){}
+    try{ localStorage.removeItem(KEY) }catch(e){}
+  }
+};
+
+/* ===================== helpers ===================== */
+const DAYNAMES=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+const DAYSHORT=['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
+const MONTHS=['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+const COLORS=['sky','peach','mint','lilac','rose'];
+const pad=n=>String(n).padStart(2,'0');
+const fmt=m=>pad(Math.floor(m/60))+':'+pad(m%60);
+const iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+const parse=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c)};
+const addDays=(s,n)=>{const d=parse(s);d.setDate(d.getDate()+n);return iso(d)};
+const uid=()=>Math.random().toString(36).slice(2,9);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const initials=n=>n.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('');
+const prettyDate=s=>{const d=parse(s);return `${DAYNAMES[d.getDay()]}, ${d.getDate()} ב${MONTHS[d.getMonth()]}`};
+
+/* ===================== state ===================== */
+let S=null, tab='cal', view='day', selDate=iso(new Date()), staffFilter='all', mDate=iso(new Date()), q='';
+
+function seed(){
+  const t=iso(new Date());
+  const staff=[{id:'s1',name:'דנה',color:'#2D7FF9'},{id:'s2',name:'רועי',color:'#5B4BC4'},{id:'s3',name:'מאיה',color:'#1F7A55'}];
+  const services=[
+    {id:'v1',name:'תספורת גברים',len:25,price:80,color:'sky',cap:1},
+    {id:'v2',name:'תספורת ועיצוב',len:45,price:140,color:'lilac',cap:1},
+    {id:'v3',name:'צבע שורש',len:90,price:290,color:'peach',cap:1},
+    {id:'v4',name:'פן',len:30,price:90,color:'mint',cap:1},
+    {id:'v5',name:'סדנה קבוצתית',len:60,price:120,color:'mint',cap:8},
+  ];
+  const names=['אורי כהן','איתי פרץ','דנה שגב','יעל ברקוביץ׳','מיכל אזולאי','נועה שטרן','רות בן־דוד','שירה גולן','תמר לוי'];
+  const clients=names.map((n,i)=>({id:'c'+i,name:n,phone:'05'+(2+i%8)+'-'+(1000000+i*37211),note:'',credits:[7,14,2,9,5,16,1,11,6][i]}));
+  const A=(dOff,start,ci,vi,si)=>({id:uid(),clientId:clients[ci].id,serviceId:services[vi].id,staffId:staff[si].id,
+    date:addDays(t,dOff),start,len:services[vi].len,status:'booked',participants:1,note:'',seriesId:null});
+  const appts=[A(0,540,3,1,0),A(0,600,7,2,0),A(0,570,0,0,1),A(0,660,5,3,1),A(0,900,4,1,2),
+               A(1,540,1,0,1),A(1,600,2,2,0),A(2,570,6,1,2),A(3,540,8,3,0),A(4,600,3,2,0)];
+  return {
+    biz:{name:'סלון דיאנה',owner:'דנה',unit:'תור'},
+    settings:{buffer:10,step:15,selfBooking:true,
+      hours:[{o:480,c:1200,open:true},{o:480,c:1200,open:true},{o:480,c:1200,open:true},
+             {o:480,c:1200,open:true},{o:480,c:1200,open:true},{o:480,c:840,open:true},{o:0,c:0,open:false}]},
+    staff,services,clients,appts
+  };
+}
+const svc=id=>S.services.find(s=>s.id===id);
+const stf=id=>S.staff.find(s=>s.id===id);
+const cli=id=>S.clients.find(c=>c.id===id);
+const save=()=>DB.save(S);
+
+/* ===================== conflict engine ===================== */
+function dayHours(dateStr){return S.settings.hours[parse(dateStr).getDay()]}
+function conflict(date,start,len,staffId,ignoreId,serviceId){
+  const buf=S.settings.buffer;
+  return S.appts.find(a=>{
+    if(a.id===ignoreId||a.status==='cancelled')return false;
+    if(a.date!==date||a.staffId!==staffId)return false;
+    // group service: same service, same start, room left → not a conflict
+    if(serviceId&&a.serviceId===serviceId&&a.start===start){
+      const sv=svc(serviceId);
+      if(sv&&sv.cap>1){
+        const taken=S.appts.filter(x=>x.date===date&&x.staffId===staffId&&x.serviceId===serviceId&&x.start===start&&x.status!=='cancelled')
+          .reduce((n,x)=>n+(x.participants||1),0);
+        if(taken<sv.cap)return false;
+      }
+    }
+    return start < a.start+a.len+buf && start+len+buf > a.start;
+  });
+}
+function slotsFor(date,len,staffId,ignoreId,serviceId){
+  const h=dayHours(date); if(!h.open)return [];
+  const out=[];
+  for(let m=h.o;m+len<=h.c;m+=S.settings.step)
+    out.push({t:m,busy:!!conflict(date,m,len,staffId,ignoreId,serviceId)});
+  return out;
+}
+function freeCount(date,staffId){
+  const h=dayHours(date); if(!h.open)return 0;
+  return slotsFor(date,30,staffId).filter(s=>!s.busy).length;
+}
+function dayAppts(date,filter){
+  return S.appts.filter(a=>a.date===date&&(filter==='all'||a.staffId===filter)&&a.status!=='cancelled')
+    .sort((a,b)=>a.start-b.start);
+}
+
+/* ===================== chrome ===================== */
+function renderTop(){
+  const t=document.getElementById('top');
+  if(tab==='cal'){
+    t.innerHTML=`<div class="r1">
+      <div class="ava">${esc(initials(S.biz.owner))}</div>
+      <div><h1>${esc(S.biz.name)}</h1><div class="sub">${dayAppts(selDate,'all').length} תורים · ${prettyDate(selDate)}</div></div>
+      <div class="acts">
+        <button class="icn" onclick="goToday()" aria-label="היום"><svg width="19" height="19" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3.5" width="14" height="12" rx="3"/><path d="M2 7h14M6 2v3M12 2v3" stroke-linecap="round"/></svg></button>
+      </div></div>
+      <div class="seg">
+        <button class="${view==='day'?'on':''}" onclick="setView('day')">יום</button>
+        <button class="${view==='month'?'on':''}" onclick="setView('month')">חודש</button>
+      </div>`;
+  } else if(tab==='clients'){
+    t.innerHTML=`<div class="r1"><div class="ava">${S.clients.length}</div>
+      <div><h1>לקוחות</h1><div class="sub">מסודר לפי א־ב</div></div>
+      <div class="acts"><button class="icn fill" onclick="clientSheet()" aria-label="לקוח חדש"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 4v10M4 9h10"/></svg></button></div></div>`;
+  } else if(tab==='services'){
+    t.innerHTML=`<div class="r1"><div class="ava">${S.services.length}</div>
+      <div><h1>שירותים</h1><div class="sub">משך, מחיר וקיבולת</div></div>
+      <div class="acts"><button class="icn fill" onclick="serviceSheet()" aria-label="שירות חדש"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 4v10M4 9h10"/></svg></button></div></div>`;
+  } else {
+    t.innerHTML=`<div class="r1"><div class="ava">⚙</div><div><h1>ניהול</h1><div class="sub">צוות, שעות ודוחות</div></div></div>`;
+  }
+}
+function renderTabs(){
+  const items=[
+    ['cal','יומן','<rect x="2" y="3.5" width="14" height="12" rx="3"/><path d="M2 7h14" stroke-linecap="round"/>'],
+    ['clients','לקוחות','<circle cx="9" cy="6" r="3"/><path d="M3 15c0-3 2.7-4.5 6-4.5S15 12 15 15" stroke-linecap="round"/>'],
+    ['services','שירותים','<rect x="3" y="4" width="12" height="10" rx="2.5"/><path d="M6 8h6M6 11h3" stroke-linecap="round"/>'],
+    ['more','ניהול','<circle cx="9" cy="9" r="2.4"/><path d="M9 2v2M9 14v2M2 9h2M14 9h2M4.2 4.2l1.4 1.4M12.4 12.4l1.4 1.4M13.8 4.2l-1.4 1.4M5.6 12.4l-1.4 1.4" stroke-linecap="round"/>']
+  ];
+  document.getElementById('tabbar').innerHTML=items.map(([id,label,path])=>
+    `<button class="${tab===id?'on':''}" onclick="setTab('${id}')">
+      <svg width="20" height="20" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">${path}</svg>${label}</button>`).join('');
+}
+function setTab(t){tab=t;q='';render()}
+function setView(v){view=v;render()}
+function goToday(){selDate=iso(new Date());mDate=selDate;render()}
+
+/* ===================== calendar ===================== */
+function renderCal(){
+  if(view==='month')return renderMonth();
+  const base=addDays(selDate,-3);
+  const strip=[...Array(11)].map((_,i)=>{
+    const d=addDays(base,i),dd=parse(d),n=dayAppts(d,staffFilter).length,closed=!dayHours(d).open;
+    return `<div class="sday ${d===selDate?'on':''} ${closed?'closed':''}" onclick="pickDate('${d}')">
+      <small>${DAYSHORT[dd.getDay()]}</small><b>${dd.getDate()}</b>${n?'<div class="d"></div>':''}</div>`;
+  }).join('');
+  const filters=`<button class="${staffFilter==='all'?'on':''}" onclick="setFilter('all')">כל היומנים</button>`+
+    S.staff.map(s=>`<button class="${staffFilter===s.id?'on':''}" onclick="setFilter('${s.id}')"><i class="dotc" style="background:${staffFilter===s.id?'#fff':s.color}"></i>${esc(s.name)}</button>`).join('');
+  const list=dayAppts(selDate,staffFilter);
+  const h=dayHours(selDate);
+  let body;
+  if(!h.open){
+    body=`<div class="empty"><b>העסק סגור ביום הזה</b><small>אפשר לשנות בשעות הפעילות תחת ניהול</small></div>`;
+  } else if(!list.length){
+    body=`<div class="empty"><b>אין תורים ביום הזה</b><small>${h?fmt(h.o)+'–'+fmt(h.c):''} פנוי לגמרי · הקש על הפלוס</small></div>`;
+  } else {
+    body=list.map(a=>{
+      const s=svc(a.serviceId),st=stf(a.staffId),c=cli(a.clientId);
+      const group=s&&s.cap>1;
+      const taken=group?S.appts.filter(x=>x.date===a.date&&x.serviceId===a.serviceId&&x.start===a.start&&x.status!=='cancelled').length:0;
+      return `<div class="ev"><div class="evt"><b>${pad(Math.floor(a.start/60))}</b><small>:${pad(a.start%60)}</small></div>
+        <div class="card c-${s?s.color:'sky'} ${a.status}" onclick="apptSheet('${a.id}')">
+          <b>${esc(c?c.name:'לקוח')}</b>
+          <div class="meta">${esc(s?s.name:'')} · ${a.len} דק׳ · ${fmt(a.start)}–${fmt(a.start+a.len)}${group?' · '+taken+'/'+s.cap:''}</div>
+          <span class="who">${esc(st?st.name:'')}</span></div></div>`;
+    }).join('');
+    const staffId=staffFilter==='all'?S.staff[0].id:staffFilter;
+    const free=freeCount(selDate,staffId);
+    body+=`<div class="gap"><b>${free} חלונות פנויים של 30 דקות</b><small>ביומן של ${esc(stf(staffId).name)}</small></div>`;
+  }
+  document.getElementById('main').innerHTML=
+    `<div class="strip">${strip}</div><div class="chips">${filters}</div>
+     <div class="hd">${prettyDate(selDate)} <span>· ${list.length} תורים</span></div>${body}`;
+  const el=document.querySelector('.sday.on'); if(el)el.scrollIntoView({inline:'center',block:'nearest'});
+}
+function pickDate(d){selDate=d;render()}
+function setFilter(f){staffFilter=f;render()}
+
+function renderMonth(){
+  const d=parse(mDate),y=d.getFullYear(),m=d.getMonth();
+  const first=new Date(y,m,1).getDay(), days=new Date(y,m+1,0).getDate();
+  let cells='';
+  for(let i=0;i<first;i++)cells+=`<div class="mcell out"></div>`;
+  for(let n=1;n<=days;n++){
+    const ds=`${y}-${pad(m+1)}-${pad(n)}`;
+    const cnt=dayAppts(ds,staffFilter).length;
+    const h=S.settings.hours[new Date(y,m,n).getDay()];
+    const cap=h.open?Math.max(1,Math.round((h.c-h.o)/60)):0;
+    const load=cap?Math.min(1,cnt/cap*1.6):0;
+    const bg=!h.open?'#F9FAFC':cnt?`rgba(45,127,249,${.10+load*.75})`:'var(--field)';
+    const col=load>.55?'#fff':(h.open?'var(--ink)':'#C7D2E2');
+    cells+=`<div class="mcell ${ds===iso(new Date())?'today':''}" style="background:${bg};color:${col}" onclick="pickDate('${ds}');setView('day')">${n}</div>`;
+  }
+  document.getElementById('main').innerHTML=
+    `<div style="display:flex;align-items:center;margin:14px 0 10px">
+      <b style="font-size:15px">${MONTHS[m]} ${y}</b>
+      <div style="margin-inline-start:auto;display:flex;gap:6px">
+        <button class="icn" onclick="shiftMonth(1)">›</button><button class="icn" onclick="shiftMonth(-1)">‹</button></div></div>
+     <div class="mgrid">${DAYSHORT.map(x=>`<div class="dw">${x[0]}</div>`).join('')}</div>
+     <div class="mgrid">${cells}</div>
+     <div class="hd" style="margin-top:18px">עומס לפי גוון</div>
+     <div style="font-size:12px;color:var(--muted);line-height:1.7">כחול כהה הוא יום עמוס. הימים הבהירים הם המלאי שעדיין אפשר למכור. הקש על יום כדי לפתוח אותו.</div>`;
+}
+function shiftMonth(n){const d=parse(mDate);d.setMonth(d.getMonth()+n);mDate=iso(d);render()}
+
+/* ===================== clients ===================== */
+function renderClients(){
+  const term=q.trim();
+  const sorted=[...S.clients].filter(c=>!term||c.name.includes(term)||(c.phone||'').includes(term))
+    .sort((a,b)=>a.name.localeCompare(b.name,'he'));
+  let out='',last='';
+  sorted.forEach(c=>{
+    if(c.name[0]!==last){out+=`<div class="ltr">${c.name[0]}</div>`;last=c.name[0]}
+    const next=S.appts.filter(a=>a.clientId===c.id&&a.status==='booked'&&a.date>=iso(new Date())).sort((x,y)=>x.date.localeCompare(y.date))[0];
+    out+=`<div class="list-item" onclick="clientCard('${c.id}')">
+      <div class="ci c-${COLORS[c.name.charCodeAt(0)%5]}">${esc(initials(c.name))}</div>
+      <div style="min-width:0"><b>${esc(c.name)}</b><small>${next?prettyDate(next.date)+' · '+fmt(next.start):'אין תור עתידי'}</small></div>
+      <div class="rt ${c.credits<=2?'low':''}"><b>${c.credits}</b><small style="color:var(--muted)">בכרטיסייה</small></div></div>`;
+  });
+  document.getElementById('main').innerHTML=
+    `<div class="srch"><svg width="16" height="16" viewBox="0 0 18 18" fill="none" stroke="#8A97AC" stroke-width="1.7"><circle cx="8" cy="8" r="5"/><path d="M12 12l3 3" stroke-linecap="round"/></svg>
+      <input placeholder="חיפוש שם או טלפון" value="${esc(q)}" oninput="q=this.value;renderClients()"></div>
+     ${out||'<div class="empty"><b>לא נמצא לקוח</b><small>נסה חיפוש אחר או הוסף לקוח חדש</small></div>'}`;
+}
+
+/* ===================== services ===================== */
+function renderServices(){
+  document.getElementById('main').innerHTML=
+    S.services.map(s=>`<div class="list-item" onclick="serviceSheet('${s.id}')">
+      <div class="sw" style="background:var(--${s.color})"></div>
+      <div><b>${esc(s.name)}</b><small>${s.len} דקות${s.cap>1?' · קיבולת '+s.cap:' · אחד על אחד'}</small></div>
+      <div class="rt"><b>₪${s.price}</b></div></div>`).join('')
+    +`<div class="hd" style="margin-top:20px">כללי שיבוץ</div>
+      <div class="row"><div><b>חציצה בין תורים</b><small>ניקיון והכנה</small></div><span class="val">${S.settings.buffer} דקות</span></div>
+      <div class="row"><div><b>קפיצות שעה</b><small>רזולוציית ההצעות</small></div><span class="val">${S.settings.step} דקות</span></div>
+      <div class="row"><div><b>הזמנה עצמית של לקוחות</b><small>קישור אישי לעסק</small></div><div class="toggle ${S.settings.selfBooking?'':'off'}" onclick="S.settings.selfBooking=!S.settings.selfBooking;save();render()"></div></div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:16px">
+        המשך נקבע ברמת השירות, ולכן היומן יודע לבד כמה מקום לתפוס ואילו שעות להציע.</div>`;
+}
+
+/* ===================== more ===================== */
+function renderMore(){
+  const today=iso(new Date());
+  const week=[...Array(7)].map((_,i)=>addDays(today,i));
+  const cnt=week.reduce((n,d)=>n+dayAppts(d,'all').length,0);
+  const rev=week.reduce((n,d)=>n+dayAppts(d,'all').reduce((x,a)=>x+(svc(a.serviceId)?.price||0),0),0);
+  const done=S.appts.filter(a=>a.status==='done').length;
+  document.getElementById('main').innerHTML=
+    `<div class="hd">שבעה ימים קדימה</div>
+     <div class="stat"><div><b>${cnt}</b><small>תורים</small></div><div><b>₪${rev.toLocaleString('he-IL')}</b><small>צפי הכנסה</small></div><div><b>${done}</b><small>הושלמו</small></div></div>
+     <div class="hd">צוות</div>
+     ${S.staff.map(s=>`<div class="list-item" onclick="staffSheet('${s.id}')">
+        <div class="ci" style="background:${s.color}22;color:${s.color}">${esc(initials(s.name))}</div>
+        <div><b>${esc(s.name)}</b><small>${S.appts.filter(a=>a.staffId===s.id&&a.status!=='cancelled').length} תורים ביומן</small></div></div>`).join('')}
+     <button class="cta ghost" onclick="staffSheet()">הוספת איש צוות</button>
+     <div class="hd" style="margin-top:22px">שעות פעילות</div>
+     ${S.settings.hours.map((h,i)=>`<div class="row"><div><b>יום ${DAYNAMES[i]}</b></div>
+        <span class="val">${h.open?fmt(h.o)+'–'+fmt(h.c):'סגור'}</span>
+        <div class="toggle ${h.open?'':'off'}" onclick="S.settings.hours[${i}].open=!S.settings.hours[${i}].open;save();render()"></div></div>`).join('')}
+     <div class="hd" style="margin-top:22px">העסק</div>
+     <div class="row"><div><b>שם העסק</b></div><span class="val">${esc(S.biz.name)}</span></div>
+     <button class="cta ghost" onclick="bizSheet()">עריכת פרטי העסק</button>
+     <button class="cta danger" onclick="resetAll()">איפוס לנתוני הדגמה</button>
+     <div style="height:20px"></div>`;
+}
+
+/* ===================== sheets ===================== */
+function openSheet(html){document.getElementById('sheet').innerHTML='<div class="grip"></div>'+html;document.getElementById('scrim').classList.add('open')}
+function closeSheet(){document.getElementById('scrim').classList.remove('open')}
+document.getElementById('scrim').onclick=e=>{if(e.target.id==='scrim')closeSheet()};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+
+/* ---- booking ---- */
+let B={};
+function bookSheet(pre={}){
+  B={id:pre.id||null,clientId:pre.clientId||(S.clients[0]&&S.clients[0].id),serviceId:pre.serviceId||S.services[0].id,
+     staffId:pre.staffId||S.staff[0].id,date:pre.date||selDate,start:pre.start??null,repeat:1,newClient:false,name:'',phone:''};
+  drawBook();
+}
+function drawBook(){
+  const s=svc(B.serviceId);
+  const slots=slotsFor(B.date,s.len,B.staffId,B.id,B.serviceId);
+  if(B.start===null){const f=slots.find(x=>!x.busy);B.start=f?f.t:(slots[0]?slots[0].t:540)}
+  const dates=[...Array(14)].map((_,i)=>addDays(iso(new Date()),i));
+  const html=`
+   <h3>${B.id?'עריכת תור':'תור חדש'}</h3>
+   <div class="sh-sub">השירות קובע את המשך והמערכת בודקת התנגשויות</div>
+   <div class="lbl">לקוח</div>
+   ${B.newClient?`
+     <div class="two"><input class="inp" id="bname" placeholder="שם מלא" value="${esc(B.name)}" oninput="B.name=this.value">
+     <input class="inp" id="bphone" placeholder="טלפון" value="${esc(B.phone)}" oninput="B.phone=this.value"></div>
+     <button class="mini" style="margin-top:8px"><span onclick="B.newClient=false;drawBook()" style="width:100%;height:40px;display:grid;place-items:center;background:var(--field);border-radius:12px;font-size:13px">בחירה מרשימת הלקוחות</span></button>`
+   :`<select class="inp" onchange="B.clientId=this.value">
+       ${[...S.clients].sort((a,b)=>a.name.localeCompare(b.name,'he')).map(c=>`<option value="${c.id}" ${c.id===B.clientId?'selected':''}>${esc(c.name)}</option>`).join('')}
+     </select>
+     <div class="mini"><button onclick="B.newClient=true;drawBook()">לקוח חדש</button></div>`}
+   <div class="lbl">שירות</div>
+   ${S.services.map(v=>`<div class="opt ${v.id===B.serviceId?'on':''}" onclick="B.serviceId='${v.id}';B.start=null;drawBook()">
+      <div class="sw" style="background:var(--${v.color})"></div>
+      <div><b>${esc(v.name)}</b><small>${v.len} דקות${v.cap>1?' · עד '+v.cap+' משתתפים':''}</small></div>
+      <span class="pr">₪${v.price}</span></div>`).join('')}
+   <div class="lbl">איש צוות</div>
+   <div class="pillrow">${S.staff.map(t=>`<button class="${t.id===B.staffId?'on':''}" onclick="B.staffId='${t.id}';drawBook()">${esc(t.name)}</button>`).join('')}</div>
+   <div class="lbl">תאריך</div>
+   <select class="inp" onchange="B.date=this.value;B.start=null;drawBook()">
+     ${dates.map(d=>`<option value="${d}" ${d===B.date?'selected':''}>${prettyDate(d)}${dayHours(d).open?'':' · סגור'}</option>`).join('')}
+   </select>
+   <div class="lbl">שעה</div>
+   ${slots.length?`<div class="timegrid">${slots.map(x=>
+      `<button class="${x.t===B.start?'on':x.busy?'busy':''}" onclick="B.start=${x.t};drawBook()">${fmt(x.t)}</button>`).join('')}</div>`
+     :`<div style="font-size:12.5px;color:var(--muted)">העסק סגור בתאריך הזה.</div>`}
+   <div class="lbl">חזרתיות</div>
+   <div class="pillrow">${[[1,'פעם אחת'],[4,'שבועי · 4'],[8,'שבועי · 8'],[12,'שבועי · 12']].map(([n,l])=>
+      `<button class="${B.repeat===n?'on':''}" onclick="B.repeat=${n};drawBook()">${l}</button>`).join('')}</div>
+   <div id="verdict"></div>
+   <button class="cta" id="bookcta" onclick="doBook()">${B.id?'שמירת השינוי':'קביעת התור'}</button>
+   ${B.id?`<button class="cta ghost" onclick="closeSheet()">ביטול</button>`:''}`;
+  openSheet(html);
+  verdict();
+}
+function verdict(){
+  const s=svc(B.serviceId),st=stf(B.staffId);
+  const h=dayHours(B.date);
+  const box=document.getElementById('verdict'),cta=document.getElementById('bookcta');
+  if(!h.open){box.innerHTML=`<div class="alert show"><b>העסק סגור</b><p>אין שעות פעילות ב${prettyDate(B.date)}. אפשר לפתוח את היום תחת ניהול.</p></div>`;cta.disabled=true;return}
+  const c=conflict(B.date,B.start,s.len,B.staffId,B.id,B.serviceId);
+  if(c){
+    const cc=cli(c.clientId),cs=svc(c.serviceId);
+    const alts=slotsFor(B.date,s.len,B.staffId,B.id,B.serviceId).filter(x=>!x.busy)
+      .sort((a,b)=>Math.abs(a.t-B.start)-Math.abs(b.t-B.start)).slice(0,3).sort((a,b)=>a.t-b.t);
+    const other=S.staff.find(t=>t.id!==B.staffId&&!conflict(B.date,B.start,s.len,t.id,B.id,B.serviceId));
+    box.innerHTML=`<div class="alert show"><b>השעה תפוסה</b>
+      <p>${esc(st.name)} תפוס/ה ב־${fmt(B.start)} — ${esc(cc?cc.name:'תור קיים')}, ${esc(cs?cs.name:'')}, ${fmt(c.start)}–${fmt(c.start+c.len)}.
+      ${esc(s.name)} דורש ${s.len} דקות ועוד ${S.settings.buffer} דקות חציצה.</p>
+      <div class="alts">${alts.map(x=>`<button onclick="B.start=${x.t};drawBook()">${fmt(x.t)}</button>`).join('')}
+      ${other?`<button onclick="B.staffId='${other.id}';drawBook()">${esc(other.name)} פנוי/ה ב־${fmt(B.start)}</button>`:''}</div></div>`;
+    cta.disabled=true;
+  } else {
+    const free=slotsFor(B.date,s.len,B.staffId,B.id,B.serviceId).filter(x=>!x.busy).length;
+    box.innerHTML=`<div class="okbox show"><span>✓</span><span>${fmt(B.start)}–${fmt(B.start+s.len)} פנוי אצל ${esc(st.name)} · ${esc(s.name)} · ₪${s.price}
+      <br>${free} חלונות נוספים באותו יום</span></div>`;
+    cta.disabled=false;
+  }
+}
+function doBook(){
+  const s=svc(B.serviceId);
+  let clientId=B.clientId;
+  if(B.newClient){
+    const name=(B.name||'').trim();
+    if(!name){toast('צריך שם לקוח');return}
+    const c={id:uid(),name,phone:B.phone||'',note:'',credits:10};
+    S.clients.push(c);clientId=c.id;
+  }
+  if(B.id){
+    const a=S.appts.find(x=>x.id===B.id);
+    Object.assign(a,{clientId,serviceId:B.serviceId,staffId:B.staffId,date:B.date,start:B.start,len:s.len});
+    save();closeSheet();selDate=B.date;render();toast('התור עודכן');return;
+  }
+  const seriesId=B.repeat>1?uid():null;
+  let placed=0,skipped=0;
+  for(let i=0;i<B.repeat;i++){
+    const d=addDays(B.date,i*7);
+    if(!dayHours(d).open||conflict(d,B.start,s.len,B.staffId,null,B.serviceId)){skipped++;continue}
+    S.appts.push({id:uid(),clientId,serviceId:B.serviceId,staffId:B.staffId,date:d,start:B.start,len:s.len,
+      status:'booked',participants:1,note:'',seriesId});
+    placed++;
+  }
+  save();closeSheet();selDate=B.date;render();
+  toast(skipped?`נקבעו ${placed} תורים · ${skipped} דולגו בגלל התנגשות`:`נקבע · ${esc(cli(clientId).name)} · ${prettyDate(B.date)} ${fmt(B.start)}`);
+}
+
+/* ---- appointment detail ---- */
+function apptSheet(id){
+  const a=S.appts.find(x=>x.id===id),s=svc(a.serviceId),st=stf(a.staffId),c=cli(a.clientId);
+  const phone=(c.phone||'').replace(/\D/g,'').replace(/^0/,'972');
+  const msg=encodeURIComponent(`היי ${c.name}, תזכורת לתור ב${S.biz.name}: ${prettyDate(a.date)} בשעה ${fmt(a.start)} · ${s.name}. נתראה!`);
+  openSheet(`
+    <h3>${esc(c.name)}</h3>
+    <div class="sh-sub">${esc(s.name)} · ${fmt(a.start)}–${fmt(a.start+a.len)} · ${prettyDate(a.date)}</div>
+    <div class="row"><div><b>איש צוות</b></div><span class="val">${esc(st.name)}</span></div>
+    <div class="row"><div><b>מחיר</b></div><span class="val">₪${s.price}</span></div>
+    <div class="row"><div><b>טלפון</b></div><span class="val">${esc(c.phone||'—')}</span></div>
+    <div class="row"><div><b>סטטוס</b></div><span class="val">${a.status==='done'?'הושלם':a.status==='cancelled'?'בוטל':'מתוכנן'}</span></div>
+    ${a.seriesId?`<div class="row"><div><b>חלק מסדרה</b><small>שינוי כאן משפיע על המופע הזה בלבד</small></div></div>`:''}
+    <div class="lbl">הערה</div>
+    <textarea class="inp" oninput="noteEdit('${a.id}',this.value)" placeholder="מה חשוב לזכור לתור הזה">${esc(a.note)}</textarea>
+    <div class="mini">
+      <button class="pri" onclick="markDone('${a.id}')">סמן שהושלם</button>
+      <button onclick="closeSheet();bookSheet({id:'${a.id}',clientId:'${a.clientId}',serviceId:'${a.serviceId}',staffId:'${a.staffId}',date:'${a.date}',start:${a.start}})">הזזה</button>
+    </div>
+    ${phone?`<a href="https://wa.me/${phone}?text=${msg}" target="_blank" rel="noopener" style="text-decoration:none"><button class="cta ghost">שליחת תזכורת בווטסאפ</button></a>`:''}
+    <button class="cta danger" onclick="cancelAppt('${a.id}')">ביטול התור</button>`);
+}
+function noteEdit(id,v){const a=S.appts.find(x=>x.id===id);a.note=v;save()}
+function markDone(id){
+  const a=S.appts.find(x=>x.id===id);a.status='done';
+  const c=cli(a.clientId); if(c.credits>0)c.credits--;
+  save();closeSheet();render();toast('התור סומן כהושלם · ירד אחד מהכרטיסייה');
+}
+function cancelAppt(id){
+  const a=S.appts.find(x=>x.id===id);a.status='cancelled';
+  save();closeSheet();render();
+  const st=stf(a.staffId);
+  toast(`התור בוטל · ${fmt(a.start)} התפנה ביומן של ${st.name}`);
+}
+
+/* ---- client ---- */
+function clientCard(id){
+  const c=cli(id),today=iso(new Date());
+  const mine=S.appts.filter(a=>a.clientId===id).sort((a,b)=>(b.date+b.start).localeCompare(a.date+a.start));
+  const next=mine.filter(a=>a.date>=today&&a.status==='booked').reverse();
+  const past=mine.filter(a=>a.date<today||a.status!=='booked').slice(0,5);
+  const line=a=>{const s=svc(a.serviceId);return `<div class="row"><div><b>${esc(s.name)}</b><small>${prettyDate(a.date)} · ${fmt(a.start)} · ${esc(stf(a.staffId).name)}</small></div>
+    <span class="val">${a.status==='done'?'הושלם':a.status==='cancelled'?'בוטל':'מתוכנן'}</span></div>`};
+  openSheet(`
+    <h3>${esc(c.name)}</h3>
+    <div class="sh-sub">${esc(c.phone||'ללא טלפון')} · ${c.credits} בכרטיסייה</div>
+    <div class="mini">
+      <button class="pri" onclick="closeSheet();bookSheet({clientId:'${c.id}'})">קביעת תור</button>
+      <button onclick="clientSheet('${c.id}')">עריכת פרטים</button>
+    </div>
+    <div class="lbl">תורים עתידיים</div>
+    ${next.length?next.map(line).join(''):'<div style="font-size:12.5px;color:var(--muted)">אין תור עתידי.</div>'}
+    <div class="lbl">היסטוריה</div>
+    ${past.length?past.map(line).join(''):'<div style="font-size:12.5px;color:var(--muted)">עדיין אין היסטוריה.</div>'}
+    ${c.note?`<div class="lbl">הערות</div><div style="font-size:12.5px;color:var(--muted);line-height:1.7">${esc(c.note)}</div>`:''}
+    <div style="height:14px"></div>`);
+}
+function clientSheet(id){
+  const c=id?cli(id):{id:null,name:'',phone:'',credits:10,note:''};
+  openSheet(`
+    <h3>${id?'עריכת לקוח':'לקוח חדש'}</h3><div class="sh-sub">הלקוח נשמר בתיקייה לפי א־ב</div>
+    <div class="lbl">שם מלא</div><input class="inp" id="cn" value="${esc(c.name)}" placeholder="שם ומשפחה">
+    <div class="two"><div><div class="lbl">טלפון</div><input class="inp" id="cp" value="${esc(c.phone)}" placeholder="050-0000000"></div>
+    <div><div class="lbl">כרטיסייה</div><input class="inp" id="cc" type="number" min="0" value="${c.credits}"></div></div>
+    <div class="lbl">הערות</div><textarea class="inp" id="cnote" placeholder="העדפות, רגישויות, מה חשוב לזכור">${esc(c.note)}</textarea>
+    <button class="cta" onclick="saveClient(${id?`'${id}'`:'null'})">שמירה</button>
+    ${id?`<button class="cta danger" onclick="archiveClient('${id}')">ארכוב הלקוח</button>`:''}`);
+}
+function saveClient(id){
+  const name=document.getElementById('cn').value.trim();
+  if(!name){toast('צריך שם');return}
+  const data={name,phone:document.getElementById('cp').value.trim(),
+    credits:+document.getElementById('cc').value||0,note:document.getElementById('cnote').value};
+  if(id)Object.assign(cli(id),data); else S.clients.push({id:uid(),...data});
+  save();closeSheet();tab='clients';render();toast(id?'הלקוח עודכן':'הלקוח נוסף לתיקייה');
+}
+function archiveClient(id){
+  S.appts=S.appts.filter(a=>a.clientId!==id||a.date<iso(new Date()));
+  S.clients=S.clients.filter(c=>c.id!==id);
+  save();closeSheet();render();toast('הלקוח הוצא מהתיקייה · היסטוריית העבר נשמרה');
+}
+
+/* ---- service / staff / biz ---- */
+function serviceSheet(id){
+  const s=id?svc(id):{id:null,name:'',len:45,price:100,color:'sky',cap:1};
+  openSheet(`
+    <h3>${id?'עריכת שירות':'שירות חדש'}</h3><div class="sh-sub">המשך שנקבע כאן קובע כמה מקום התור תופס ביומן</div>
+    <div class="lbl">שם השירות</div><input class="inp" id="sn" value="${esc(s.name)}" placeholder="לדוגמה: ייעוץ ראשוני">
+    <div class="two"><div><div class="lbl">משך בדקות</div><input class="inp" id="sl" type="number" min="5" step="5" value="${s.len}"></div>
+    <div><div class="lbl">מחיר בשקלים</div><input class="inp" id="sp" type="number" min="0" value="${s.price}"></div></div>
+    <div class="lbl">קיבולת · 1 לתור אישי, יותר לקבוצתי</div><input class="inp" id="sc" type="number" min="1" value="${s.cap}">
+    <div class="lbl">צבע ביומן</div>
+    <div class="pillrow" id="colorRow">${COLORS.map(c=>`<button data-c="${c}" class="${c===s.color?'on':''}" onclick="pickColor('${c}')" style="background:var(--${c});color:var(--${c}-t)">${c===s.color?'נבחר':'&nbsp;&nbsp;&nbsp;'}</button>`).join('')}</div>
+    <button class="cta" onclick="saveService(${id?`'${id}'`:'null'})">שמירה</button>
+    ${id&&S.services.length>1?`<button class="cta danger" onclick="delService('${id}')">מחיקת השירות</button>`:''}`);
+  window._color=s.color;
+}
+function pickColor(c){window._color=c;document.querySelectorAll('#colorRow button').forEach(b=>{
+  b.classList.toggle('on',b.dataset.c===c);b.innerHTML=b.dataset.c===c?'נבחר':'&nbsp;&nbsp;&nbsp;'})}
+function saveService(id){
+  const name=document.getElementById('sn').value.trim();
+  if(!name){toast('צריך שם לשירות');return}
+  const data={name,len:+document.getElementById('sl').value||30,price:+document.getElementById('sp').value||0,
+    cap:Math.max(1,+document.getElementById('sc').value||1),color:window._color||'sky'};
+  if(id)Object.assign(svc(id),data); else S.services.push({id:uid(),...data});
+  save();closeSheet();tab='services';render();toast(id?'השירות עודכן':'השירות נוסף לקטלוג');
+}
+function delService(id){
+  if(S.appts.some(a=>a.serviceId===id&&a.status==='booked')){toast('יש תורים עתידיים עם השירות הזה');return}
+  S.services=S.services.filter(s=>s.id!==id);save();closeSheet();render();toast('השירות נמחק');
+}
+function staffSheet(id){
+  const t=id?stf(id):{id:null,name:'',color:'#2D7FF9'};
+  openSheet(`
+    <h3>${id?'עריכת איש צוות':'איש צוות חדש'}</h3><div class="sh-sub">לכל אחד יומן נפרד, וההתנגשות נבדקת בנפרד</div>
+    <div class="lbl">שם</div><input class="inp" id="tn" value="${esc(t.name)}" placeholder="שם פרטי">
+    <div class="lbl">צבע מזהה</div><input class="inp" id="tc" type="color" value="${t.color}" style="height:52px;padding:6px">
+    <button class="cta" onclick="saveStaff(${id?`'${id}'`:'null'})">שמירה</button>
+    ${id&&S.staff.length>1?`<button class="cta danger" onclick="delStaff('${id}')">הסרה מהצוות</button>`:''}`);
+}
+function saveStaff(id){
+  const name=document.getElementById('tn').value.trim();
+  if(!name){toast('צריך שם');return}
+  const data={name,color:document.getElementById('tc').value};
+  if(id)Object.assign(stf(id),data); else S.staff.push({id:uid(),...data});
+  save();closeSheet();render();toast(id?'עודכן':'נוסף לצוות');
+}
+function delStaff(id){
+  if(S.appts.some(a=>a.staffId===id&&a.status==='booked')){toast('יש תורים עתידיים ביומן הזה');return}
+  S.staff=S.staff.filter(s=>s.id!==id);if(staffFilter===id)staffFilter='all';
+  save();closeSheet();render();toast('הוסר מהצוות');
+}
+function bizSheet(){
+  openSheet(`<h3>פרטי העסק</h3><div class="sh-sub">מופיעים בתזכורות ובקישור ההזמנה</div>
+    <div class="lbl">שם העסק</div><input class="inp" id="bn" value="${esc(S.biz.name)}">
+    <div class="lbl">שם המנהל</div><input class="inp" id="bo" value="${esc(S.biz.owner)}">
+    <div class="two"><div><div class="lbl">חציצה בדקות</div><input class="inp" id="bb" type="number" min="0" step="5" value="${S.settings.buffer}"></div>
+    <div><div class="lbl">קפיצות שעה</div><input class="inp" id="bs" type="number" min="5" step="5" value="${S.settings.step}"></div></div>
+    <button class="cta" onclick="saveBiz()">שמירה</button>`);
+}
+function saveBiz(){
+  S.biz.name=document.getElementById('bn').value.trim()||S.biz.name;
+  S.biz.owner=document.getElementById('bo').value.trim()||S.biz.owner;
+  S.settings.buffer=Math.max(0,+document.getElementById('bb').value||0);
+  S.settings.step=Math.max(5,+document.getElementById('bs').value||15);
+  save();closeSheet();render();toast('נשמר');
+}
+async function resetAll(){await DB.clear();S=seed();await save();closeSheet();goToday();toast('הנתונים אופסו')}
+
+/* ===================== boot ===================== */
+let tt;
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),3200)}
+function render(){
+  renderTop();renderTabs();
+  document.getElementById('fab').style.display=(tab==='cal')?'grid':'none';
+  if(tab==='cal')renderCal();
+  else if(tab==='clients')renderClients();
+  else if(tab==='services')renderServices();
+  else renderMore();
+}
+document.getElementById('fab').onclick=()=>bookSheet({date:selDate});
+(async function(){
+  S=await DB.load();
+  if(!S||!S.services){S=seed();await save()}
+  render();
+})();
+</script>
+</body>
+</html>
