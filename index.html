@@ -4,17 +4,17 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Heebo:wght@300;400;500;600;700;800;900&display=swap">
 <style>
 :root{
-  --bg:#F3F5FA; --bg-2:#FFFFFF; --sur:#FFFFFF; --sur-2:#F7F8FC; --sur-3:#EEF1F8;
+  --bg:#F4F5FB; --bg-2:#FFFFFF; --sur:#FFFFFF; --sur-2:#F7F7FD; --sur-3:#EEEDF8;
   --line:#E2E6F0; --line-2:#CBD2E2;
   --tx:#0F1526; --tx-2:#4B5570; --tx-3:#8A93AD;
-  --ac:#6D5DF6; --ac-2:#8B7CFF; --ac-soft:rgba(109,93,246,.12); --ac-glow:rgba(109,93,246,.35);
+  --ac:#4462EE; --ac-2:#3D6CF0; --ac-soft:#DED9F5; --ac-glow:rgba(68,98,238,.32); --p1:#2E86F6; --p1b:#45C4F5; --p2:#4462EE; --p3:#7247F1; --p3b:#8A5CF5; --t1:#DED9F5; --t2:#D9E8F8; --t3:#EEEDF8; --brand:linear-gradient(135deg,#2E86F6 0%,#4462EE 55%,#7247F1 100%);
   --up:#15A85A; --up-soft:rgba(21,168,90,.12);
   --dn:#E0364D; --dn-soft:rgba(224,54,77,.12);
   --warn:#D99A16; --warn-soft:rgba(217,154,22,.14);
-  --info:#0E8FD1; --info-soft:rgba(14,143,209,.12);
+  --info:#2E9BF0; --info-soft:#D9E8F8; --vio:#7247F1; --vio-soft:#E6DFFA;
   --grid:rgba(15,21,38,.07);
   --shadow:0 10px 30px rgba(15,21,38,.08);
-  --r:20px; --r-s:14px; --pulse:#19C37D;
+  --r:20px; --r-s:14px; --pulse:#45C4F5;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
@@ -22,11 +22,11 @@
     --bg:#070B16; --bg-2:#0A0F1E; --sur:#0E1424; --sur-2:#131A2E; --sur-3:#192139;
     --line:#1C2540; --line-2:#28325A;
     --tx:#EEF1FB; --tx-2:#A6AECA; --tx-3:#6E7896;
-    --ac:#8B7CFF; --ac-2:#A79BFF; --ac-soft:rgba(139,124,255,.14); --ac-glow:rgba(139,124,255,.45);
+    --ac:#4F6BF3; --ac-2:#8FA6FF; --ac-soft:rgba(79,107,243,.16); --ac-glow:rgba(79,107,243,.45); --p1:#2E86F6; --p1b:#45C4F5; --p2:#4462EE; --p3:#7247F1; --p3b:#8A5CF5; --t1:#DED9F5; --t2:#D9E8F8; --t3:#EEEDF8; --brand:linear-gradient(135deg,#2E86F6 0%,#4462EE 55%,#7247F1 100%);
     --up:#2ED47A; --up-soft:rgba(46,212,122,.13);
     --dn:#FF5C6C; --dn-soft:rgba(255,92,108,.13);
     --warn:#F5B640; --warn-soft:rgba(245,182,64,.14);
-    --info:#38BDF8; --info-soft:rgba(56,189,248,.13);
+    --info:#45C4F5; --info-soft:rgba(69,196,245,.14); --vio:#8A5CF5; --vio-soft:rgba(138,92,245,.16);
     --grid:rgba(255,255,255,.06);
     --shadow:0 18px 50px rgba(0,0,0,.45);
     color-scheme:dark;
@@ -36,11 +36,11 @@
   --bg:#070B16; --bg-2:#0A0F1E; --sur:#0E1424; --sur-2:#131A2E; --sur-3:#192139;
   --line:#1C2540; --line-2:#28325A;
   --tx:#EEF1FB; --tx-2:#A6AECA; --tx-3:#6E7896;
-  --ac:#8B7CFF; --ac-2:#A79BFF; --ac-soft:rgba(139,124,255,.14); --ac-glow:rgba(139,124,255,.45);
+  --ac:#4F6BF3; --ac-2:#8FA6FF; --ac-soft:rgba(79,107,243,.16); --ac-glow:rgba(79,107,243,.45); --p1:#2E86F6; --p1b:#45C4F5; --p2:#4462EE; --p3:#7247F1; --p3b:#8A5CF5; --t1:#DED9F5; --t2:#D9E8F8; --t3:#EEEDF8; --brand:linear-gradient(135deg,#2E86F6 0%,#4462EE 55%,#7247F1 100%);
   --up:#2ED47A; --up-soft:rgba(46,212,122,.13);
   --dn:#FF5C6C; --dn-soft:rgba(255,92,108,.13);
   --warn:#F5B640; --warn-soft:rgba(245,182,64,.14);
-  --info:#38BDF8; --info-soft:rgba(56,189,248,.13);
+  --info:#45C4F5; --info-soft:rgba(69,196,245,.14); --vio:#8A5CF5; --vio-soft:rgba(138,92,245,.16);
   --grid:rgba(255,255,255,.06);
   --shadow:0 18px 50px rgba(0,0,0,.45);
   color-scheme:dark;
@@ -58,7 +58,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
 .side{background:var(--bg-2);border-left:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:3px;position:sticky;top:0;height:100vh;overflow-y:auto;scrollbar-width:none}.side::-webkit-scrollbar{display:none}
 .brand{display:flex;align-items:center;gap:11px;padding:2px 8px 14px}
-.logo{width:38px;height:38px;border-radius:14px;background:linear-gradient(140deg,var(--ac) 0%,#3FD3FF 100%);display:grid;place-items:center;box-shadow:0 8px 22px var(--ac-glow)}
+.logo{width:38px;height:38px;border-radius:14px;background:var(--brand);display:grid;place-items:center;box-shadow:0 8px 22px var(--ac-glow)}
 .logo svg{width:22px;height:22px;stroke:#fff;--pulse:#fff}
 .brand b{font-size:17px;font-weight:800;letter-spacing:-.02em;display:block;line-height:1.1}
 .brand span{font-size:11px;color:var(--tx-3);font-weight:500}
@@ -69,7 +69,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .chip svg,.btn svg,.pi{width:14px;height:14px;fill:none}.btn-ac svg,.btn-up svg,.btn-dn svg{--pulse:#fff}.chip-up svg{--pulse:currentColor}
 .search>svg{width:16px;height:16px;fill:none;flex:none}
 .nav:hover{background:var(--sur-2);color:var(--tx)}
-.nav.on{background:var(--ac-soft);color:var(--ac-2);font-weight:400;box-shadow:inset 3px 0 0 var(--ac)}
+.nav.on{background:var(--ac-soft);color:var(--ac-2);font-weight:400;box-shadow:inset 3px 0 0 var(--p3)}
 .nav .cnt{margin-right:auto;font-size:11px;font-weight:700;background:var(--sur-3);color:var(--tx-2);padding:1px 7px;border-radius:99px}
 .nav.on .cnt{background:var(--ac);color:#fff}
 .side .spacer{flex:1;min-height:14px}
@@ -77,8 +77,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .promo h4{margin:0 0 4px;font-size:14px}
 .promo p{margin:0 0 12px;font-size:12px;color:var(--tx-3)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 16px;border-radius:14px;font-weight:600;font-size:13px;transition:.15s;border:1px solid transparent;white-space:nowrap}
-.btn-ac{background:var(--ac);color:#fff;box-shadow:0 6px 18px var(--ac-glow)}
-.btn-ac:hover{background:var(--ac-2)}
+.btn-ac{background:var(--brand);color:#fff;box-shadow:0 6px 18px var(--ac-glow);border:0}
+.btn-ac:hover{filter:brightness(1.08)}
 .btn-ghost{border-color:var(--line-2);color:var(--tx-2);background:var(--sur)}
 .btn-ghost:hover{color:var(--tx);border-color:var(--ac)}
 .btn-up{background:var(--up);color:#fff}.btn-dn{background:var(--dn);color:#fff}
@@ -395,11 +395,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- AI home ---------- */
 .g-ai{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:16px}
 .brief{position:relative;overflow:hidden;padding:22px 24px 20px}
-.brief::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--pulse),var(--ac),var(--info))}
+.brief::before{content:"";position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--p1b),var(--p2),var(--p3))}
 .brief-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.brief-tag{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.14em;color:var(--ac-2)}
+.brief-tag{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.14em;color:var(--p3b)}
 .brief-tag svg{width:18px;height:18px;fill:none}
-.brief-tag::after{content:"";width:34px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--ac),transparent)}
+.brief-tag::after{content:"";width:34px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--p3),transparent)}
 .brief h2{margin:0 0 10px;font-size:22px;font-weight:700;line-height:1.3;letter-spacing:-.01em;text-wrap:balance}
 .brief p{margin:0;font-size:14px;line-height:1.75;color:var(--tx-2);max-width:72ch}
 .idx-chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:18px}
@@ -412,12 +412,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .q{padding:8px 14px;border-radius:99px;border:1px solid var(--line-2);background:var(--sur-2);font-size:12.5px;font-weight:400;color:var(--tx);transition:.15s}
 .q:hover{border-color:var(--ac);color:var(--ac-2);background:var(--ac-soft)}
 .empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:22px 16px 10px}
-.empty-ic{width:52px;height:52px;border-radius:16px;background:var(--ac-soft);color:var(--ac-2);display:grid;place-items:center;margin-bottom:4px}
+.empty-ic{width:52px;height:52px;border-radius:16px;background:var(--vio-soft);color:var(--p3b);display:grid;place-items:center;margin-bottom:4px}
 .empty-ic svg{width:24px;height:24px;fill:none}
 .empty b{font-size:15px}
 .empty p{margin:0 0 10px;font-size:13px;color:var(--tx-2);max-width:48ch;line-height:1.6}
 .ask{padding:12px 14px}
-.ask-in{display:flex;align-items:center;gap:10px;background:var(--sur-2);border:1px solid var(--line-2);border-radius:16px;padding:8px 8px 8px 14px;color:var(--ac-2);transition:.15s}
+.ask-in{display:flex;align-items:center;gap:10px;background:var(--sur-2);border:1px solid var(--line-2);border-radius:16px;padding:8px 8px 8px 14px;color:var(--p3b);transition:.15s}
 .ask-in:focus-within{border-color:var(--ac);box-shadow:0 0 0 3px var(--ac-soft)}
 .ask-in svg{width:20px;height:20px;fill:none;flex:none}
 .ask-in input{flex:1;background:none;border:0;color:var(--tx);font:inherit;font-size:14px;outline:none;min-width:0}
@@ -779,7 +779,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
     <div class="clients" id="clients"></div>
 
     <div class="client-hero">
-      <div class="card client-id"><div class="avatar" style="background:linear-gradient(135deg,#6D5DF6,#3FD3FF)" id="cAv">דל</div><div><h2 id="cName">דוד לוי</h2><div class="meta" id="cMeta"><span>לקוח מאז 2019</span><span>·</span><span>פרופיל סיכון: <b>בינוני-גבוה</b></span><span>·</span><span class="num">052-3948821</span></div><div style="display:flex;gap:6px;margin-top:10px"><span class="chip chip-ac">תיק מנוהל</span><span class="chip chip-up">פעיל</span><span class="chip chip-mute">קופת גמל להשקעה</span></div></div></div>
+      <div class="card client-id"><div class="avatar" style="background:linear-gradient(135deg,#2E86F6,#7247F1)" id="cAv">דל</div><div><h2 id="cName">דוד לוי</h2><div class="meta" id="cMeta"><span>לקוח מאז 2019</span><span>·</span><span>פרופיל סיכון: <b>בינוני-גבוה</b></span><span>·</span><span class="num">052-3948821</span></div><div style="display:flex;gap:6px;margin-top:10px"><span class="chip chip-ac">תיק מנוהל</span><span class="chip chip-up">פעיל</span><span class="chip chip-mute">קופת גמל להשקעה</span></div></div></div>
       <div class="card"><div class="mini-k">שווי תיק כולל</div><div class="big num" id="cVal">₪ 2,418,300</div><div style="display:flex;gap:8px;align-items:center;margin-top:8px"><span class="chip chip-up num" id="cDay">▲ +1.32% היום</span><span class="chip chip-mute num" id="cYtd">+18.4% מתחילת השנה</span></div><div class="chart-wrap" style="margin-top:12px"><canvas id="cPerf" data-h="70"></canvas></div></div>
       <div class="card alloc"><canvas id="alloc" width="260" height="260"></canvas><ul id="allocList"></ul></div>
     </div>
@@ -877,7 +877,7 @@ const ARTS=[
  {h:'מפת החום של ספטמבר: הסקטורים שהקהילה מהמרת עליהם',p:'ניתוח 48,000 פוסטים בקהילת MarkeTube: הבנקים למעלה, הרכב החשמלי למטה, והשבבים מפולגים.',a:'צוות AI',t:'5 דק\'',tag:'AI',seed:46,c:'#6D5DF6',d:'לפני 3 ימים'},
 ];
 const CLIENTS=[
- {n:'דוד לוי',i:'דל',v:2418300,d:1.32,y:18.4,g:'linear-gradient(135deg,#6D5DF6,#3FD3FF)',risk:'בינוני-גבוה',since:2019},
+ {n:'דוד לוי',i:'דל',v:2418300,d:1.32,y:18.4,g:'linear-gradient(135deg,#2E86F6,#7247F1)',risk:'בינוני-גבוה',since:2019},
  {n:'מירב כהן',i:'מכ',v:1186500,d:0.84,y:12.1,g:'linear-gradient(135deg,#FFB86C,#FF6C9E)',risk:'בינוני',since:2021},
  {n:'יוסי אברהם',i:'יא',v:5642000,d:-0.41,y:9.7,g:'linear-gradient(135deg,#1D9E75,#8FE3B4)',risk:'נמוך',since:2016},
  {n:'שרה פרידמן',i:'שפ',v:842700,d:2.06,y:24.9,g:'linear-gradient(135deg,#E24C7A,#F7A1C4)',risk:'גבוה',since:2023},
