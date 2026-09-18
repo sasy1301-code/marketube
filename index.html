@@ -953,6 +953,12 @@ body{background:var(--bg)}
 .gauge{flex:1;align-content:center}
 .wl{flex:1}
 .user{align-items:center}.user .uname{display:flex;flex-direction:column;justify-content:center;line-height:1.15;gap:1px}.user .uname b{display:block;font-size:12.5px;line-height:1.15}.user .uname span{font-size:10.5px;line-height:1.15;color:var(--tx-3)}.user .chev{align-self:center}
+/* narrow column on the right */
+.home3{grid-template-columns:300px minmax(0,1fr)}.home3>div:last-child{order:-1}
+.g-op{grid-template-columns:300px minmax(0,1fr)}.g-op>.card:last-child{order:-1}
+.g-3{grid-template-columns:300px minmax(0,1fr) minmax(0,1fr)}.g-3>.card:last-child{order:-1}
+@media (max-width:1400px){.home3,.g-op{grid-template-columns:1fr}.home3>div:last-child,.g-op>.card:last-child,.g-3>.card:last-child{order:0}.g-3{grid-template-columns:1fr 1fr}}
+@media (max-width:1180px){.g-3{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
