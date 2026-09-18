@@ -959,6 +959,25 @@ body{background:var(--bg)}
 .g-3{grid-template-columns:300px minmax(0,1fr) minmax(0,1fr)}.g-3>.card:last-child{order:-1}
 @media (max-width:1400px){.home3,.g-op{grid-template-columns:1fr}.home3>div:last-child,.g-op>.card:last-child,.g-3>.card:last-child{order:0}.g-3{grid-template-columns:1fr 1fr}}
 @media (max-width:1180px){.g-3{grid-template-columns:1fr}}
+/* icon draw-in on hover (stroke icons only) */
+@keyframes ico-draw{0%{stroke-dashoffset:110;opacity:.35}60%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes ico-pop{0%{transform:scale(.86) rotate(-6deg)}55%{transform:scale(1.1) rotate(2deg)}100%{transform:scale(1) rotate(0)}}
+.nav svg,.card-hd h3 svg,.ico-btn svg,.tool .ic svg,.aic .hd .ic svg,.qbtn svg,.bottombar button svg,.burger svg,.search>svg{stroke-dasharray:110;stroke-dashoffset:0;transform-origin:50% 50%;transition:color .2s}
+.nav:hover svg,.card-hd:hover h3 svg,.ico-btn:hover svg,.tool:hover .ic svg,.aic .hd:hover .ic svg,.qbtn:hover svg,.bottombar button:hover svg,.burger:hover svg,.search:hover>svg{animation:ico-draw .85s cubic-bezier(.22,.8,.3,1) both,ico-pop .7s cubic-bezier(.34,1.56,.64,1) both}
+.nav:hover svg{color:var(--tx)}.nav.on:hover svg,.nav.on svg{color:var(--on-brand)}.nav:focus:not(:focus-visible){outline:none}.card-hd:hover h3 svg{color:var(--mint)}:root[data-theme="light"] .card-hd:hover h3 svg{color:var(--ac-2)}
+@media (prefers-reduced-motion:reduce){.nav:hover svg,.card-hd:hover h3 svg,.ico-btn:hover svg,.tool:hover .ic svg,.aic .hd:hover .ic svg,.qbtn:hover svg,.bottombar button:hover svg,.burger:hover svg,.search:hover>svg{animation:none}}
+/* mobile floating pill nav */
+@media (max-width:820px){
+  .bottombar{left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));border-radius:99px;background:#0F0F10;border:0;padding:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 14px 34px rgba(0,0,0,.35)}
+  :root[data-theme="light"] .bottombar{background:#111;box-shadow:0 14px 34px rgba(20,20,30,.28)}
+  .bottombar button{flex-direction:row;gap:0;height:46px;min-width:46px;padding:0 12px;border-radius:99px;color:rgba(255,255,255,.85);font-size:13px;font-weight:500;transition:background .3s,padding .3s,gap .3s cubic-bezier(.2,.8,.2,1)}
+  .bottombar button svg{width:22px;height:22px;flex:none;stroke:currentColor;stroke-width:1.8;filter:none;transition:stroke-width .2s}
+  .bottombar button span{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .35s cubic-bezier(.2,.8,.2,1),opacity .25s}
+  .bottombar button.on{background:#262628;color:#fff;padding:0 18px 0 14px;gap:8px;filter:none}
+  .bottombar button.on svg{stroke-width:2.2;filter:none}
+  .bottombar button.on span{max-width:90px;opacity:1}
+  .content{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+}
 </style>
 </head>
 <body>
@@ -1412,11 +1431,11 @@ body{background:var(--bg)}
 </div><!-- /main -->
 </div><!-- /app -->
 <nav class="bottombar" id="bottombar">
-  <button class="on" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>בית</button>
-  <button data-view="markets"><svg><use href="#p-candles"/></svg>שווקים</button>
-  <button data-view="articles"><svg><use href="#p-news"/></svg>חדשות</button>
-  <button data-view="ai"><svg><use href="#p-ai"/></svg>AI</button>
-  <button data-view="client"><svg><use href="#p-wallet"/></svg>תיק</button>
+  <button class="on" data-view="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>בית</span></button>
+  <button data-view="markets"><svg><use href="#p-candles"/></svg><span>שווקים</span></button>
+  <button data-view="articles"><svg><use href="#p-news"/></svg><span>חדשות</span></button>
+  <button data-view="ai"><svg><use href="#p-ai"/></svg><span>AI</span></button>
+  <button data-view="client"><svg><use href="#p-wallet"/></svg><span>תיק</span></button>
 </nav>
 <div class="tt" id="tt"></div>
 <div class="toast" id="toast"><i></i><span id="toastMsg"></span></div>
