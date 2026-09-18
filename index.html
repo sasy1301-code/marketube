@@ -969,9 +969,9 @@ body{background:var(--bg)}
 @keyframes ico-draw{0%{stroke-dashoffset:110;opacity:.35}60%{opacity:1}100%{stroke-dashoffset:0;opacity:1}}
 @keyframes ico-pop{0%{transform:scale(.86) rotate(-6deg)}55%{transform:scale(1.1) rotate(2deg)}100%{transform:scale(1) rotate(0)}}
 .nav svg,.card-hd h3 svg,.ico-btn svg,.tool .ic svg,.aic .hd .ic svg,.qbtn svg,.bottombar button svg,.burger svg,.search>svg{stroke-dasharray:110;stroke-dashoffset:0;transform-origin:50% 50%;transition:color .2s}
-.nav:hover svg,.card-hd:hover h3 svg,.ico-btn:hover svg,.tool:hover .ic svg,.aic .hd:hover .ic svg,.qbtn:hover svg,.bottombar button:hover svg,.burger:hover svg,.search:hover>svg{animation:ico-draw .85s cubic-bezier(.22,.8,.3,1) both,ico-pop .7s cubic-bezier(.34,1.56,.64,1) both}
-.nav:hover svg{color:var(--tx)}.nav.on:hover svg,.nav.on svg{color:var(--on-brand)}.nav:focus:not(:focus-visible){outline:none}.card-hd:hover h3 svg{color:var(--mint)}:root[data-theme="light"] .card-hd:hover h3 svg{color:var(--ac-2)}
-@media (prefers-reduced-motion:reduce){.nav:hover svg,.card-hd:hover h3 svg,.ico-btn:hover svg,.tool:hover .ic svg,.aic .hd:hover .ic svg,.qbtn:hover svg,.bottombar button:hover svg,.burger:hover svg,.search:hover>svg{animation:none}}
+.nav:hover svg,.card:hover .card-hd h3 svg,.ico-btn:hover svg,.tool:hover .ic svg,.card.aic:hover .hd .ic svg,.qbtn:hover svg,.bottombar button:hover svg,.burger:hover svg,.search:hover>svg{animation:ico-draw .85s cubic-bezier(.22,.8,.3,1) both,ico-pop .7s cubic-bezier(.34,1.56,.64,1) both}
+.nav:hover svg{color:var(--tx)}.nav.on:hover svg,.nav.on svg{color:var(--on-brand)}.nav:focus:not(:focus-visible){outline:none}.card:hover .card-hd h3 svg{color:var(--mint)}:root[data-theme="light"] .card:hover .card-hd h3 svg{color:var(--ac-2)}
+@media (prefers-reduced-motion:reduce){.nav:hover svg,.card:hover .card-hd h3 svg,.ico-btn:hover svg,.tool:hover .ic svg,.card.aic:hover .hd .ic svg,.qbtn:hover svg,.bottombar button:hover svg,.burger:hover svg,.search:hover>svg{animation:none}}
 /* mobile floating pill nav */
 @media (max-width:820px){
   .bottombar{left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));border-radius:99px;background:#0F0F10;border:0;padding:8px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 14px 34px rgba(0,0,0,.35)}
@@ -988,6 +988,12 @@ body{background:var(--bg)}
 .card,.st5,.hero3{position:relative}
 .card::before,.st5::before,.hero3::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(135deg,#b7efa8,#b2a9f0);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:3;inset-inline:0;width:auto}
 .card:hover::before,.st5:hover::before,.hero3:hover::before{opacity:1}
+/* sliding nav pill */
+.side{position:sticky}
+.nav-pill{position:absolute;top:0;left:0;border-radius:16px;background:var(--brand);z-index:0;pointer-events:none;transition:transform .45s cubic-bezier(.22,1,.36,1),height .3s,width .3s,opacity .2s;will-change:transform}
+.nav{position:relative;z-index:1;transition:color .25s}
+.nav.on{background:transparent;box-shadow:none}
+.brand,.promo,.side .spacer{position:relative;z-index:1}
 </style>
 <style>
 /* ===== typography: GoogleSans ===== */
@@ -1777,6 +1783,21 @@ document.querySelectorAll('[data-view]:not(.nav):not(#bottombar button)').forEac
   const LR=[['יסודות ההשקעה במניות','8 שיעורים · מתחילים',901],['ניתוח טכני מתקדם','12 שיעורים · מתקדמים',902],['השקעה בקרנות סל','6 שיעורים · כולם',903]];
   $('#learn').innerHTML=LR.map((l,i)=>`<div class="lc"><div class="th" ><canvas id="lr${i}"></canvas></div><b>${l[0]}</b><span>${l[1]}</span></div>`).join('');
   LR.forEach((l,i)=>reg(()=>spark($('#lr'+i),gen(30,100,.06,.004,l[2]),i==2?css('--mint'):INK)));
+})();
+</script>
+<script>
+(function(){
+  const side=document.querySelector('.side');if(!side)return;
+  const pill=document.createElement('span');pill.className='nav-pill';side.prepend(pill);
+  let first=true;
+  function move(){const on=side.querySelector('.nav.on');if(!on){pill.style.opacity=0;return}
+    pill.style.opacity=1;pill.style.width=on.offsetWidth+'px';pill.style.height=on.offsetHeight+'px';
+    pill.style.transform=`translate(${on.offsetLeft}px,${on.offsetTop}px)`;
+    if(first){pill.style.transition='none';requestAnimationFrame(()=>{pill.style.transition='';first=false})}}
+  new MutationObserver(move).observe(side,{attributes:true,attributeFilter:['class'],subtree:true});
+  window.addEventListener('resize',move);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(move);
+  move();
 })();
 </script>
 
