@@ -986,7 +986,10 @@ body{background:var(--bg)}
 }
 /* hover gradient border */
 .card,.st5,.hero3{position:relative}
-.card::before,.st5::before,.hero3::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(135deg,#b7efa8,#b2a9f0);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:3;inset-inline:0;width:auto}
+.card::before,.st5::before,.hero3::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--ang,135deg),#b7efa8,#b2a9f0,#b7efa8,#b2a9f0,#b7efa8);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude;opacity:0;transition:opacity .35s ease;pointer-events:none;z-index:3;inset-inline:0;width:auto}
+@property --ang{syntax:'<angle>';inherits:false;initial-value:135deg}
+@keyframes spin-border{to{--ang:495deg}}
+.card:hover::before,.st5:hover::before,.hero3:hover::before{animation:spin-border 3s linear infinite}
 .card:hover::before,.st5:hover::before,.hero3:hover::before{opacity:1}
 /* sliding nav pill */
 
