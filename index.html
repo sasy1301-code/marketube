@@ -1035,6 +1035,31 @@ body{background:var(--bg)}
 .pc-dot i{position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.25)}
 .pc-dot input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;padding:0}
 @media (max-width:820px){.pc-dot{width:20px;height:20px}}
+/* AI assistant aurora background (orbiting) */
+.aic{position:relative;overflow:hidden;isolation:isolate}
+.aic>*{position:relative;z-index:1}
+.ai-aurora{position:absolute!important;inset:0;z-index:0!important;pointer-events:none;filter:blur(30px) saturate(1.3);opacity:1}
+.ai-aurora i{position:absolute;left:50%;top:50%;border-radius:50%;will-change:transform}
+.ai-aurora i:nth-child(1){width:70%;height:60%;margin:-30% 0 0 -35%;background:var(--lav);animation:orbit1 11s linear infinite}
+.ai-aurora i:nth-child(2){width:48%;height:48%;margin:-24% 0 0 -24%;background:var(--mint);opacity:.6;animation:orbit2 8s linear infinite reverse}
+.ai-aurora i:nth-child(3){width:60%;height:50%;margin:-25% 0 0 -30%;background:var(--lav);opacity:.8;animation:orbit3 15s linear infinite}
+.ai-aurora i:nth-child(4){width:26%;height:26%;margin:-13% 0 0 -13%;background:#fff;opacity:.12;animation:orbit2 6s linear infinite}
+@keyframes orbit1{from{transform:rotate(0deg) translateX(26%) rotate(0deg)}to{transform:rotate(360deg) translateX(26%) rotate(-360deg)}}
+@keyframes orbit2{from{transform:rotate(0deg) translateX(38%)}to{transform:rotate(360deg) translateX(38%)}}
+@keyframes orbit3{from{transform:rotate(180deg) translateX(32%) scale(1)}50%{transform:rotate(360deg) translateX(32%) scale(1.15)}to{transform:rotate(540deg) translateX(32%) scale(1)}}
+.aic .qbtn,.aic .ask3{background:rgba(20,20,21,.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08)}
+:root[data-theme="light"] .ai-aurora{opacity:.6}
+:root[data-theme="light"] .aic .qbtn,:root[data-theme="light"] .aic .ask3{background:rgba(255,255,255,.7);border-color:rgba(0,0,0,.06)}
+.aic h3 span{color:var(--tx);opacity:.8}.aic .hd .chev-l{color:var(--tx);opacity:.7}
+@media (prefers-reduced-motion:reduce){.ai-aurora i{animation:none}}
+/* AI card rotating outer glow */
+.ai-wrap{position:relative;flex:1;display:flex;isolation:isolate}
+.ai-wrap>.aic{flex:1;z-index:1}
+.ai-wrap::before,.ai-wrap::after{content:"";position:absolute;inset:-6px;border-radius:calc(var(--r) + 6px);background:conic-gradient(from var(--ang,0deg),var(--lav),var(--mint),var(--lav),var(--mint),var(--lav));z-index:0;pointer-events:none;animation:spin-border 7s linear infinite}
+.ai-wrap::before{filter:blur(22px);opacity:.55}
+.ai-wrap::after{inset:-2px;border-radius:calc(var(--r) + 2px);opacity:.9}
+:root[data-theme="light"] .ai-wrap::before{opacity:.4}
+@media (prefers-reduced-motion:reduce){.ai-wrap::before,.ai-wrap::after{animation:none}}
 </style>
 <style>
 /* ===== typography: GoogleSans ===== */
@@ -1160,14 +1185,15 @@ p,.nw3 p,.post3 .bd p,.tool p,.ev3 p,.hero3 p,.nav,.qbtn,.tkr span,.tabs3 button
       </div>
 
       <div style="display:flex;flex-direction:column;gap:14px;min-width:0">
-        <div class="card aic">
+        <div class="ai-wrap"><div class="card aic">
+          <div class="ai-aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           <div class="hd"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></div><b>AI Assistant</b><span class="beta">BETA</span><span class="chev-l">‹</span></div>
           <h3>שלום מיקי,<span>איך אוכל לעזור לך היום?</span></h3>
           <button class="qbtn"><svg viewBox="0 0 24 24"><path d="M3 12h3l3-7 4 14 3-9 2 4h3"/></svg>מה קורה בשוק היום?</button>
           <button class="qbtn"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 5-6"/></svg>נתח את התיק שלי</button>
           <button class="qbtn"><svg viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z"/></svg>הצע רעיונות השקעה</button>
           <div class="ask3"><input placeholder="שאל את ה-AI שלך…"><button aria-label="שלח"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button></div>
-        </div>
+        </div></div>
 
         <div class="card">
           <div class="card-hd"><h3>סנטימנט השוק</h3><span class="chev-l">‹</span></div>
