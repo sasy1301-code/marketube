@@ -1601,7 +1601,7 @@ const bySym=s=>STOCKS.find(x=>x.s===s);
 const px=(st,v)=>st.cur==='₪'?'₪ '+fmt0(v):'$ '+fmt(v);
 
 /* ---------- charts ---------- */
-const charts=[];
+const charts=[];window.charts=charts;
 function reg(fn){charts.push(fn);fn()}
 function spark(cv,data,color,fill=true){const {c,w,h}=prep(cv);const mn=Math.min(...data),mx=Math.max(...data);const X=i=>i/(data.length-1)*w,Y=v=>h-4-(v-mn)/(mx-mn||1)*(h-8);c.beginPath();data.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.strokeStyle=color;c.lineWidth=1.6;c.lineJoin='round';c.stroke();if(fill){const g=c.createLinearGradient(0,0,0,h);g.addColorStop(0,hexA(color,.35));g.addColorStop(1,hexA(color,0));c.lineTo(w,h);c.lineTo(0,h);c.closePath();c.fillStyle=g;c.fill()}c.beginPath();c.arc(X(data.length-1),Y(data[data.length-1]),2.5,0,7);c.fillStyle=color;c.fill()}
 
@@ -1818,7 +1818,7 @@ document.querySelectorAll('[data-view]:not(.nav):not(#bottombar button)').forEac
     s.innerHTML=html});
   // ---- portfolio ----
   reg(()=>{const cv=$('#pfChart');const {c,w,h}=prep(cv,60);const d=gen(40,100,.03,.003,801);const mn=Math.min(...d),mx=Math.max(...d);const X=i=>i/(d.length-1)*w,Y=v=>h-4-(v-mn)/(mx-mn)*(h-10);
-    c.beginPath();d.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.lineTo(w,h);c.lineTo(0,h);c.closePath();const g=c.createLinearGradient(0,0,0,h);g.addColorStop(0,'rgba(180,167,245,.45)');g.addColorStop(1,'rgba(180,167,245,0)');c.fillStyle=g;c.fill();
+    c.beginPath();d.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.lineTo(w,h);c.lineTo(0,h);c.closePath();const g=c.createLinearGradient(0,0,0,h);const lv=css('--lav');g.addColorStop(0,hexA(lv,.45));g.addColorStop(1,hexA(lv,0));c.fillStyle=g;c.fill();
     c.beginPath();d.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.strokeStyle=AC2();c.lineWidth=2;c.lineJoin='round';c.stroke();
     const lx=X(d.length-1),ly=Y(d[d.length-1]);c.beginPath();c.arc(lx,ly,3.5,0,7);c.fillStyle=YL();c.fill()});
   // ---- opportunities ----
