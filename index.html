@@ -1055,9 +1055,9 @@ body{background:var(--bg)}
 /* AI card rotating outer glow (GPU: rotates a layer, no gradient repaint) */
 .ai-wrap{position:relative;flex:1;display:flex;isolation:isolate}
 .ai-wrap>.aic{flex:1;z-index:1}
-.ai-glow{position:absolute;inset:-5px;border-radius:calc(var(--r) + 5px);overflow:hidden;z-index:0;pointer-events:none}
+.ai-glow{position:absolute;inset:-1px;border-radius:calc(var(--r) + 1px);overflow:hidden;z-index:0;pointer-events:none}
 .ai-glow::before{content:"";position:absolute;left:50%;top:50%;width:190%;aspect-ratio:1;margin:-95% 0 0 -95%;background:conic-gradient(var(--lav),var(--mint),var(--lav),var(--mint),var(--lav));animation:glow-spin 8s linear infinite;will-change:transform}
-.ai-glow.blur{inset:-14px;border-radius:calc(var(--r) + 14px);filter:blur(16px);opacity:.5}
+.ai-glow.blur{inset:-12px;border-radius:calc(var(--r) + 12px);filter:blur(14px);opacity:.45}
 :root[data-theme="light"] .ai-glow.blur{opacity:.35}
 @keyframes glow-spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.ai-glow::before{animation:none}}
