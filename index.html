@@ -998,6 +998,15 @@ body{background:var(--bg)}
 .nav.on{background:transparent;box-shadow:none}
 .brand,.promo,.side .spacer{position:relative;z-index:1}
 /* ===== palettes ===== */
+:root[data-palette="5"]{--mint:#471CBF;--lav:#BF35F3;--brand:#471CBF;--on-brand:#fff;--ac:#BF35F3;--ac-2:#D98AFF;--ac-soft:rgba(191,53,243,.18);--ac-glow:rgba(191,53,243,.45);--p1:#471CBF;--p1b:#6B3FE0;--p2:#BF35F3;--p3:#BF35F3;--p3b:#D98AFF;--vio:#BF35F3;--vio-soft:rgba(191,53,243,.18);--info:#8F6BFF;--info-soft:rgba(71,28,191,.2);--pulse:#8F6BFF;--yl:#471CBF;--yl-2:#3A1699;--yl-soft:rgba(71,28,191,.2)}
+:root[data-palette="5"][data-theme="light"]{--brand:#471CBF;--on-brand:#fff;--ac-2:#8E12C4;--ac-soft:#F3DDFD;--vio-soft:#F3DDFD;--info:#471CBF;--info-soft:#E4DCF8;--pulse:#471CBF;--yl-soft:#E4DCF8}
+:root[data-palette="5"] .op,:root[data-palette="5"] .op .h b,:root[data-palette="5"] .op .h span,:root[data-palette="5"] .op .pc,:root[data-palette="5"] .nw3 .th,:root[data-palette="5"] .tabs3.pu button.on,:root[data-palette="5"] .nw3 .m b,:root[data-palette="5"] .aic .beta,:root[data-palette="5"] .avatar,:root[data-palette="5"] .btn-yl,:root[data-palette="5"] .promo .btn-yl,:root[data-palette="5"] .aic .hd .ic,:root[data-palette="5"] .tool .ic,:root[data-palette="5"] .wl .lg,:root[data-palette="5"] .post3 .av{color:#fff}
+:root[data-palette="5"] .nw3 .th{color:#fff!important}
+:root[data-palette="5"] .op .btn-o{border-color:#fff;color:#fff}:root[data-palette="5"] .op .lg{background:#fff!important;color:#1C1C1C}
+:root[data-palette="5"] .ask3 button svg{stroke:#fff}:root[data-palette="5"] .promo li::before{color:#D98AFF}:root[data-palette="5"] .promo h4 svg{fill:#D98AFF}
+:root[data-palette="5"] .hero3 .tag{color:#D98AFF;border-left-color:#D98AFF}:root[data-palette="5"] .hb-eyebrow{color:#D98AFF}:root[data-palette="5"] .hb-eyebrow i{background:#D98AFF}
+:root[data-palette="5"] .hb-copy h1 em{background:linear-gradient(90deg,#8F6BFF,#D98AFF);-webkit-background-clip:text;background-clip:text}
+:root[data-palette="5"] .ico-btn .dot{color:#fff}
 :root[data-palette="4"]{--mint:#F5B776;--lav:#E48CCA;--brand:#F5B776;--on-brand:#1C1C1C;--ac:#E48CCA;--ac-2:#F2B3DF;--ac-soft:rgba(228,140,202,.18);--ac-glow:rgba(228,140,202,.45);--p1:#F5B776;--p1b:#F5B776;--p2:#E48CCA;--p3:#E48CCA;--p3b:#F2B3DF;--vio:#E48CCA;--vio-soft:rgba(228,140,202,.18);--info:#F5B776;--info-soft:rgba(245,183,118,.14);--pulse:#F5B776;--yl:#F5B776;--yl-2:#E9A55E;--yl-soft:rgba(245,183,118,.16)}
 :root[data-palette="4"][data-theme="light"]{--brand:#1C1C1C;--on-brand:#fff;--ac-2:#B9469A;--ac-soft:#FAE3F2;--vio-soft:#FAE3F2;--info:#C27A2C;--info-soft:#FCEBD8;--pulse:#C27A2C;--yl-soft:#FCEBD8}
 :root[data-palette="3"]{--mint:#5FC9DB;--lav:#EB42AE;--brand:#5FC9DB;--on-brand:#0F2A30;--ac:#EB42AE;--ac-2:#F19DD7;--ac-soft:rgba(235,66,174,.18);--ac-glow:rgba(235,66,174,.45);--p1:#5FC9DB;--p1b:#5FC9DB;--p2:#EB42AE;--p3:#EB42AE;--p3b:#F19DD7;--vio:#EB42AE;--vio-soft:rgba(235,66,174,.18);--info:#5FC9DB;--info-soft:rgba(95,201,219,.14);--pulse:#5FC9DB;--yl:#5FC9DB;--yl-2:#4BB7C9;--yl-soft:rgba(95,201,219,.16)}
@@ -1017,6 +1026,7 @@ body{background:var(--bg)}
 .pal button[data-pal="2"]{--pm:#FFDC00;--pl:#8C32EB}
 .pal button[data-pal="3"]{--pm:#5FC9DB;--pl:#EB42AE;color:#fff}
 .pal button[data-pal="4"]{--pm:#F5B776;--pl:#E48CCA}
+.pal button[data-pal="5"]{--pm:#471CBF;--pl:#BF35F3;color:#fff}
 .pal button.on{border-color:var(--tx);transform:scale(1.08)}
 @media (max-width:820px){.pal{gap:4px}.pal button{width:24px;height:24px;font-size:10px}}
 .pal-custom{display:flex;gap:6px;align-items:center;padding:3px 5px;border:1.5px solid var(--line-2);border-radius:99px;margin-right:4px;transition:.2s}
@@ -1099,7 +1109,7 @@ p,.nw3 p,.post3 .bd p,.tool p,.ev3 p,.hero3 p,.nav,.qbtn,.tkr span,.tabs3 button
     <button class="burger" id="burger" aria-label="תפריט"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
     <label class="search"><svg><use href="#p-search"/></svg><input placeholder="חפש מניות, חדשות, אנשים…"><kbd>⌘K</kbd></label>
     <div class="user">
-      <div class="pal" id="pal"><button data-pal="1" class="on" title="פלטה 1">1</button><button data-pal="2" title="פלטה 2">2</button><button data-pal="3" title="פלטה 3">3</button><button data-pal="4" title="פלטה 4">4</button><span class="pal-custom" id="palCustom"><label class="pc-dot" title="צבע ראשי"><input type="color" id="cust1" value="#A6F2A0"><i style="background:#A6F2A0"></i></label><label class="pc-dot" title="צבע משני"><input type="color" id="cust2" value="#B4A7F5"><i style="background:#B4A7F5"></i></label></span></div>
+      <div class="pal" id="pal"><button data-pal="1" class="on" title="פלטה 1">1</button><button data-pal="2" title="פלטה 2">2</button><button data-pal="3" title="פלטה 3">3</button><button data-pal="4" title="פלטה 4">4</button><button data-pal="5" title="פלטה 5">5</button><span class="pal-custom" id="palCustom"><label class="pc-dot" title="צבע ראשי"><input type="color" id="cust1" value="#A6F2A0"><i style="background:#A6F2A0"></i></label><label class="pc-dot" title="צבע משני"><input type="color" id="cust2" value="#B4A7F5"><i style="background:#B4A7F5"></i></label></span></div>
       <button class="ico-btn" id="themeBtn" aria-label="יום / לילה"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A6 6 0 0 1 12 3z"/></svg></button>
       <button class="ico-btn" aria-label="התראות"><svg><use href="#p-bell"/></svg><span class="dot">3</span></button>
       <div class="avatar">מא</div>
