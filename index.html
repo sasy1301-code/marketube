@@ -1135,25 +1135,9 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   animation:ml-in .6s cubic-bezier(.16,1,.3,1) both}
 @keyframes ml-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* ---- ספר הפקודות ---- */
-#mtload .ml-ob{width:min(340px,86vw);direction:ltr;font-size:12px;
-  font-family:"GoogleSans",inherit;font-variant-numeric:tabular-nums}
-#mtload .ml-ob .r{position:relative;display:flex;align-items:center;justify-content:space-between;
-  height:19px;padding:0 9px;opacity:0;transform:translateX(12px)}
-#mtload .ml-ob .r.on{opacity:1;transform:none;transition:opacity .34s ease,transform .34s cubic-bezier(.16,1,.3,1)}
-#mtload .ml-ob .r i{position:absolute;top:2px;bottom:2px;right:0;border-radius:3px;width:0;
-  transition:width .55s cubic-bezier(.3,0,.2,1)}
-#mtload .ml-ob .r.a i{background:color-mix(in srgb,var(--dn) 22%,transparent)}
-#mtload .ml-ob .r.b i{background:color-mix(in srgb,var(--up) 20%,transparent)}
-#mtload .ml-ob .r span{position:relative;z-index:1}
-#mtload .ml-ob .r.a .p{color:var(--dn)}
-#mtload .ml-ob .r.b .p{color:var(--up)}
-#mtload .ml-ob .r .s{color:var(--tx-3)}
-#mtload .ml-ob .mid{display:flex;align-items:center;justify-content:space-between;height:30px;margin:6px 0;
-  padding:0 9px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);opacity:0}
-#mtload .ml-ob .mid.on{opacity:1;transition:opacity .4s ease}
-#mtload .ml-ob .mid b{font-size:15px;color:var(--tx);font-weight:700}
-#mtload .ml-ob .mid em{font-style:normal;font-size:11px;color:var(--lav)}
+/* ---- גרף חי ---- */
+#mtload .ml-chart{width:min(560px,88vw);height:210px;position:relative}
+#mtload .ml-chart canvas{width:100%;height:100%;display:block}
 
 #mtload .ml-st{font-size:11.5px;letter-spacing:.05em;color:var(--tx-3)}
 #mtload .ml-st b{color:var(--lav);font-weight:700;font-variant-numeric:tabular-nums}
@@ -1169,13 +1153,12 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   #mtload .ml-au i:nth-child(1){width:43%}
   #mtload .ml-au i:nth-child(2){width:32%}
   #mtload .ml-au i:nth-child(3){width:22%}
-  #mtload .ml-ob{font-size:11.5px}
-  #mtload .ml-ob .r{height:18px}
+  #mtload .ml-chart{height:176px}
 }
 @media (prefers-reduced-motion:reduce){
   #mtload .ml-au i{animation:none}
   #mtload .ml-w{animation:none}
-  #mtload .ml-ob .r,#mtload .ml-ob .mid{opacity:1;transform:none}
+
 }
 </style>
 <style>
@@ -1253,9 +1236,9 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   <div class="ml-au" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="ml-w">
 
-    <div class="ml-ob" id="mlob" aria-hidden="true"></div>
+    <div class="ml-chart"><canvas id="mlcv" aria-hidden="true"></canvas></div>
 
-    <div class="ml-st">קורא את ספר הפקודות · <b id="mlnum">0</b> הצעות</div>
+    <div class="ml-st">מושך נתוני מסחר · <b id="mlnum">0</b> נרות</div>
 
     <div class="ml-lock">
       <i class="mt-logo" role="img" aria-label="MarkeTube"></i>
@@ -2192,57 +2175,96 @@ document.querySelectorAll('[data-view]:not(.nav):not(#bottombar button)').forEac
   var root=document.documentElement;root.classList.add('mt-loading');
   var slow=matchMedia('(prefers-reduced-motion:reduce)').matches;
 
-  /* ---------- build the order book ---------- */
-  var host=document.getElementById('mlob'),num=document.getElementById('mlnum');
-  var N=innerWidth<=640?5:7;           /* rows on each side */
-  var MID=182.44, TICK=0.03;
-  var html='';
-  for(var i=0;i<N;i++)html+='<div class="r a"><i></i><span class="p"></span><span class="s"></span></div>';
-  html+='<div class="mid"><b class="px">'+MID.toFixed(2)+'</b><em class="sp">ספרד 0.03</em></div>';
-  for(var j=0;j<N;j++)html+='<div class="r b"><i></i><span class="p"></span><span class="s"></span></div>';
-  host.innerHTML=html;
-  var rows=[].slice.call(host.querySelectorAll('.r')),
-      mid=host.querySelector('.mid'),
-      px=host.querySelector('.px'), sp=host.querySelector('.sp');
-  var timers=[],cycle=null,mark=MID;
+  /* ---------- live candle chart ---------- */
+  var cv=document.getElementById('mlcv'),c=cv.getContext('2d'),box2=cv.parentElement;
+  var cs=getComputedStyle(root);
+  var UP=cs.getPropertyValue('--up').trim()||'#4ADE80',
+      DN=cs.getPropertyValue('--dn').trim()||'#F4569C',
+      GRID=cs.getPropertyValue('--line').trim()||'#26262C',
+      ACC=cs.getPropertyValue('--lav').trim()||'#BF35F3',
+      TX=cs.getPropertyValue('--tx').trim()||'#F5F6F5',
+      BG=cs.getPropertyValue('--bg').trim()||'#0F0F10';
+  function rgba(hex,a){var h=hex.replace('#','');
+    if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+    var n=parseInt(h,16);return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'}
 
-  function fill(){
-    timers.forEach(clearTimeout);timers=[];
-    mark=MID+(Math.random()-.5)*0.14;
-    rows.forEach(function(r){r.classList.remove('on');r.querySelector('i').style.width='0'});
-    mid.classList.remove('on');
-    rows.forEach(function(r,idx){
-      var ask=r.className.indexOf('a')>-1;
-      var k=ask?(N-idx):(idx-N);              /* 1 = closest to the spread */
-      var delay=slow?0:120+(N-k)*120;         /* outermost rows land first */
-      timers.push(setTimeout(function(){
-        r.querySelector('.p').textContent=(mark+(ask?k:-k)*TICK).toFixed(2);
-        r.querySelector('.s').textContent=(400+Math.floor(Math.random()*2600)).toLocaleString('en-US');
-        r.classList.add('on');
-        r.querySelector('i').style.width=(24+Math.random()*68)+'%';
-      },delay));
-    });
-    timers.push(setTimeout(function(){
-      px.textContent=mark.toFixed(2);
-      sp.textContent='ספרד '+TICK.toFixed(2);
-      mid.classList.add('on');
-    },slow?0:120+N*120+140));
+  var W=0,H=0,dpr=1,N=30;
+  function size(){dpr=Math.min(2,devicePixelRatio||1);
+    W=box2.clientWidth;H=box2.clientHeight;
+    cv.width=W*dpr;cv.height=H*dpr;c.setTransform(dpr,0,0,dpr,0,0);
+    N=W<420?20:30}
+
+  var price=182.44,data=[];
+  function bar(o){var ch=(Math.random()-.46)*.9;var cl=o+ch;
+    return {o:o,c:cl,h:Math.max(o,cl)+Math.random()*.45,l:Math.min(o,cl)-Math.random()*.45}}
+  function seed(){data=[];var p=price;for(var i=0;i<N;i++){var b=bar(p);data.push(b);p=b.c}}
+  size();seed();addEventListener('resize',function(){size();if(data.length!==N)seed()});
+
+  var acc=0,last=0,count=0,STEP=430;
+  function draw(now){
+    if(done)return;
+    raf=requestAnimationFrame(draw);
+    var dt=now-last;last=now;if(dt>240)return;
+    if(!W||!H)size();
+    if(!slow){acc+=dt;if(acc>STEP){acc-=STEP;data.shift();data.push(bar(data[data.length-1].c));count++}}
+    var gp=slow?1:acc/STEP;
+    var CW=W/N,PAD=30;
+
+    var lo=1e9,hi=-1e9;
+    for(var i=0;i<data.length;i++){if(data[i].l<lo)lo=data[i].l;if(data[i].h>hi)hi=data[i].h}
+    lo-=.25;hi+=.25;
+    var Y=function(v){return H-14-(v-lo)/(hi-lo)*(H-30)};
+
+    c.clearRect(0,0,W,H);
+    c.strokeStyle=rgba(GRID,.55);c.lineWidth=1;
+    for(var g=0;g<4;g++){var y=10+g*(H-26)/3;c.beginPath();c.moveTo(0,y+.5);c.lineTo(W,y+.5);c.stroke()}
+
+    for(i=0;i<data.length;i++){
+      var b=data[i],x=i*CW+CW/2,gr=(i===data.length-1)?(.2+.8*gp):1;
+      var up=b.c>=b.o,col=up?UP:DN;
+      var oy=Y(b.o),cy=Y(b.o+(b.c-b.o)*gr),hy=Y(b.o+(b.h-b.o)*gr),ly=Y(b.o+(b.l-b.o)*gr);
+      c.globalAlpha=i<3?.25+i*.25:(i===data.length-1?1:.85);
+      c.strokeStyle=col;c.lineWidth=1.2;
+      c.beginPath();c.moveTo(x,hy);c.lineTo(x,ly);c.stroke();
+      c.fillStyle=col;
+      var top=Math.min(oy,cy),bh=Math.max(1.6,Math.abs(cy-oy));
+      c.fillRect(x-CW*.3,top,Math.max(2,CW*.6),bh);
+    }
+    c.globalAlpha=1;
+
+    var lb=data[data.length-1],ly2=Y(lb.o+(lb.c-lb.o)*(.2+.8*gp));
+    c.setLineDash([4,5]);c.strokeStyle=rgba(ACC,.7);c.lineWidth=1;
+    c.beginPath();c.moveTo(0,ly2+.5);c.lineTo(W,ly2+.5);c.stroke();c.setLineDash([]);
+    var px=(data.length-1)*CW+CW/2;
+    c.beginPath();c.arc(px,ly2,3.6,0,7);c.fillStyle='#fff';
+    c.shadowColor=ACC;c.shadowBlur=14;c.fill();c.shadowBlur=0;
+    c.beginPath();c.arc(px,ly2,6+5*Math.sin(now/230)*Math.sin(now/230),0,7);
+    c.strokeStyle=rgba(ACC,.4);c.lineWidth=1;c.stroke();
+    c.font='600 12px GoogleSans,sans-serif';c.textAlign='left';
+    var lbl=lb.c.toFixed(2),tw=c.measureText(lbl).width;
+    var bx=5,by=ly2-9,bw=tw+12,bh=18,rr=5;
+    c.beginPath();
+    c.moveTo(bx+rr,by);c.lineTo(bx+bw-rr,by);c.quadraticCurveTo(bx+bw,by,bx+bw,by+rr);
+    c.lineTo(bx+bw,by+bh-rr);c.quadraticCurveTo(bx+bw,by+bh,bx+bw-rr,by+bh);
+    c.lineTo(bx+rr,by+bh);c.quadraticCurveTo(bx,by+bh,bx,by+bh-rr);
+    c.lineTo(bx,by+rr);c.quadraticCurveTo(bx,by,bx+rr,by);c.closePath();
+    c.fillStyle=rgba(BG,.82);c.fill();
+    c.strokeStyle=rgba(ACC,.35);c.lineWidth=1;c.stroke();
+    c.fillStyle=rgba(ACC,1);c.fillText(lbl,bx+6,ly2+4);
   }
-  fill();if(!slow)cycle=setInterval(fill,4600);
 
-  /* ---------- live counter ---------- */
+  var num=document.getElementById('mlnum');
   var t0=Date.now(),raf=0,done=false;
-  function tick(){if(done)return;
-    var el=(Date.now()-t0)/1000;
-    num.textContent=Math.round(Math.min(1,el/13.5)*1240).toLocaleString('en-US');
-    raf=requestAnimationFrame(tick);}
-  if(slow)num.textContent='1,240';else raf=requestAnimationFrame(tick);
+  function counter(){if(done)return;
+    num.textContent=(count*3+Math.round((Date.now()-t0)/1000*4)).toLocaleString('en-US');
+    setTimeout(counter,180)}
+  if(slow){num.textContent='248'}else counter();
+  raf=requestAnimationFrame(draw);
 
   /* ---------- dismiss ---------- */
   var MIN=slow?300:15000;   /* משך התצוגה של מסך הפתיחה (מילישניות) */
   function hide(){
     if(done)return;done=true;cancelAnimationFrame(raf);
-    clearInterval(cycle);timers.forEach(clearTimeout);
     box.classList.add('off');root.classList.remove('mt-loading');
     setTimeout(function(){if(box.parentNode)box.parentNode.removeChild(box);
       try{window.dispatchEvent(new Event('resize'))}catch(e){}},600);
