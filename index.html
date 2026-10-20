@@ -782,6 +782,189 @@ body{background:var(--bg)}
 .sec3 .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#8B5CF6,#C4B5FD)}
 .sec3 .bar i.neg{background:var(--dn)}
 .sec3 .pv{width:48px;text-align:left;font-weight:700;color:var(--up)}
+/* --- מה קורה בשוק + התרעות היום (הנחיות סעיף 3) --- */
+.mkt-now .mn-tm{font-size:10.5px;color:var(--tx-3);font-weight:600}
+.mkt-now .mn-txt{margin:2px 0 11px;font-size:12.5px;line-height:1.65;color:var(--tx-2)}
+.mkt-now .mn-txt b{color:var(--tx);font-weight:700}
+.mn-al{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mn-al .al{display:flex;gap:9px;align-items:flex-start;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--sur)}
+.mn-al .al i{width:6px;height:6px;border-radius:50%;margin-top:5px;flex:none;background:var(--ac-2)}
+.mn-al .al.up i{background:var(--up)}
+.mn-al .al.dn i{background:var(--dn)}
+.mn-al .al .bd{min-width:0}
+.mn-al .al b{display:block;font-size:11.5px;font-weight:700;color:var(--tx);line-height:1.3}
+.mn-al .al span{display:block;font-size:10.5px;color:var(--tx-3);margin-top:3px;line-height:1.45}
+@media(max-width:900px){.mn-al{grid-template-columns:1fr}}
+/* --- כתבות מובילות (הנחיות סעיף 10) --- */
+#topArt{flex:1;display:flex;flex-direction:column;justify-content:space-around}
+.art3{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.art3:last-child{border-bottom:0}
+.art3 .nm{width:4px;border-radius:3px;flex:none}
+.art3 .bd{flex:1;min-width:0}
+.art3 .bd b{display:block;font-size:12px;color:var(--tx);line-height:1.42;font-weight:700}
+.art3 .meta{display:flex;gap:10px;align-items:center;font-size:10.5px;color:var(--tx-2);margin-top:5px}
+.art3 .meta .tk{margin-right:auto;background:var(--ac-soft);border:1px solid var(--line-2);color:var(--ac-2);border-radius:6px;padding:1px 7px;font-weight:700}
+/* ===== שאר העמודים (סעיפים 25-28) ===== */
+.pro-head{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pro-id{display:flex;align-items:center;gap:12px}
+.pro-id .av{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:16px;color:#fff;background:linear-gradient(135deg,var(--logo-1),var(--logo-2))}
+.pro-id b{display:block;font-size:16px;color:var(--tx)}
+.pro-id span{font-size:11.5px;color:var(--tx-3)}
+.pro-st{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;flex:1;min-width:280px}
+.pro-st>div{border:1px solid var(--line);border-radius:10px;padding:8px 10px;text-align:center}
+.pro-st span{display:block;font-size:10px;color:var(--tx-3)}
+.pro-st b{display:block;font-size:15px;font-weight:700;color:var(--tx);margin-top:2px}
+.pro-sum{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.pro-sum>div{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:var(--bg)}
+.pro-sum span{display:block;font-size:10px;color:var(--tx-3)}
+.pro-sum b{display:block;font-size:15px;font-weight:700;color:var(--tx);margin-top:2px}
+@media(max-width:900px){.pro-st,.pro-sum{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.dna{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.dna:last-child{border-bottom:0}
+.dna .n{width:110px;flex:none;font-size:11.5px;color:var(--tx-2)}
+.dna .bar{flex:1;height:7px;border-radius:99px;background:var(--line);overflow:hidden}
+.dna .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--logo-1),var(--logo-2))}
+.dna b{width:64px;text-align:left;font-size:11.5px;color:var(--tx);font-weight:700}
+.alr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.alr:last-child{border-bottom:0}
+.alr b{font-size:12px;color:var(--tx)}
+.alr span{display:block;font-size:10.5px;color:var(--tx-3)}
+.sv{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.sv:last-child{border-bottom:0}
+.sv i{width:4px;border-radius:3px;flex:none}
+.sv b{font-size:12px;color:var(--tx);line-height:1.42;font-weight:700}
+.sv span{display:block;font-size:10.5px;color:var(--tx-3);margin-top:3px}
+/* באטלפילד */
+.bf-s{display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.bf-s span{font-size:10.5px;color:var(--tx-3)}
+.bf-s b{font-size:22px;font-weight:700;color:var(--tx)}
+.bf-prog .t{display:flex;justify-content:space-between;font-size:11.5px;color:var(--tx-2);margin-bottom:5px}
+.bf-prog .bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bf-prog .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--logo-1),var(--logo-2))}
+.ch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.ch:last-child{border-bottom:0}
+.ch .l b{display:block;font-size:12.5px;color:var(--tx)}
+.ch .l span{font-size:10.5px;color:var(--tx-3)}
+.ch .r{display:flex;align-items:center;gap:9px;flex:none}
+.bf-hall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.bf-hall>div{border:1px solid var(--line);border-radius:10px;padding:9px 10px;text-align:center}
+.bf-hall span{display:block;font-size:9.5px;color:var(--tx-3);letter-spacing:.04em}
+.bf-hall b{display:block;font-size:12.5px;color:var(--tx);margin-top:3px}
+.bf-hall em{display:block;font-style:normal;font-size:11px;color:var(--ac-2);font-weight:700;margin-top:1px}
+@media(max-width:900px){.bf-hall{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* לימוד */
+.trk{position:relative;overflow:hidden}
+.trk .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;margin-bottom:10px}
+.trk h4{margin:0 0 5px;font-size:15px;color:var(--tx)}
+.trk p{margin:0 0 12px;font-size:12px;line-height:1.55;color:var(--tx-2)}
+.trk .f{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--tx-3)}
+.lsn{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.lsn:last-child{border-bottom:0}
+.lsn b{display:block;font-size:12.5px;color:var(--tx)}
+.lsn span{font-size:10.5px;color:var(--tx-3)}
+/* ===== עמוד שוק ההון (סעיפים 15-22) ===== */
+.idx-bar{display:flex;align-items:center;gap:12px;margin:0 0 10px}
+.idx-live{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--tx-3)}
+.idx-live i{width:6px;height:6px;border-radius:50%;background:var(--up);box-shadow:0 0 0 3px color-mix(in srgb,var(--up) 25%,transparent)}
+.seg.sm button{font-size:10.5px;padding:4px 10px}
+.chip.live{display:inline-flex;align-items:center;gap:5px;letter-spacing:.06em}
+.chip.live::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+/* דופק השוק בתוך מגמת השוק (סעיף 16) */
+.mpulse{border:1px solid var(--line);background:var(--sur);border-radius:12px;padding:12px 14px;margin:0 0 12px}
+.mpulse-t{display:flex;gap:12px;align-items:flex-start}
+.mpulse-t p{margin:0;font-size:12px;line-height:1.6;color:var(--tx-2)}
+.mpulse-g{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;margin-top:11px}
+.mpulse-g>div{border:1px solid var(--line);border-radius:9px;padding:7px 9px;background:var(--bg)}
+.mpulse-g span{display:block;font-size:10px;color:var(--tx-3)}
+.mpulse-g b{display:block;font-size:13px;font-weight:700;color:var(--tx);margin-top:2px}
+@media(max-width:1100px){.mpulse-g{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* מניות במוקד (סעיף 20) */
+.out{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.out:last-child{border-bottom:0}
+.out .s{display:flex;align-items:center;gap:9px;min-width:0}
+.out .s .lg{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-size:10px;font-weight:700;color:#fff;flex:none}
+.out .s b{font-size:12px;color:var(--tx);display:block}
+.out .s small{font-size:10px;color:var(--tx-3)}
+.out .p{text-align:left}
+.out .p b{display:block;font-size:12.5px;font-weight:700;color:var(--tx)}
+.out .p span{font-size:11px;font-weight:600}
+/* מפת השוק (סעיף 21) */
+.hm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+.hm .t{border-radius:8px;padding:8px 7px;text-align:center;color:#fff;min-height:62px;display:flex;flex-direction:column;justify-content:center;gap:1px}
+.hm .t b{font-size:11.5px;font-weight:800;letter-spacing:.02em}
+.hm .t span{font-size:11px;font-weight:700}
+.hm .t small{font-size:9px;opacity:.78}
+@media(max-width:1100px){.hm{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* הקהל מול השוק (סעיף 22) */
+.cvm{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.cvm:last-child{border-bottom:0}
+.cvm .n b{font-size:12.5px;color:var(--tx);display:block}
+.cvm .n span{font-size:10.5px;color:var(--tx-3)}
+.cvm .r{text-align:left;flex:none}
+.cvm .r b{display:block;font-size:14px;font-weight:700}
+.cvm .r span{font-size:10px;color:var(--tx-3)}
+/* מודיעין שוק (סעיף 22) */
+.intel{border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:var(--sur);margin-bottom:9px}
+.intel:last-child{margin-bottom:0}
+.intel .h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.intel .h b{font-size:12.5px;color:var(--ac-2);direction:ltr}
+.intel .h em{font-style:normal;font-size:10.5px;color:var(--tx-3)}
+.intel .g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:9px}
+.intel .g>div{text-align:center}
+.intel .g span{display:block;font-size:9.5px;color:var(--tx-3);letter-spacing:.05em}
+.intel .g b{display:block;font-size:12px;font-weight:700;color:var(--tx);margin-top:2px}
+/* שור מול דוב (סעיף 22) */
+.bb-px{display:flex;align-items:baseline;gap:10px;margin:11px 0 9px}
+.bb-px b{font-size:20px;font-weight:700;color:var(--tx)}
+.bb-px span{font-size:12px;font-weight:600}
+.bb{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bb-c{border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:var(--sur)}
+.bb-c .t{font-size:11.5px;font-weight:700;margin-bottom:5px}
+.bb-c.up{border-color:color-mix(in srgb,var(--up) 35%,var(--line))}
+.bb-c.up .t{color:var(--up)}
+.bb-c.dn{border-color:color-mix(in srgb,var(--dn) 35%,var(--line))}
+.bb-c.dn .t{color:var(--dn)}
+.bb-c p{margin:0;font-size:11.5px;line-height:1.55;color:var(--tx-2)}
+.bb-dec{margin-top:10px;border:1px dashed var(--line-2);border-radius:10px;padding:9px 12px}
+.bb-dec span{display:block;font-size:10px;color:var(--tx-3);letter-spacing:.05em}
+.bb-dec b{font-size:12px;color:var(--tx)}
+@media(max-width:700px){.bb{grid-template-columns:1fr}}
+/* נתונים מול חדשות (סעיף 22) */
+.dvn{padding:11px 0;border-bottom:1px solid var(--line)}
+.dvn:last-child{border-bottom:0}
+.dvn h5{margin:0 0 5px;font-size:12.5px;font-weight:700;color:var(--tx);line-height:1.45}
+.dvn p{margin:0;font-size:11.5px;line-height:1.55;color:var(--tx-2)}
+.dvn .vd{display:inline-block;margin-top:7px;font-size:10.5px;font-weight:700;border-radius:7px;padding:2px 9px;border:1px solid var(--line-2)}
+.dvn .vd.ok{color:var(--up);background:var(--up-soft)}
+.dvn .vd.no{color:var(--dn);background:var(--dn-soft)}
+.dvn .vd.mid{color:var(--warn);background:var(--warn-soft)}
+/* --- תת-כותרת לחלונות (סעיפים 5,11,12) --- */
+.sub-l{font-size:10.5px;color:var(--tx-3);margin:-2px 0 9px;line-height:1.45}
+.tabs3.sm button{font-size:10.5px;padding:3px 9px}
+/* --- "מי זזה - ולמה": נימוק בתוך כרטיס ההזדמנות (סעיף 7) --- */
+.op .why{margin:7px 0 0;font-size:10.5px;line-height:1.45;color:rgba(255,255,255,.82)}
+.op .src{display:block;margin-top:5px;font-size:9.5px;color:rgba(255,255,255,.55);direction:ltr;text-align:right}
+/* --- מניות חמות: שורת משנה בטבלה (סעיף 6) --- */
+.wl .as small{display:block;font-size:9.5px;color:var(--tx-3);font-weight:500;margin-top:1px}
+/* --- קרב תחזיות (סעיף 14) --- */
+.pbw{margin-top:14px}
+.pb{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:center}
+.pb .q{font-size:14.5px;font-weight:700;color:var(--tx);line-height:1.45}
+.pb .pq p{margin:7px 0 11px;font-size:11.5px;line-height:1.55;color:var(--tx-3)}
+.pb .pbtn{display:flex;gap:8px}
+.pb .pbtn button{border-radius:9px;padding:7px 15px;font:inherit;font-size:11.5px;font-weight:700;cursor:pointer;border:1px solid var(--line-2)}
+.pb .btn-yl2{background:linear-gradient(135deg,var(--logo-1),var(--logo-2));color:#fff;border-color:transparent}
+.pb .btn-dk2{background:var(--sur);color:var(--tx-2)}
+.pbars .pr{margin-bottom:9px}
+.pbars .pr:last-child{margin-bottom:0}
+.pbars .pr .t{display:flex;justify-content:space-between;font-size:10.5px;color:var(--tx-2);margin-bottom:4px}
+.pbars .pr .t b{color:var(--tx);font-weight:700}
+.pbars .pr .bar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbars .pr .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--logo-1),var(--logo-2))}
+.pbars .pr.muted .bar i{background:var(--line-2)}
+.pbars .lb{font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--tx-3);margin:0 0 7px}
+.pfoot{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:10px;color:var(--tx-3)}
+@media(max-width:900px){.pb{grid-template-columns:1fr}}
 .post3{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
 .post3:last-child{border-bottom:0}
 .post3 .av{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff}
@@ -950,7 +1133,7 @@ body{background:var(--bg)}
 .home3>div:last-child>.card{flex:1}
 .home3>div:first-child>.g2h{flex:1}
 .g-op .ops{flex:1;align-content:stretch}.op{justify-content:space-between}
-#events,#homeNews,#posts,#sectors,#itabRows,#tools,#learn{flex:1}
+#events,#homeNews,#posts,#sectors,#topArt,#tools,#learn{flex:1}
 #events,#posts,#sectors{display:flex;flex-direction:column;justify-content:space-around}
 .ev3:last-child,.post3:last-child{border-bottom:0}
 .g-3 .card table,.g-4 .card .tools,.g-4 .card .learn{flex:1}
@@ -1260,11 +1443,13 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   <button class="nav" data-soon="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/><path d="M15 15.5c2.9 0 5.5 2 6 5"/></svg>קהילה</button>
   <button class="nav" data-view="ai"><svg><use href="#p-ai"/></svg>AI Assistant</button>
   <button class="nav" data-view="markets"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>סורק מניות</button>
-  <button class="nav" data-view="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.7 1 1.5 1 2.5h6c0-1 .2-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>רעיונות</button>
-  <button class="nav" data-view="client"><svg><use href="#p-wallet"/></svg>תיק השקעות</button>
+  <button class="nav" data-view="dash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.7 1 1.5 1 2.5h6c0-1 .2-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg>שוק ההון</button>
+  <button class="nav" data-view="profile"><svg><use href="#p-wallet"/></svg>הפרופיל שלי</button>
+  <button class="nav" data-view="radar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-4"/></svg>רדארים</button>
+  <button class="nav" data-view="battle"><svg><use href="#p-shield"/></svg>באטלפילד</button>
   <button class="nav" data-soon="1"><svg><use href="#p-bell"/></svg>התראות</button>
   <button class="nav" data-view="stock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>כלים</button>
-  <button class="nav" data-soon="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v15a2 2 0 0 0-2-2H3zM21 5a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v15a2 2 0 0 1 2-2h7z"/></svg>למידה</button>
+  <button class="nav" data-view="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v15a2 2 0 0 0-2-2H3zM21 5a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v15a2 2 0 0 1 2-2h7z"/></svg>לימוד</button>
   <div class="spacer"></div>
   <div class="promo">
     <h4><svg viewBox="0 0 24 24"><path d="M3 8l5 4 4-7 4 7 5-4-2 11H5z"/></svg>שדרגו ל-Pro</h4>
@@ -1315,16 +1500,23 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
           <div class="card ix"><div><div class="k">ביטקוין</div><div class="v num">$67,842</div><div class="c up-c num">+2.15%</div></div><canvas id="hx3"></canvas></div>
         </div>
 
+        <div class="card mkt-now">
+          <div class="card-hd"><h3><svg><use href="#p-bell"/></svg>מה קורה בשוק</h3><span class="mn-tm" id="mnTime">עודכן 11:42</span></div>
+          <p class="mn-txt" id="mnTxt"></p>
+          <div class="mn-al" id="mnAlerts"></div>
+        </div>
+
         <div class="g2h">
           <div class="card">
-            <div class="card-hd"><h3><svg><use href="#p-news"/></svg>חדשות אחרונות</h3><a class="more" data-view="articles">כל החדשות</a></div>
-            <div class="tabs3"><button class="on">הכול</button><button>שוק</button><button>טכנולוגיה</button><button>ישראל</button><button>קריפטו</button></div>
+            <div class="card-hd"><h3><svg><use href="#p-news"/></svg>חדשות מתפרצות · דיווחי הבורסה</h3><a class="more" data-view="articles">כל הדיווחים</a></div>
+            <div class="sub-l">דיווחים מיידיים של החברות הנסחרות בת״א · מתעדכן כל 30 שניות</div>
+            <div class="tabs3"><button class="on">הכול</button><button>דיווח כללי</button><button>הצעת רכש · מיזוג</button><button>דוחות</button><button>הון</button></div>
             <div id="homeNews"></div>
           </div>
           <div class="card">
-            <div class="card-hd"><h3><svg><use href="#p-watchlist"/></svg>רשימת המעקב שלי</h3><a class="more" data-view="markets">הצג הכול</a></div>
-            <table class="wl"><thead><tr><th>נכס</th><th>מחיר</th><th>שינוי</th><th>גרף</th></tr></thead><tbody id="wlRows"></tbody></table>
-            <a class="addrow">הוסף מניה לרשימה</a>
+            <div class="card-hd"><h3><svg><use href="#p-watchlist"/></svg>המניות הכי חמות ברגע זה</h3><a class="more" data-view="dash">לשוק ההון</a></div>
+            <div class="tabs3" id="hotTabs"><button class="on" data-hot="up">עולות</button><button data-hot="dn">יורדות</button></div>
+            <table class="wl"><thead><tr><th>נייר</th><th>מחיר</th><th>שינוי</th><th>גרף</th></tr></thead><tbody id="wlRows"></tbody></table>
           </div>
         </div>
       </div>
@@ -1349,7 +1541,7 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
         </div>
 
         <div class="card pf">
-          <div class="card-hd"><h3><svg><use href="#p-portfolio"/></svg>התיק שלי</h3><a class="more" data-view="client">פרטים</a></div>
+          <div class="card-hd"><h3><svg><use href="#p-portfolio"/></svg>התיק שלי</h3><a class="more" data-view="profile">פרטים</a></div>
           <div class="big3 num">₪523,001<small>+3.2%</small></div>
           <canvas id="pfChart"></canvas>
           <div class="tf3"><button>1D</button><button class="on">1W</button><button>1M</button><button>3M</button><button>1Y</button><button>ALL</button></div>
@@ -1360,8 +1552,8 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
 
     <div class="g-op">
       <div class="card">
-        <div class="card-hd"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>סריקת הזדמנויות</h3><a class="more" data-view="markets">לסורק המלא</a></div>
-        <div class="tabs3 pu"><button class="on">מומנטום</button><button>פריצות</button><button>דיבידנד</button><button>ערך</button></div>
+        <div class="card-hd"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>מי זזה — ולמה</h3><a class="more" data-view="dash">לשוק ההון</a></div>
+        <div class="tabs3 pu"><button class="on">ארה״ב</button><button>ישראל</button></div>
         <div class="ops" id="ops"></div>
       </div>
       <div class="card">
@@ -1372,15 +1564,18 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
 
     <div class="g-3">
       <div class="card">
-        <div class="card-hd"><h3><svg><use href="#p-globe"/></svg>מדדים עולמיים</h3><a class="more" data-view="markets">הצג הכול</a></div>
-        <table class="itab"><thead><tr><th>מדד</th><th>ערך</th><th>שינוי</th><th>גרף</th></tr></thead><tbody id="itabRows"></tbody></table>
+        <div class="card-hd"><h3><svg><use href="#p-news"/></svg>כתבות מובילות</h3><a class="more" data-view="articles">כל הכתבות</a></div>
+        <div id="topArt"></div>
       </div>
       <div class="card">
-        <div class="card-hd"><h3><svg><use href="#p-chart"/></svg>ביצועי סקטורים</h3><span class="chev-l">‹</span></div>
+        <div class="card-hd"><h3><svg><use href="#p-chart"/></svg>סיבוב סקטורים</h3><span class="chev-l">‹</span></div>
+        <div class="sub-l">אילו תחומים מתחזקים — ומאילו הכסף יוצא</div>
+        <div class="tabs3 sm"><button class="on">היום</button><button>שבוע</button><button>חודש</button></div>
         <div id="sectors"></div>
       </div>
       <div class="card">
-        <div class="card-hd"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/><path d="M15 15.5c2.9 0 5.5 2 6 5"/></svg>דיונים מהקהילה</h3><a class="more">לקהילה</a></div>
+        <div class="card-hd"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.6"/><path d="M2.5 20c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5"/><path d="M15 15.5c2.9 0 5.5 2 6 5"/></svg>מקצוענים</h3><a class="more">לכל המקצוענים</a></div>
+        <div class="sub-l">מה מובילי הדעה בשוק אומרים עכשיו · מתעדכן בזמן אמת</div>
         <div id="posts"></div>
       </div>
     </div>
@@ -1394,6 +1589,19 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
         <div class="card-hd"><h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v15a2 2 0 0 0-2-2H3zM21 5a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v15a2 2 0 0 1 2-2h7z"/></svg>למידה</h3><a class="more">כל הקורסים</a></div>
         <div class="learn" id="learn"></div>
       </div>
+    </div>
+
+    <div class="card pbw">
+      <div class="card-hd"><h3><svg><use href="#p-shield"/></svg>קרב תחזיות · הקהילה מול המקצוענים</h3><a class="more">סקרים קודמים</a></div>
+      <div class="pb">
+        <div class="pq">
+          <div class="q">האם NVIDIA (NVDA) ייסגר מעל $220 ביום שישי?</div>
+          <p>המניה קרובה לרף שנקבע והמחזור הגבוה עשוי להשפיע על כיוון המסחר. ההצבעה נסגרת 23.10 · 23:30, התוצאה תוכרע 24.10 · 01:00.</p>
+          <div class="pbtn"><button class="btn-yl2">מעל $220</button><button class="btn-dk2">מתחת ל-$220</button></div>
+        </div>
+        <div class="pbars" id="pbars"></div>
+      </div>
+      <div class="pfoot">הסקר משקף דעות ותחזיות ואינו מהווה המלצה או ייעוץ השקעות.</div>
     </div>
 
     <footer class="foot3">
@@ -1532,15 +1740,30 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   <!-- ================= DASHBOARD ================= -->
   <section class="view" id="v-dash">
     <div class="hd">
-      <div><div class="eyebrow">יום שישי · 4 בספטמבר 2026 · עדכון אחרון 11:42</div><h1>בוקר טוב, הרב חן - השוק פותח בנימה חיובית</h1><div class="sub">ת"א-35 מטפס בהובלת הבנקים; חוזי הנאסד"ק מצביעים על פתיחה ירוקה בוול סטריט.</div></div>
+      <div><div class="eyebrow">MARKET TERMINAL</div><h1>שוק ההון</h1><div class="sub">מדדים, מאקרו, סקטורים, חריגות ומפת שוק - מרכז הניתוח של MarkeTube.</div></div>
       <div class="seg" id="mktSeg"><button class="on">הכול</button><button>ישראל 🇮🇱</button><button>ארה"ב 🇺🇸</button><button>קריפטו</button></div>
     </div>
 
+    <div class="idx-bar">
+      <div class="seg tf sm" id="idxTf"><button>היום</button><button class="on">שבוע</button><button>חודש</button><button>שנה</button></div>
+      <span class="idx-live"><i></i>נתוני שוק חיים · עודכן 17:18</span>
+    </div>
     <div class="g4" id="idxGrid"></div>
 
     <div class="g-main">
       <div class="card">
         <div class="card-hd"><div><h3>מגמת השוק · ת"א-125 מול S&amp;P 500</h3><div class="legend"><span><i style="background:var(--ac)"></i>ת"א-125</span><span><i style="background:var(--info)"></i>S&amp;P 500</span><span><i style="background:var(--tx-3)"></i>ממוצע נע 50</span></div></div><div class="seg tf" data-chart="mkt"><button>1D</button><button>1W</button><button class="on">1M</button><button>3M</button><button>1Y</button><button>ALL</button></div></div>
+        <div class="mpulse">
+          <div class="mpulse-t"><span class="chip chip-up">MARKET PULSE · Risk-On</span><p>השוק נסחר כרגע במגמת Risk-On. הטכנולוגיה נחלשת, הנפט יורד, הזהב נחלש, ורוחב השוק עומד על 69% מהמניות הגדולות בעלייה.</p></div>
+          <div class="mpulse-g">
+            <div><span>מצב שוק</span><b>Risk-On</b></div>
+            <div><span>רוחב שוק</span><b class="up-c num">69% עולות</b></div>
+            <div><span>VIX</span><b class="num">18.1</b></div>
+            <div><span>תשואת 10Y</span><b class="num">5.11%</b></div>
+            <div><span>זהב</span><b class="dn-c num">-0.3%</b></div>
+            <div><span>נפט WTI</span><b class="dn-c num">-0.4%</b></div>
+          </div>
+        </div>
         <div class="chart-wrap"><canvas id="mktChart" data-h="300"></canvas></div>
       </div>
       <div class="card">
@@ -1559,12 +1782,54 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
 
     <div class="g-main">
       <div class="card">
-        <div class="card-hd"><h3>מניות מובילות · ת"א ו-וול סטריט</h3><div class="seg"><button class="on">הכול</button><button>עולות</button><button>יורדות</button><button>מעקב</button></div></div>
-        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>מניה</th><th class="r">מחיר</th><th class="r">יומי</th><th class="r">שבועי</th><th class="r">שווי שוק</th><th class="r">ציון AI</th><th class="r">7 ימים</th><th></th></tr></thead><tbody id="stockRows"></tbody></table></div>
+        <div class="card-hd"><div><div class="eyebrow">ECONOMIC CALENDAR</div><h3><svg><use href="#p-calendar"/></svg>אירועים קרובים</h3></div><div class="seg"><button class="on">הכל</button><button>ארה״ב</button><button>ישראל</button></div></div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>תאריך</th><th>שעה</th><th>מדינה</th><th>אירוע</th><th class="r">חשיבות</th><th class="r">קודם</th><th class="r">צפי</th></tr></thead><tbody id="calRows"></tbody></table></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:16px">
-        <div class="card"><div class="card-hd"><h3><svg><use href="#p-chart"/></svg>עולות ויורדות</h3><span class="chip chip-mute">יומי</span></div><div id="movers"></div></div>
-        <div class="card"><div class="card-hd"><h3><svg><use href="#p-news"/></svg>חדשות מתורגמות</h3><a class="more">לכל הכתבות</a></div><div id="newsList"></div></div>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="card">
+          <div class="card-hd"><div><div class="eyebrow">OUTLIERS</div><h3><svg><use href="#p-risk"/></svg>מניות במוקד</h3></div><span class="chip chip-dn live">LIVE</span></div>
+          <div class="seg sm" id="outMkt"><button class="on">🇺🇸</button><button>🇮🇱</button><button>₿</button><button>שלי</button></div>
+          <div class="seg sm" id="outSort"><button class="on">הכול</button><button>מחיר</button><button>נפח</button><button>קהילה</button></div>
+          <div id="outRows"></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div><div class="eyebrow">HEATMAP</div><h3><svg><use href="#p-globe"/></svg>מפת השוק</h3></div></div>
+          <div class="seg sm" id="hmTab"><button class="on">הנסחרות ביותר</button><button>הכי מדוברים</button><button>S&amp;P 500</button><button>ת״א</button></div>
+          <div class="hm" id="hmGrid"></div>
+          <div class="sub-l" style="margin:9px 0 0">השורה התחתונה בכל ריבוע היא טווח המסחר של היום (נמוך-גבוה).</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><div><div class="eyebrow">CROWD VS MARKET</div><h3><svg><use href="#p-chart"/></svg>הקהל מול השוק</h3></div><div class="seg sm"><button class="on">🇺🇸 ארה״ב</button><button>🇮🇱 ישראל</button></div></div>
+        <div class="sub-l">איפה המחיר ועוצמת המסחר לא מסכימים?</div>
+        <div class="ai"><div class="ic" style="background:var(--ac-soft);color:var(--ac-2)"><svg><use href="#p-ai"/></svg></div><p><b>סיכום AI:</b> ב-NVDA עוצמת המסחר נמוכה ב-4% מהנורמה החודשית בעוד שהמחיר כמעט ולא השתנה - רמז לחוסר עניין או המתנה לחדשות. ב-META ירידה גם במחיר וגם בעוצמת המסחר, מה שמצביע על סנטימנט שלילי מובהק.</p></div>
+        <div id="cvmRows"></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div><div class="eyebrow">MARKET / SOCIAL INTELLIGENCE</div><h3><svg><use href="#p-search"/></svg>מודיעין שוק</h3></div><span class="chip chip-dn live">SOCIAL HEAT</span></div>
+        <div id="intelRows"></div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-top:16px">
+      <div class="card">
+        <div class="card-hd"><div><div class="eyebrow">BULL VS. BEAR</div><h3><svg><use href="#p-shield"/></svg>שור מול דוב</h3></div><span class="chip chip-mute">אופק 30 ימים</span></div>
+        <div class="sub-l">שני הצדדים של הסיפור - שלוש המניות הבולטות השבוע בכל בורסה, מתעדכן אוטומטית.</div>
+        <div class="seg sm" id="bbTab"><button class="on">NVDA</button><button>CRWV</button><button>BRZE</button><button>IREN</button><button>טאואר</button><button>נייס</button></div>
+        <div class="bb-px"><b class="num">$216.97</b><span class="dn-c num">-0.06%</span></div>
+        <div class="bb">
+          <div class="bb-c up"><div class="t">התרחיש השורי</div><p>הביקוש לתשתיות AI ממשיך להאיץ; צבר ההזמנות של ספקיות הענן גדל והמרווח הגולמי נשמר מעל 73%. פריצה מעל $220 פותחת יעד טכני ל-$240.</p></div>
+          <div class="bb-c dn"><div class="t">התרחיש הדובי</div><p>63% מהאנליסטים צופים סגירה מתחת ל-$220. היחלשות רוחב השוק בשבבים וירידה של 4% בעוצמת המסחר מרמזות על מיצוי לטווח הקצר.</p></div>
+        </div>
+        <div class="bb-dec"><span>נקודת ההכרעה</span><b>סגירה שבועית מעל $220 בליווי מחזור מעל הממוצע</b></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div><div class="eyebrow">DATA VS NEWS</div><h3><svg><use href="#p-news"/></svg>נתונים מול חדשות</h3></div><div class="seg sm"><button class="on">🇺🇸 ארה״ב</button><button>🇮🇱 ישראל</button></div></div>
+        <div class="sub-l">כותרת אחת - ומה הנתונים בפועל אומרים</div>
+        <div id="dvnRows"></div>
       </div>
     </div>
   </section>
@@ -1698,6 +1963,179 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
     <div class="art-grid" id="artGrid"></div>
   </section>
 
+  <!-- ================= הפרופיל שלי (סעיף 25) ================= -->
+  <section class="view" id="v-profile">
+    <div class="hd">
+      <div><div class="eyebrow">PROFILE</div><h1>הפרופיל שלי</h1><div class="sub">רשימת המעקב, התיק, ההתראות והפעילות שלך - במקום אחד.</div></div>
+      <div style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm" data-view="client">כרטיסי לקוח</button><button class="btn btn-ghost btn-sm">עריכת פרופיל</button></div>
+    </div>
+
+    <div class="card pro-head">
+      <div class="pro-id"><div class="av">מא</div><div><b>מיקי אטיאס</b><span>חבר מאז 2024 · Pro</span></div></div>
+      <div class="pro-st">
+        <div><span>במעקב</span><b class="num">14</b></div>
+        <div><span>החזקות</span><b class="num">12</b></div>
+        <div><span>רעיונות שפורסמו</span><b class="num">7</b></div>
+        <div><span>Battle Rating</span><b class="num">263</b></div>
+        <div><span>דירוג עונתי</span><b class="num">#5</b></div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><div><div class="eyebrow">INVESTOR DNA</div><h3><svg><use href="#p-ai"/></svg>ה-DNA ההשקעתי שלך</h3></div><span class="chip chip-mute">מחושב מהפעילות שלך</span></div>
+        <div id="dnaRows"></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-watchlist"/></svg>רשימת המעקב שלי</h3><div class="seg sm"><button class="on">שינוי יומי</button><button>א-ב</button><button>מחזור</button></div></div>
+        <table class="wl"><thead><tr><th>נייר</th><th>מחיר</th><th>שינוי</th><th>גרף</th></tr></thead><tbody id="pfWl"></tbody></table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><div><div class="eyebrow">PORTFOLIO</div><h3><svg><use href="#p-portfolio"/></svg>התיק שלי</h3></div><div style="display:flex;gap:8px;align-items:center"><span class="chip chip-up num">+18.4% מתחילת השנה</span><button class="btn btn-ghost btn-sm">הוספת אחזקה</button></div></div>
+      <div class="pro-sum" id="pfSum"></div>
+      <div class="tbl-wrap" style="margin-top:14px"><table class="tbl"><thead><tr><th>מניה</th><th class="r">כמות</th><th class="r">עלות ממוצעת</th><th class="r">מחיר</th><th class="r">שווי</th><th class="r">רווח/הפסד</th><th class="r">משקל</th><th class="r">30 יום</th></tr></thead><tbody id="pfHold"></tbody></table></div>
+    </div>
+
+    <div class="g-main">
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-chart"/></svg>ביצועי התיק מול המדד</h3><div class="seg tf sm"><button>1M</button><button>3M</button><button class="on">12M</button><button>ALL</button></div></div>
+        <div class="legend" style="margin-bottom:8px"><span><i style="background:var(--ac)"></i>התיק · <b class="num up-c">+18.4%</b></span><span><i style="background:var(--info)"></i>ת"א-125 · <b class="num">+11.2%</b></span></div>
+        <div class="chart-wrap"><canvas id="proChart" data-h="250"></canvas></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="card">
+          <div class="card-hd"><h3><svg><use href="#p-bell"/></svg>התראות מחיר</h3><button class="btn btn-ghost btn-sm">התראה חדשה</button></div>
+          <div id="pfAlerts"></div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><h3><svg><use href="#p-calendar"/></svg>אירועים קרובים</h3><a class="more" data-view="dash">יומן מלא</a></div>
+          <div id="pfEvents"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-news"/></svg>כתבות שמורות</h3><a class="more" data-view="articles">למרכז הידע</a></div>
+        <div id="pfSaved"></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-order"/></svg>פעולות אחרונות</h3><a class="more">היסטוריה מלאה</a></div>
+        <div id="pfActs"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= רדארים (סעיף 28) ================= -->
+  <section class="view" id="v-radar">
+    <div class="hd">
+      <div><div class="eyebrow">RADARS</div><h1>רדארים</h1><div class="sub">סריקה חיה של השוק - כיוון, רוחב, תנודתיות וחריגות, בזמן אמת.</div></div>
+      <div class="seg" id="radarScope"><button class="on">הכל</button><button>מדדים</button><button>מניות</button><button>קריפטו</button></div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><div><div class="eyebrow">LIVE SCAN</div><h3><svg><use href="#p-search"/></svg>רדאר בזמן אמת</h3></div><span class="chip chip-up live">סריקה 17:18:09</span></div>
+      <div class="mpulse-g">
+        <div><span>נתונים</span><b class="up-c">LIVE · תקין</b></div>
+        <div><span>מצב רוח</span><b class="up-c">חיובי</b></div>
+        <div><span>רוחב שוק</span><b class="up-c num">70% עולים</b></div>
+        <div><span>לחץ</span><b>לטובת קונים</b></div>
+        <div><span>VIX</span><b class="num">18.06 <small class="dn-c">-2.06%</small></b></div>
+        <div><span>פעילות</span><b>תנודתיות גבוהה</b></div>
+      </div>
+    </div>
+
+    <div class="g4" id="radarCards"></div>
+
+    <div class="g-main">
+      <div class="card">
+        <div class="card-hd"><div><div class="eyebrow">ארה״ב</div><h3><svg><use href="#p-globe"/></svg>מדדים בסריקה</h3></div><div class="seg sm"><button class="on">הכול</button><button>יום</button><button>חודש</button><button>שנה</button></div></div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>מדד</th><th class="r">מחיר</th><th class="r">שינוי יומי</th><th class="r">מגמה</th></tr></thead><tbody id="radarRows"></tbody></table></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-risk"/></svg>מה בלט בסריקה</h3><span class="chip chip-dn live">LIVE</span></div>
+        <div id="radarFlags"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= באטלפילד (סעיף 26) ================= -->
+  <section class="view" id="v-battle">
+    <div class="hd">
+      <div><div class="eyebrow">BATTLE FIELD</div><h1>זירת הסוחרים של MarkeTube</h1><div class="sub">התחרו באתגרים, הוכיחו ביצועים וטפסו בדירוג.</div></div>
+      <div class="seg"><button class="on">Season 4</button><button>עונות קודמות</button></div>
+    </div>
+
+    <div class="g4">
+      <div class="card bf-s"><span>אתגרים פעילים</span><b class="num">6</b></div>
+      <div class="card bf-s"><span>משתתפים עכשיו</span><b class="num">54</b></div>
+      <div class="card bf-s"><span>העונה מסתיימת</span><b class="num">12:04:38</b></div>
+      <div class="card bf-s"><span>הדירוג שלך</span><b class="num">#5</b></div>
+    </div>
+
+    <div class="g-main">
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-shield"/></svg>אתגרים פתוחים עכשיו</h3><div class="seg sm"><button class="on">הכל</button><button>יומי</button><button>שבועי</button><button>אירועים</button><button>סדרות</button></div></div>
+        <div id="bfOpen"></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <div class="card">
+          <div class="card-hd"><h3><svg><use href="#p-ai"/></svg>המסלול שלי</h3><span class="chip chip-ac">Season 4</span></div>
+          <div class="bf-prog"><div class="t"><span>4 מתוך 10 אתגרים הושלמו</span><b class="num">40%</b></div><div class="bar"><i style="width:40%"></i></div></div>
+          <div class="sub-l" style="margin-top:8px">עוד 6 אתגרים לפתיחת Elite Reward</div>
+          <div class="mpulse-g" style="grid-template-columns:repeat(3,minmax(0,1fr));margin-top:11px">
+            <div><span>Battle Rating</span><b class="num">263</b></div>
+            <div><span>רצף נוכחי</span><b class="num">3 אתגרים</b></div>
+            <div><span>דירוג עונתי</span><b class="num">#5</b></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><h3><svg><use href="#p-candles"/></svg>סדרות אתגרים</h3><span class="chip chip-mute">Earnings Championship</span></div>
+          <div id="bfSeries"></div>
+          <div class="sub-l" style="margin-top:9px">השלמת כל האתגרים פותחת: Series Badge + 500 Battle Points</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-hd"><div><div class="eyebrow">LEADERBOARD</div><h3><svg><use href="#p-chart"/></svg>טבלת הדירוג</h3></div><div style="display:flex;gap:8px"><div class="seg sm"><button>היום</button><button>השבוע</button><button class="on">החודש</button><button>העונה</button><button>כל הזמנים</button></div><div class="seg sm"><button class="on">Battle Score</button><button>תשואה</button><button>Win Rate</button><button>עקביות</button></div></div></div>
+      <div class="tbl-wrap"><table class="tbl"><thead><tr><th>#</th><th>משתמש</th><th class="r">Battle Rating</th><th class="r">ROI</th><th class="r">Win Rate</th><th class="r">אתגרים</th><th class="r">ניצחונות</th></tr></thead><tbody id="bfBoard"></tbody></table></div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-shield"/></svg>היכל התהילה</h3><span class="chip chip-ac">Season 4</span></div>
+        <div class="bf-hall" id="bfHall"></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-calendar"/></svg>אתגרים שהסתיימו לאחרונה</h3><a class="more">לכל התוצאות</a></div>
+        <div id="bfDone"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= לימוד (סעיף 27) ================= -->
+  <section class="view" id="v-learn">
+    <div class="hd">
+      <div><div class="eyebrow">LEARNING</div><h1>מרכז הלימוד</h1><div class="sub">כל מה שצריך כדי להפוך למשקיע חכם יותר - יסודות, וובינרים ומסלולי מומחה.</div></div>
+      <div class="seg"><button class="on">הכול</button><button>מתחילים</button><button>מתקדמים</button><button>מקצועי</button></div>
+    </div>
+    <div class="g-3" id="lrnTracks"></div>
+    <div class="g-main">
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-news"/></svg>השיעורים הקרובים שלך</h3><a class="more">כל הקורסים</a></div>
+        <div id="lrnList"></div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><h3><svg><use href="#p-ai"/></svg>ההתקדמות שלך</h3><span class="chip chip-ac">3 מסלולים</span></div>
+        <div id="lrnProg"></div>
+      </div>
+    </div>
+  </section>
+
+
   </div><!-- /content -->
 </div><!-- /main -->
 </div><!-- /app -->
@@ -1706,7 +2144,7 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   <button data-view="markets"><svg><use href="#p-candles"/></svg><span>שווקים</span></button>
   <button data-view="articles"><svg><use href="#p-news"/></svg><span>חדשות</span></button>
   <button data-view="ai"><svg><use href="#p-ai"/></svg><span>AI</span></button>
-  <button data-view="client"><svg><use href="#p-wallet"/></svg><span>תיק</span></button>
+  <button data-view="profile"><svg><use href="#p-wallet"/></svg><span>פרופיל</span></button>
 </nav>
 <div class="tt" id="tt"></div>
 <div class="toast" id="toast"><i></i><span id="toastMsg"></span></div>
@@ -1838,15 +2276,105 @@ IDX.forEach((x,i)=>reg(()=>spark($('#idx'+i),gen(40,100,.03,x.d>0?.0015:-.001,x.
 $('#picks').innerHTML=PICKS.map((p,i)=>{const st=bySym(p.s);const col=st.ai>=75?css('--up'):css('--warn');return `<div class="card pick" data-sym="${st.s}"><div class="top sym">${icon(st,38)}<div><b>${st.n}</b><span class="mono">${st.s} · ${st.mkt}</span></div><div class="score-ring"><svg viewBox="0 0 46 46" width="46" height="46"><circle cx="23" cy="23" r="19" fill="none" stroke="var(--sur-3)" stroke-width="4"/><circle cx="23" cy="23" r="19" fill="none" stroke="${col}" stroke-width="4" stroke-linecap="round" stroke-dasharray="${st.ai*1.194} 200"/></svg>${st.ai}</div></div><p class="why">${p.why}</p><div class="foot"><div><div class="mini-k">מחיר</div><div class="num" style="font-weight:600">${px(st,st.px)}</div></div><div><div class="mini-k">יעד</div><div class="num" style="font-weight:600">${p.target}</div></div><span class="chip chip-up num">${p.up}</span></div><canvas class="bg" id="pick${i}"></canvas></div>`}).join('');
 PICKS.forEach((p,i)=>reg(()=>spark($('#pick'+i),gen(50,100,.035,.002,bySym(p.s).seed+5),css('--ac'))));
 
-// stock table
-$('#stockRows').innerHTML=STOCKS.map((s,i)=>`<tr data-sym="${s.s}"><td class="num" style="color:var(--tx-3)">${i+1}</td><td><div class="sym">${icon(s)}<div><b>${s.n}</b><span class="mono">${s.s} · ${s.mkt}</span></div></div></td><td class="r num" style="font-weight:600">${px(s,s.px)}</td><td class="r">${chg(s.d)}</td><td class="r">${chg(s.w,1)}</td><td class="r num">${s.cap}</td><td class="r"><span class="score ${scoreCls(s.ai)}">${s.ai}</span></td><td class="r"><canvas class="spark" id="sp${i}"></canvas></td><td class="r"><button class="btn btn-ghost btn-sm" data-buy="${s.s}"><svg><use href="#p-buy"/></svg>קנה</button></td></tr>`).join('');
-STOCKS.forEach((s,i)=>reg(()=>spark($('#sp'+i),gen(30,100,.04,s.w>0?.002:-.002,s.seed),css(s.w>=0?'--up':'--dn'),false)));
+// ===== הפרופיל שלי (סעיף 25) =====
+const DNA=[['סבילות סיכון',72],['אופק השקעה',84],['הטיית צמיחה',66],['פיזור סקטוריאלי',48],['משמעת מסחר',77]];
+$('#dnaRows').innerHTML=DNA.map(d=>`<div class="dna"><span class="n">${d[0]}</span><div class="bar"><i style="width:${d[1]}%"></i></div><b class="num">${d[1]}/100</b></div>`).join('');
 
-// movers
-const mv=[...STOCKS].sort((a,b)=>b.d-a.d);$('#movers').innerHTML=[...mv.slice(0,3),...mv.slice(-3)].map(s=>`<div class="mv" data-sym="${s.s}"><div class="sym">${icon(s,30)}<div><b>${s.n}</b><span class="mono">${s.s}</span></div></div><div class="p"><b class="num">${px(s,s.px)}</b>${chg(s.d)}</div></div>`).join('');
+const PWL=[['NVDA','אנבידיה',217.41,0.15,'#5FB233'],['NICE','נייס',58420,2.14,'#1E63E9'],['TSLA','טסלה',373.95,1.60,'#DC2626'],['LUMI','לאומי',4318,1.62,'#16A34A'],['TEVA','טבע',6910,-1.08,'#7C3AED'],['ESLT','אלביט מערכות',141200,0.86,'#8B5CF6']];
+$('#pfWl').innerHTML=PWL.map((r,i)=>`<tr data-sym="${r[0]}"><td><div class="as"><span class="lg" style="background:${r[4]}">${r[0].slice(0,2)}</span>${r[1]}</div></td><td class="num">${fmt(r[2],2)}</td><td class="num ${r[3]>=0?'up-c':'dn-c'}" style="font-weight:600">${r[3]>=0?'+':''}${r[3].toFixed(2)}%</td><td><canvas id="pw${i}"></canvas></td></tr>`).join('');
+PWL.forEach((r,i)=>reg(()=>spark($('#pw'+i),gen(24,100,.04,r[3]>=0?.003:-.003,710+i),css(r[3]>=0?'--up':'--dn'),false)));
 
-// news
-$('#newsList').innerHTML=NEWS.map(n=>`<div class="news"><div class="t" style="background:linear-gradient(135deg,${hexA(n.c,.7)},#0b1020)"></div><div><h4>${n.h}</h4><div class="meta"><span class="chip chip-mute" style="font-size:10.5px;padding:1px 7px">${n.tag}</span><span>${n.s}</span><span>·</span><span>${n.t}</span></div></div></div>`).join('');
+const FX=3.65;
+const PHOLD=[['נייס','NICE',4,54280,58420,'#1E63E9',1],['לאומי','LUMI',25,3980,4318,'#16A34A',1],['אלביט','ESLT',1,128400,141200,'#8B5CF6',1],['טבע','TEVA',3,7420,6910,'#7C3AED',1],['אנבידיה','NVDA',25,178.40,217.41,'#5FB233',FX],['טסלה','TSLA',5,341.20,373.95,'#DC2626',FX]];
+const totV=PHOLD.reduce((a,r)=>a+r[2]*r[4]*r[6],0);
+const totC=PHOLD.reduce((a,r)=>a+r[2]*r[3]*r[6],0);
+$('#pfHold').innerHTML=PHOLD.map((r,i)=>{const v=r[2]*r[4]*r[6],pl=(r[4]/r[3]-1)*100,w=v/totV*100,u=r[6]===1?'₪ ':'$ ';
+ return `<tr data-sym="${r[1]}"><td><div class="sym"><div class="ic" style="background:${r[5]};width:30px;height:30px;font-size:10px">${r[1].slice(0,4)}</div><div><b>${r[0]}</b><span class="mono">${r[1]}</span></div></div></td><td class="r num">${fmt0(r[2])}</td><td class="r num">${u}${fmt(r[3],2)}</td><td class="r num">${u}${fmt(r[4],2)}</td><td class="r num" style="font-weight:600">₪ ${fmt0(v)}</td><td class="r">${chg(pl)}</td><td class="r num">${w.toFixed(1)}%</td><td class="r"><canvas class="spark" id="ph${i}"></canvas></td></tr>`}).join('');
+PHOLD.forEach((r,i)=>reg(()=>spark($('#ph'+i),gen(30,100,.04,r[4]>=r[3]?.002:-.002,760+i),css(r[4]>=r[3]?'--up':'--dn'),false)));
+$('#pfSum').innerHTML=[['שווי תיק כולל','₪ '+fmt0(totV),''],['רווח/הפסד כולל','₪ '+fmt0(totV-totC)+' ('+((totV/totC-1)*100).toFixed(1)+'%)','up-c'],['רווח יומי','+₪ 4,120','up-c'],['אחזקות',PHOLD.length,''],['מזומן פנוי','₪ 184,300','']].map(x=>`<div><span>${x[0]}</span><b class="${x[2]} num">${x[1]}</b></div>`).join('');
+
+const PAL=[['NVDA','מעל $220','פעיל · נוצר לפני 3 ימים'],['NICE','מתחת ל-₪ 55,000','פעיל · נוצר אתמול'],['TEVA','שינוי יומי מעל 4%','פעיל · נוצר לפני שבוע'],['BTC','מעל $70,000','מושהה']];
+$('#pfAlerts').innerHTML=PAL.map(a=>`<div class="alr"><div><b class="num">${a[0]}</b><span>${a[2]}</span></div><span class="chip chip-ac">${a[1]}</span></div>`).join('');
+
+const PEV=[['21','אוק','החלטת ריבית בנק ישראל','16:00 · ★★★'],['28','אוק','החלטת ריבית הפד (FOMC)','20:00 · ★★★'],['13','נוב','דוח רבעון 3 של נייס','צפי EPS $2.96']];
+$('#pfEvents').innerHTML=PEV.map(e=>`<div class="ev3"><div class="d"><b class="num">${e[0]}</b><span>${e[1]}</span></div><div><h5>${e[2]}</h5><p>${e[3]}</p></div><span class="chev-l">‹</span></div>`).join('');
+
+$('#pfSaved').innerHTML=ARTS.slice(0,4).map(a=>`<div class="sv"><i style="background:${a.c}"></i><div><b>${a.h}</b><span>${a.a} · ${a.d} · ${a.tag}</span></div></div>`).join('');
+
+const ACTS=[['קנייה · NICE · 40 מניות','3 בספט׳ · ₪ 57,190 · לפי המלצת AI (ציון 87)','up'],['מכירה · TEVA · 300 מניות','28 באוג׳ · ₪ 6,842 · מימוש רווח +31%','dn'],['הפקדה · ₪ 50,000','25 באוג׳ · העברה בנקאית',''],['קנייה · NVDA · 15 מניות','19 באוג׳ · $178.40 · לפני דוחות','up'],['דיבידנד · לאומי · ₪ 1,860','12 באוג׳ · הופקד לחשבון','up']];
+$('#pfActs').innerHTML=ACTS.map(a=>`<div class="sv"><i style="background:${a[2]==='up'?'var(--up)':a[2]==='dn'?'var(--dn)':'var(--info)'}"></i><div><b>${a[0]}</b><span>${a[1]}</span></div></div>`).join('');
+
+reg(()=>{const cv=$('#proChart');if(!cv)return;const {c,w,h:hh}=prep(cv,250);const A=gen(60,100,.03,.0028,901),B=gen(60,100,.025,.0018,902);
+ const all=[...A,...B],mn=Math.min(...all),mx=Math.max(...all);const X=i=>i/(A.length-1)*w,Y=v=>hh-(v-mn)/(mx-mn||1)*(hh-14)-7;
+ c.strokeStyle=css('--line');c.lineWidth=1;for(let g=0;g<5;g++){const y=7+g*(hh-14)/4;c.beginPath();c.moveTo(0,y);c.lineTo(w,y);c.stroke()}
+ [[A,css('--ac')],[B,css('--info')]].forEach(([d,col])=>{c.beginPath();d.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.strokeStyle=col;c.lineWidth=2.2;c.lineJoin='round';c.stroke()});});
+
+// ===== רדארים (סעיף 28) =====
+const RC=[['כיוון השוק','7 עולים | 1 יורדים','תמונת מצב יומית · נפח 2.9B','up'],['תמיכת שוק','כן – תנועה רחבה','רוב המדדים באותו כיוון · שווי 71.7T','up'],['מוביל שוק','VIX -2.06%','נפח — · שווי —',''],['רמת תנודתיות','גבוהה','תזוזה מרבית 2.06% · נפח 2.9B','dn']];
+$('#radarCards').innerHTML=RC.map(r=>`<div class="card bf-s"><span>${r[0]}</span><b class="${r[3]==='up'?'up-c':r[3]==='dn'?'dn-c':''}" style="font-size:17px">${r[1]}</b><span style="margin-top:4px">${r[2]}</span></div>`).join('');
+const RI=[['GSPC','S&P 500',7721.55,0.40],['IXIC','Nasdaq Composite',26495.83,0.25],['DJI','Dow Jones',52361.67,0.76],['RUT','Russell 2000',2755.44,0.99],['NDX','Nasdaq-100',29588.60,0.20],['SOX','PHLX Semiconductor',11342.69,0.23],['VIX','VIX',18.06,-2.06],['NYA','NYSE Composite',24136.04,0.71]];
+$('#radarRows').innerHTML=RI.map((r,i)=>`<tr><td class="num" style="color:var(--tx-3)">${i+1}</td><td><div class="sym"><div class="ic" style="background:linear-gradient(135deg,var(--logo-1),var(--logo-2));width:30px;height:30px;font-size:10px">${r[0].slice(0,2)}</div><div><b>${r[1]}</b><span class="mono">${r[0]}</span></div></div></td><td class="r num" style="font-weight:600">${fmt(r[2],2)}</td><td class="r">${chg(r[3])}</td><td class="r"><canvas class="spark" id="rd${i}"></canvas></td></tr>`).join('');
+RI.forEach((r,i)=>reg(()=>spark($('#rd'+i),gen(30,100,.03,r[3]>=0?.002:-.002,940+i),css(r[3]>=0?'--up':'--dn'),false)));
+const RF=[['היורדת הבולטת','Grupo Aeromexico -7.99%','dn'],['מומנטום חזק','Braze, Inc. +50.89%','up'],['פעילות חריגה','NVIDIA Corporation · מחזור 4.8B',''],['שינוי בתנודתיות','תנודתיות קיצונית · תזוזה מרבית 50.89%','dn']];
+$('#radarFlags').innerHTML=RF.map(f=>`<div class="alr"><div><b>${f[0]}</b><span>${f[1]}</span></div><span class="chip ${f[2]==='up'?'chip-up':f[2]==='dn'?'chip-dn':'chip-mute'}">${f[2]==='up'?'חיובי':f[2]==='dn'?'שלילי':'ניטרלי'}</span></div>`).join('');
+
+// ===== באטלפילד (סעיף 26) =====
+const BFO=[['NVDA — אתגר יומי','יומי · נסגר בעוד 04:12:08','31 משתתפים'],['ת״א 35 — אתגר יומי','יומי · נסגר בעוד 02:40:00','24 משתתפים'],['S&P 500 — אתגר שבועי','שבועי · נסגר ביום שישי','132 משתתפים'],['CPI — אתגר אירוע','אירוע · 15.11 · 18:30','47 משתתפים'],['MSFT Earnings','סדרה · לאחר המסחר','58 משתתפים'],['קרב הצמרת','LIVE · מתעדכן עכשיו','54 משתתפים']];
+$('#bfOpen').innerHTML=BFO.map(c=>`<div class="ch"><div class="l"><b>${c[0]}</b><span>${c[1]}</span></div><div class="r"><span class="chip chip-mute">${c[2]}</span><button class="btn btn-ghost btn-sm">הצטרף</button></div></div>`).join('');
+const BFS=[['NVDA Earnings',1],['META Earnings',1],['AMZN Earnings',1],['AAPL Earnings',1],['MSFT Earnings',0]];
+$('#bfSeries').innerHTML=BFS.map(s=>`<div class="ch"><div class="l"><b>${s[0]}</b></div><div class="r"><span class="chip ${s[1]?'chip-up':'chip-mute'}">${s[1]?'הושלם':'פתוח'}</span></div></div>`).join('');
+const BFB=[[1,'hkonshaulov',793,17.8,58.3,26,4,0],[2,'Linord',685,17.8,77.2,25,3,0],[3,'omrix2010',387,-0.5,76.0,11,3,1],[4,'Ran',338,11.6,57.4,26,7,1],[5,'מיקי אטיאס',263,11.7,48.1,9,1,1],[6,'Achituv',131,17.0,53.2,18,3,1],[7,'ליאור',130,-6.0,55.6,19,5,1],[8,'andreyomtov',50,17.9,45.8,15,8,1],[9,'Asher',25,13.5,77.8,22,4,1]];
+$('#bfBoard').innerHTML=BFB.map(r=>`<tr${r[1]==='מיקי אטיאס'?' style="background:var(--ac-soft)"':''}><td class="num" style="color:var(--tx-3)">#${r[0]}</td><td><b>${r[1]}</b>${r[7]?' <span class="chip chip-ac" style="font-size:9px;padding:0 6px">STREAK</span>':''}</td><td class="r num" style="font-weight:600">${r[2]}</td><td class="r">${chg(r[3],1)}</td><td class="r num">${r[4].toFixed(1)}%</td><td class="r num">${r[5]}</td><td class="r num">${r[6]}</td></tr>`).join('');
+const BFH=[['הכי הרבה ניצחונות','andreyomtov','8 ניצחונות'],['WIN RATE מוביל','Asher','77.8%'],['ROI עונתי','andreyomtov','+17.9%'],['הרצף הארוך ביותר','Achituv','8 ברצף'],['אלוף המאקרו','ליאור','77 נק׳'],['RISK MASTER','Linord','99 נק׳']];
+$('#bfHall').innerHTML=BFH.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b><em class="num">${x[2]}</em></div>`).join('');
+const BFD=[['MSFT Earnings','סדרה · הסתיים 7.9.2026 · 31 משתתפים'],['AAPL Earnings','סדרה · הסתיים 3.9.2026 · 57 משתתפים'],['S&P 500 — אתגר שבועי','שבועי · הסתיים 3.9.2026 · 132 משתתפים · #1 Ran +9.37%']];
+$('#bfDone').innerHTML=BFD.map(d=>`<div class="ch"><div class="l"><b>${d[0]}</b><span>${d[1]}</span></div><div class="r"><button class="btn btn-ghost btn-sm">לתוצאות</button></div></div>`).join('');
+
+// ===== לימוד (סעיף 27) =====
+const TRK=[['מדריכי יסוד','מונחים, קריאת גרפים וניהול סיכונים - כל מה שצריך כדי להתחיל נכון.','3 שיעורים','מתחילים','#1D9E75','M4 19V5M4 19h16M8 15l4-5 3 3 5-6'],
+ ['וובינרים חיים','מפגשים שבועיים עם סוחרים מובילים, כולל שאלות ותשובות בשידור.','2 שיעורים','כל הרמות','#0EA5E9','M15 10l5-3v10l-5-3zM3 7h12v10H3z'],
+ ['מסלולי מומחה','אסטרטגיות מתקדמות, אופציות ומסחר אלגוריתמי.','2 שיעורים','מתקדמים','#8B5CF6','M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z']];
+$('#lrnTracks').innerHTML=TRK.map(t=>`<div class="card trk"><div class="ic" style="background:${t[4]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${t[5]}"/></svg></div><h4>${t[0]}</h4><p>${t[1]}</p><div class="f"><span class="chip chip-mute">${t[3]}</span><b>${t[2]} ←</b></div></div>`).join('');
+const LSN=[['קריאת נרות יפניים','מדריכי יסוד · 12 דק׳','להתחיל'],['ניהול סיכונים וגודל פוזיציה','מדריכי יסוד · 18 דק׳','להמשיך'],['וובינר: עונת הדוחות של Q3','וובינרים חיים · יום שלישי 20:00','להירשם'],['אסטרטגיות אופציות בסיסיות','מסלולי מומחה · 26 דק׳','נעול'],['בניית תיק לפי פרופיל סיכון','מדריכי יסוד · 15 דק׳','להתחיל']];
+$('#lrnList').innerHTML=LSN.map(l=>`<div class="lsn"><div><b>${l[0]}</b><span>${l[1]}</span></div><button class="btn btn-ghost btn-sm">${l[2]}</button></div>`).join('');
+const LPR=[['מדריכי יסוד',66],['וובינרים חיים',30],['מסלולי מומחה',10]];
+$('#lrnProg').innerHTML=LPR.map(x=>`<div class="dna"><span class="n">${x[0]}</span><div class="bar"><i style="width:${x[1]}%"></i></div><b class="num">${x[1]}%</b></div>`).join('');
+
+// ---- אירועים קרובים (סעיף 19) ----
+const CAL=[['2026-10-20','15:30','🇺🇸 ארה״ב','נתוני שוק הדיור — ארה״ב','מאקרו',1,'1.403M','1.390M'],
+ ['2026-10-21','16:00','🇮🇱 ישראל','החלטת ריבית בנק ישראל','ריבית',3,'—','—'],
+ ['2026-10-21','17:30','🇺🇸 ארה״ב','מלאי הנפט הגולמי — ארה״ב','מאקרו',1,'-8.557M','-0.300M'],
+ ['2026-10-22','15:30','🇺🇸 ארה״ב','תביעות אבטלה שבועיות — ארה״ב','מאקרו',2,'199K','200K'],
+ ['2026-10-23','16:45','🇺🇸 ארה״ב','מדד מנהלי הרכש (PMI) — ארה״ב','מאקרו',2,'55.9','55.5'],
+ ['2026-10-23','17:00','🇺🇸 ארה״ב','אמון הצרכנים — ארה״ב','מאקרו',2,'46.3','46.3'],
+ ['2026-10-27','14:30','🇺🇸 ארה״ב','הזמנות מוצרי בני קיימא — ארה״ב','מאקרו',1,'-0.1%','—'],
+ ['2026-10-28','20:00','🇺🇸 ארה״ב','החלטת ריבית הפד (FOMC)','מאקרו',3,'4.00%','—'],
+ ['2026-10-29','14:30','🇺🇸 ארה״ב','מדד PCE (אינפלציית הליבה)','מאקרו',3,'3.0%','—'],
+ ['2026-10-29','14:30','🇺🇸 ארה״ב','תוצר מקומי גולמי (GDP) — ארה״ב','מאקרו',3,'2.2%','—'],
+ ['2026-11-15','18:30','🇮🇱 ישראל','מדד המחירים לצרכן — ישראל','מאקרו',3,'—','—'],
+ ['2026-11-23','16:00','🇮🇱 ישראל','החלטת ריבית בנק ישראל','ריבית',3,'—','—']];
+$('#calRows').innerHTML=CAL.map(c=>`<tr><td class="num" dir="ltr">${c[0]}</td><td class="num">${c[1]}</td><td>${c[2]}</td><td><b>${c[3]}</b><br><span class="mono" style="font-size:10.5px;color:var(--tx-3)">${c[4]}</span></td><td class="r" style="color:var(--ac-2);letter-spacing:2px">${'★'.repeat(c[5])}</td><td class="r num">${c[6]}</td><td class="r num">${c[7]}</td></tr>`).join('');
+
+// ---- מניות במוקד (סעיף 20) ----
+const OUT=[['BRZE','Braze',45.33,50.88,'#1652F0','פעילות חריגה · נפח ×10.61'],['EFX','Equifax',174.61,10.12,'#1E40AF','דוחות כספיים · נפח ×0.57'],['KVYO','Klaviyo',19.22,9.70,'#7C3AED','אירוע מהותי · נפח ×0.64'],['CRWV','CoreWeave',61.36,0.39,'#0E7490','מחזור גבוה · נפח ×1.14'],['IREN','IREN Limited',27.09,-2.29,'#312E81','תנודתיות חריגה · נפח ×2.31']];
+$('#outRows').innerHTML=OUT.map(o=>`<div class="out" data-sym="${o[0]}"><div class="s"><span class="lg" style="background:${o[4]}">${o[0].slice(0,2)}</span><div><b class="num">${o[0]}</b><small>${o[5]}</small></div></div><div class="p"><b class="num">${fmt(o[2],2)}</b><span class="num ${o[3]>=0?'up-c':'dn-c'}">${o[3]>=0?'+':''}${o[3].toFixed(2)}%</span></div></div>`).join('');
+
+// ---- מפת השוק (סעיף 21) ----
+const HM=[['CRWV',0.39,61.36,'57.23–61.43'],['BRZE',50.88,45.33,'45.28–45.58'],['IREN',-2.24,27.11,'25.59–27.12'],['INTC',-0.20,91.84,'88.77–92.02'],['NVDA',0.15,217.41,'212.77–217.50'],['SPCX',-0.43,147.32,'143.27–147.33'],['CIFR',0.62,8.99,'8.23–9.00'],['NOK',-0.17,9.06,'8.82–9.07'],['CLF',-6.42,13.20,'12.63–13.72'],['NU',4.24,15.13,'14.60–15.20'],['SOFI',2.69,14.69,'14.18–14.75'],['BBD',3.55,4.08,'4.00–4.09'],['AMZN',0.27,263.17,'260.42–265.34'],['AAL',4.84,12.24,'11.63–12.27'],['AGNC',3.73,8.76,'8.39–8.78'],['TSLA',1.60,373.95,'363.64–374.60']];
+function hmCol(d){const a=Math.min(Math.abs(d)/6,1);const base=d>=0?[22,163,74]:[220,38,38];const k=.28+a*.62;return `rgba(${base[0]},${base[1]},${base[2]},${k.toFixed(2)})`}
+$('#hmGrid').innerHTML=HM.map(t=>`<div class="t" style="background:${hmCol(t[1])}"><b>${t[0]}</b><span class="num">${t[1]>=0?'+':''}${t[1].toFixed(2)}%</span><span class="num" style="font-weight:600">$${fmt(t[2],2)}</span><small class="num">${t[3]}</small></div>`).join('');
+
+// ---- הקהל מול השוק (סעיף 22) ----
+const CVM=[['NVDA','NVIDIA Corporation','המחיר והשיח מסונכרנים',0.14,'עוצמת מסחר -4% · סנטימנט 50%'],['META','Meta Platforms, Inc.','פער שלילי בין מחיר לשיח',-2.30,'עוצמת מסחר -33% · סנטימנט 32%'],['AMD','Advanced Micro Devices','המחיר והשיח מסונכרנים',0.60,'עוצמת מסחר -5% · סנטימנט 51%']];
+$('#cvmRows').innerHTML=CVM.map(c=>`<div class="cvm"><div class="n"><b>${c[0]} — ${c[1]}</b><span>${c[2]} · ${c[4]}</span></div><div class="r"><b class="num ${c[3]>=0?'up-c':'dn-c'}">${c[3]>=0?'+':''}${c[3].toFixed(2)}%</b><span>שינוי מחיר יומי</span></div></div>`).join('');
+
+// ---- מודיעין שוק (סעיף 22) ----
+const INT=[['#TSLA','Bullish buzz · 176 אזכורים · 420 עוקבים',4.2,'68%','BUY 67% / SELL 33%','Breakout'],['#AAPL','Balanced debate · 144 אזכורים · 312 עוקבים',1.2,'60%','BUY 57% / SELL 43%','Pullback'],['#AMZN','Cautious talk · 105 אזכורים · 210 עוקבים',-0.6,'55%','BUY 52% / SELL 48%','Breakout']];
+$('#intelRows').innerHTML=INT.map(t=>`<div class="intel"><div class="h"><div><b>${t[0]}</b><em style="margin-right:8px">${t[1]}</em></div><span class="num ${t[2]>=0?'up-c':'dn-c'}" style="font-weight:700">${t[2]>=0?'+':''}${t[2].toFixed(1)}%</span></div><div class="g"><div><span>TC WIN RATE</span><b class="num">${t[3]}</b></div><div><span>48H TC FLOW</span><b class="num" style="font-size:11px">${t[4]}</b></div><div><span>MOST USED</span><b style="font-size:11px">${t[5]}</b></div></div></div>`).join('');
+
+// ---- נתונים מול חדשות (סעיף 22) ----
+const DVN=[['״השבבים מובילים את השוק״','רוחב השוק בשבבים עומד על 54% בלבד, ועוצמת המסחר ב-NVDA ירדה ב-4%. העלייה מרוכזת בשתי מניות.','mid','חלקית'],['״זרימת כספים מסיבית לקרנות הסל״','הנתונים מראים יציאת כספים שלושה ימים ברציפות מקרנות על הנאסד״ק.','no','לא תואם'],['״הכסף עובר לביטוח ולבנקאות״','סיבוב הסקטורים מאשר: פיננסים +1.04%, בריאות +2.11%, טכנולוגיה +0.09% בלבד.','ok','תואם']];
+$('#dvnRows').innerHTML=DVN.map(d=>`<div class="dvn"><h5>${d[0]}</h5><p>${d[1]}</p><span class="vd ${d[2]}">${d[3]}</span></div>`).join('');
 
 // market chart
 reg(()=>{const tf=$('[data-chart="mkt"] .on').textContent;const n={'1D':24,'1W':7,'1M':30,'3M':90,'1Y':250,'ALL':400}[tf]||30;const a=gen(n,2700,.02,.0012,101),b=gen(n,6300,.016,.0009,102).map((v,i)=>v/6300*2700);const ma=a.map((_,i)=>a.slice(Math.max(0,i-6),i+1).reduce((x,y)=>x+y,0)/Math.min(i+1,7));lineChart($('#mktChart'),[{name:'ת"א-125',data:a,color:css('--ac'),fill:true},{name:'S&P 500 (מנורמל)',data:b,color:css('--info')},{name:'MA',data:ma,color:css('--tx-3'),width:1.2,dash:[4,4],noDot:true}],{xl:['5 אוג\'','12 אוג\'','19 אוג\'','26 אוג\'','2 ספט\''],dec:0})});
@@ -1971,16 +2499,25 @@ document.querySelectorAll('[data-view]:not(.nav):not(#bottombar button)').forEac
   [['hx0',.003,611,'--up'],['hx1',.003,612,'--up'],['hx2',-.003,613,'--dn'],['hx3',.004,614,'--up']].forEach(([id,d,s,c])=>{const el=$('#'+id);if(el)reg(()=>spark(el,gen(26,100,.035,d,s),css(c)))});
   // ---- news ----
   const N=[
-   {tag:'שוק',t:'לפני 12 דק\'',h:'הפד מאותת על הפחתת ריבית נוספת ברבעון הבא',p:'השווקים מגיבים בחיוב; תשואות האג"ח יורדות',bg:'linear-gradient(135deg,#3B2A78,#0A0912)',lb:'FED'},
-   {tag:'טכנולוגיה',t:'לפני 34 דק\'',h:'NVIDIA מציגה שיא ברווחים - הביקוש ל-AI ממשיך להאיץ',p:'ההכנסות ממרכזי נתונים זינקו ב-120% לעומת אשתקד',bg:'linear-gradient(135deg,#166534,#0A0912)',lb:'NVDA'},
-   {tag:'ישראל',t:'לפני שעה',h:'ת"א-125 יורד קלות; הבנקים מפגינים עוצמה',p:'לאומי ופועלים עולים בניגוד למגמה',bg:'linear-gradient(135deg,#6D28D9,#0A0912)',lb:'TA-125'},
-   {tag:'קריפטו',t:'לפני שעתיים',h:'ביטקוין פורץ את רמת 67 אלף דולר',p:'זרימת הון לקרנות סל ממשיכה',bg:'linear-gradient(135deg,#B45309,#0A0912)',lb:'BTC'},
+   {tag:'הפניקס',t:'17:06',ty:'דיווח כללי',h:'ריבית פניקס אג"ח (סדרה 4) לתקופה 1.8.26-31.10.26 הינה 1.16441%',bg:'linear-gradient(135deg,#3B2A78,#0A0912)'},
+   {tag:'ווטר איי או',t:'16:40',ty:'דיווח כללי',h:'עשיית השוק במניית ווטר איי או הופסקה החל מיום 19.10.26 עקב כניסתה לרשימת שימור',bg:'linear-gradient(135deg,#7F1D1D,#0A0912)'},
+   {tag:'אלומה תשתיות',t:'16:16',ty:'שינויי הון',h:'מרשם בעלי מניות ומצבת הון - מימוש כתבי אופציה (סדרה 1) למניות רגילות של הקרן',bg:'linear-gradient(135deg,#166534,#0A0912)'},
+   {tag:'חירון',t:'16:03',ty:'הצעת רכש · מיזוג',h:'פורסם מפרט הצעת רכש (עצמית) רגילה, לרכישת מניות רגילות של החברה על ידי החברה הבת',bg:'linear-gradient(135deg,#6D28D9,#0A0912)'},
+   {tag:'שטראוס',t:'14:10',ty:'שינויי הון',h:'מרשם בעלי מניות, שינויים ומצבת הון - מימוש אופציות עובדים',bg:'linear-gradient(135deg,#B45309,#0A0912)'},
   ];
-  $('#homeNews').innerHTML=N.map(n=>`<div class="nw3" data-view="articles"><div class="th" style="background:${n.bg}">${n.lb}</div><div><div class="m"><b>${n.tag}</b><span>${n.t}</span></div><h4>${n.h}</h4><p>${n.p}</p></div></div>`).join('');
+  $('#homeNews').innerHTML=N.map(n=>`<div class="nw3" data-view="articles"><div class="th num" style="background:${n.bg}">${n.t}</div><div><div class="m"><b>${n.tag}</b><span>${n.ty}</span></div><h4>${n.h}</h4></div></div>`).join('');
   // ---- watchlist ----
-  const WL=[['אפל','AAPL',178.24,2.31,'#8E8E93'],['אנבידיה','NVDA',875.32,3.12,'#5FB233'],['טסלה','TSLA',248.17,-0.48,'#DC2626'],['מיקרוסופט','MSFT',415.03,1.21,'#0EA5E9'],['אלפאבית','GOOGL',142.18,2.02,'#EA4335'],['טבע','TEVA',14.62,1.90,'#7C3AED']];
-  $('#wlRows').innerHTML=WL.map((r,i)=>`<tr data-sym="${r[1]}"><td><div class="as"><span class="lg" style="background:${r[4]}">${r[1].slice(0,2)}</span>${r[0]}</div></td><td class="num">${fmt(r[2],2)}</td><td class="num ${r[3]>=0?'up-c':'dn-c'}" style="font-weight:600">${r[3]>=0?'+':''}${r[3].toFixed(2)}%</td><td><canvas id="wl${i}"></canvas></td></tr>`).join('');
-  WL.forEach((r,i)=>reg(()=>spark($('#wl'+i),gen(24,100,.04,r[3]>=0?.003:-.003,620+i),css(r[3]>=0?'--up':'--dn'),false)));
+  const HOT={
+   up:[['BRZE','Braze',45.33,50.89,'#1652F0','מחזור 26.0M · אירוע מהותי'],['RCUS','Arcus Bio',24.52,10.75,'#0E7490','מחזור 2.2M · אירוע מהותי'],['EFX','Equifax',174.59,10.11,'#1E40AF','מחזור 0.9M · דוחות כספיים'],['KVYO','Klaviyo',19.19,9.53,'#7C3AED','מחזור 1.1M · אירוע מהותי'],['TLK','Telkom Indo',11.41,9.19,'#0F766E','מחזור 3.4M'],['HSAI','Hesai Group',24.80,8.05,'#B45309','מחזור 0.7M · לפני דוחות']],
+   dn:[['AERO','Aeromexico',14.62,-7.99,'#DC2626','מחזור 0.1M · אירוע מהותי'],['MLI','Mueller Ind',56.24,-7.53,'#9A3412','מחזור 0.4M'],['SE','Sea Limited',82.87,-6.33,'#0F172A','מחזור 4.0M · אירוע מהותי'],['CLF','Cleveland-Cliffs',13.20,-6.42,'#7F1D1D','מחזור 2.8M'],['IREN','IREN Limited',27.09,-2.29,'#312E81','מחזור 5.1M'],['INTC','Intel',91.84,-0.20,'#0EA5E9','מחזור 9.6M']]
+  };
+  function drawHot(k){
+    const R=HOT[k];
+    $('#wlRows').innerHTML=R.map((r,i)=>`<tr data-sym="${r[0]}"><td><div class="as"><span class="lg" style="background:${r[4]}">${r[0].slice(0,2)}</span><div>${r[1]}<small>${r[5]}</small></div></div></td><td class="num">${fmt(r[2],2)}</td><td class="num ${r[3]>=0?'up-c':'dn-c'}" style="font-weight:600">${r[3]>=0?'+':''}${r[3].toFixed(2)}%</td><td><canvas id="wl${i}"></canvas></td></tr>`).join('');
+    R.forEach((r,i)=>spark($('#wl'+i),gen(24,100,.04,r[3]>=0?.004:-.004,620+i),css(r[3]>=0?'--up':'--dn'),false));
+  }
+  reg(()=>drawHot($('#hotTabs .on').dataset.hot));
+  $('#hotTabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;$('#hotTabs').querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');drawHot(b.dataset.hot);});
   // ---- gauge (61) ----
   reg(function(){const s=$('#gaugeSvg');if(!s)return;const cx=65,cy=70,R=54,val=61;const P=a=>{const r=Math.PI*(1-a);return [cx+R*Math.cos(r),cy-R*Math.sin(r)]};const arc=(a0,a1,col,wd)=>{const [x0,y0]=P(a0),[x1,y1]=P(a1);return `<path d="M${x0} ${y0}A${R} ${R} 0 0 1 ${x1} ${y1}" stroke="${col}" stroke-width="${wd}" fill="none" stroke-linecap="round"/>`};
     let html=`<defs><linearGradient id="gg" x1="0" x2="1"><stop offset="0" stop-color="${css('--lav')}"/><stop offset="1" stop-color="${css('--mint')}"/></linearGradient></defs>`;
@@ -1993,26 +2530,42 @@ document.querySelectorAll('[data-view]:not(.nav):not(#bottombar button)').forEac
     c.beginPath();d.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.strokeStyle=AC2();c.lineWidth=2;c.lineJoin='round';c.stroke();
     const lx=X(d.length-1),ly=Y(d[d.length-1]);c.beginPath();c.arc(lx,ly,3.5,0,7);c.fillStyle=YL();c.fill()});
   // ---- opportunities ----
-  const OP=[['AMD','+4.2%','#D63A2C'],['PLTR','+3.8%','#0F172A'],['SMCI','+6.1%','#0E7490'],['ARM','+2.9%','#1E40AF'],['COIN','+5.4%','#1652F0']];
-  $('#ops').innerHTML=OP.map((o,i)=>`<div class="op"><div class="h"><span class="lg" style="background:${o[2]}">${o[0].slice(0,2)}</span><div><b class="num">${o[0]}</b><span>מומנטום חזק</span></div></div><div class="pc num">${o[1]}</div><canvas id="op${i}"></canvas><a class="btn-o">ניתוח מלא</a></div>`).join('');
+  const OP=[
+   ['BRZE','+50.89%','#1652F0','נפח ×10.61','רכישת Braze על ידי Salesforce יוצרת עלייה חדה, עם נפח חריג המרמז על עניין רב בקרב משקיעים.','MarketBeat'],
+   ['RCUS','+10.75%','#0E7490','נפח ×1.56','נתוני סרטן של המתחרים ב-Merck גרמו לתנודתיות, אך ההתאוששות מצביעה על אמון מחודש.',"Investor's Business Daily"],
+   ['EFX','+10.11%','#1E40AF','נפח ×0.57','שינוי גבוה בנפח נמוך עשוי לרמז על ספקולציות סביב הדוחות שהיו בהתאם לציפיות.','Zacks'],
+   ['KVYO','+9.53%','#7C3AED','נפח ×0.64','עליית Klaviyo על רקע התעניינות בשוק בעקבות רכישת המתחרה Braze.','Investing.com'],
+   ['TLK','+9.24%','#0F766E','נפח ×2.00','עלייה חדה בנפח מוגבר ללא חדשות מרמזת על פעילות מוסדית או ספקולציות שוק.','MarkeTube AI'],
+  ];
+  $('#ops').innerHTML=OP.map((o,i)=>`<div class="op"><div class="h"><span class="lg" style="background:${o[2]}">${o[0].slice(0,2)}</span><div><b class="num">${o[0]}</b><span>${o[3]}</span></div></div><div class="pc num">${o[1]}</div><canvas id="op${i}"></canvas><p class="why">${o[4]}<small class="src">${o[5]}</small></p><a class="btn-o">ניתוח מלא</a></div>`).join('');
   OP.forEach((o,i)=>reg(()=>spark($('#op'+i),gen(24,100,.05,.005,830+i),INK)));
   // ---- events ----
-  const EV=[['18','ספט','החלטת ריבית הפד','14:00 · השפעה גבוהה'],['19','ספט','דוחות אורקל','לאחר המסחר'],['22','ספט','נתוני אבטלה ישראל','10:00 · הלמ"ס'],['24','ספט','דוחות מיקרון','לאחר המסחר']];
+  const EV=[['20','אוק','נתוני שוק הדיור — ארה״ב','15:30 · ★ · קודם 1.403M · צפי 1.390M'],['21','אוק','החלטת ריבית בנק ישראל','16:00 · ★★★ · ישראל'],['21','אוק','מלאי הנפט הגולמי — ארה״ב','17:30 · ★ · צפי ‎-0.300M'],['22','אוק','תביעות אבטלה שבועיות — ארה״ב','15:30 · ★★ · צפי 200K'],['23','אוק','מדד מנהלי הרכש (PMI) — ארה״ב','16:45 · ★★ · צפי 55.5'],['28','אוק','החלטת ריבית הפד (FOMC)','20:00 · ★★★ · קודם 4.00%']];
   $('#events').innerHTML=EV.map(e=>`<div class="ev3"><div class="d"><b class="num">${e[0]}</b><span>${e[1]}</span></div><div><h5>${e[2]}</h5><p>${e[3]}</p></div><span class="chev-l">‹</span></div>`).join('');
   // ---- indices table ----
-  const IT=[['S&P 500','5,247.83','+0.87%',1],['NASDAQ','16,428.12','+1.24%',1],['DAX','18,320.55','+0.41%',1],['NIKKEI 225','38,812.90','-0.62%',0],['FTSE 100','8,145.30','+0.12%',1],['ת"א-35','1,987.20','-0.28%',0]];
-  $('#itabRows').innerHTML=IT.map((r,i)=>`<tr><td>${r[0]}</td><td class="num">${r[1]}</td><td class="num ${r[3]?'up-c':'dn-c'}" style="font-weight:600">${r[2]}</td><td><canvas id="it${i}"></canvas></td></tr>`).join('');
-  IT.forEach((r,i)=>reg(()=>spark($('#it'+i),gen(20,100,.04,r[3]?.003:-.003,860+i),css(r[3]?'--up':'--dn'),false)));
+  // ---- כתבות מובילות (סעיף 10) ----
+  $('#topArt').innerHTML=ARTS.slice(0,5).map(a=>`<div class="art3"><i class="nm" style="background:${a.c}"></i><div class="bd"><b>${a.h}</b><div class="meta"><span>${a.a}</span><span>${a.d}</span><span class="tk">${a.tag}</span></div></div></div>`).join('');
+  // ---- מה קורה בשוק + התרעות היום (סעיף 3) ----
+  $('#mnTxt').innerHTML='המסחר נפתח בנימה חיובית. <b>וול סטריט</b> מובלת על ידי השבבים אחרי נתוני אינפלציה רכים מהצפוי, בזמן ש<b>ת"א-125</b> נסחר בירידות קלות על רקע מימושים בבנקים. תשואת האג"ח ל-10 שנים יורדת ל-4.08% והדולר נחלש מול השקל.';
+  const AL=[
+   {k:'up',h:'שבבים בפריצה',s:'NVDA, AMD ו-AVGO מובילים את הנאסד"ק עם עלייה ממוצעת של 2.4%'},
+   {k:'dn',h:'מימושים בבנקים',s:'לאומי ופועלים יורדים אחרי שלושה ימי עליות; מחזור גבוה מהממוצע'},
+   {k:'',h:'החלטת ריבית ב-9 בספטמבר',s:'השוק מתמחר 68% להורדה של 0.25% - שימו לב לנדל"ן ולקמעונאות'},
+  ];
+  $('#mnAlerts').innerHTML=AL.map(a=>`<div class="al ${a.k}"><i></i><div class="bd"><b>${a.h}</b><span>${a.s}</span></div></div>`).join('');
   // ---- sectors ----
-  const SC=[['טכנולוגיה',3.2],['בריאות',1.8],['פיננסים',1.4],['אנרגיה',-0.9],['תעשייה',0.7],['נדל"ן',-1.6],['צריכה',1.1]];
-  $('#sectors').innerHTML=SC.map(s=>`<div class="sec3"><span class="n">${s[0]}</span><div class="bar"><i class="${s[1]<0?'neg':''}" style="width:${Math.abs(s[1])/3.5*100}%"></i></div><span class="pv num ${s[1]<0?'dn-c':''}">${s[1]>0?'+':''}${s[1].toFixed(1)}%</span></div>`).join('');
+  const SC=[['בריאות',2.11],['נדל״ן',1.40],['פיננסים',1.04],['צריכה מחזורית',0.68],['תקשורת',0.37],['טכנולוגיה',0.09],['אנרגיה',-0.21],['תעשייה',-0.11]];
+  $('#sectors').innerHTML=SC.map(s=>`<div class="sec3"><span class="n">${s[0]}</span><div class="bar"><i class="${s[1]<0?'neg':''}" style="width:${Math.abs(s[1])/2.4*100}%"></i></div><span class="pv num ${s[1]<0?'dn-c':''}">${s[1]>0?'+':''}${s[1].toFixed(2)}%</span></div>`).join('');
   // ---- community ----
   const P=[
-   {n:'דוד כהן',t:'לפני שעתיים',c:'#B4A7F5',txt:'פירוק מעולה של דוחות NVDA. הביקוש לתשתיות AI רק מתחיל.',l:24,cm:6,tk:'$NVDA'},
-   {n:'מאיה לוי',t:'לפני 4 שעות',c:'#A6F2A0',txt:'גרף מעניין ב-<a dir="ltr">$TSLA</a> - נראה כמו פריצה פוטנציאלית. מה דעתכם?',l:18,cm:12,tk:'$TSLA'},
-   {n:'אלכס רוזן',t:'לפני 6 שעות',c:'#DDE3DE',txt:'השוק הישראלי מציג עוצמה. סקטור הבנקים נראה אטרקטיבי כאן.',l:31,cm:8,tk:'$TASE'},
+   {n:'קונצנזוס אנליסטים',t:'עודכן 12:49',c:'#B4A7F5',txt:'63% מהאנליסטים צופים ש-<a dir="ltr">$NVDA</a> ייסגר מתחת ל-$220 ביום שישי. 59 דעות מקצועיות, יעדי מחיר מעודכנים.',l:59,cm:0,tk:'$NVDA'},
+   {n:'דסק מאקרו · MarkeTube',t:'לפני שעה',c:'#A6F2A0',txt:'לקראת החלטת הריבית מחר ב-16:00: הסקטורים הרגישים ביותר הם נדל"ן וקמעונאות. סיבוב הסקטורים כבר מתמחר הורדה.',l:31,cm:8,tk:'TA-125'},
+   {n:'דסק שבבים · MarkeTube',t:'לפני 3 שעות',c:'#DDE3DE',txt:'התנודתיות ב-<a dir="ltr">$BRZE</a> אחרי רכישת Salesforce גוררת את כל סקטור ה-MarTech. <a dir="ltr">$KVYO</a> עולה בהשפעה.',l:24,cm:12,tk:'$BRZE'},
   ];
   $('#posts').innerHTML=P.map(p=>`<div class="post3"><div class="av" style="background:${p.c}">${p.n.slice(0,2)}</div><div class="bd"><b>${p.n}</b><small>${p.t}</small><p>${p.txt}</p><div class="meta"><span>♥ ${p.l}</span><span>💬 ${p.cm}</span><span class="tk num">${p.tk}</span></div></div></div>`).join('');
+  // ---- קרב תחזיות (סעיף 14) ----
+  const PB=[['הקהילה',[['ייסגר מעל $220',0],['ייסגר מתחת ל-$220',0]],'0 מצביעים · ההצבעה נסגרת 23.10, 23:30'],['המקצוענים',[['ייסגר מעל $220',37],['ייסגר מתחת ל-$220',63]],'59 דעות מקצועיות · קונצנזוס אנליסטים']];
+  $('#pbars').innerHTML=PB.map(g=>`<div class="lb">${g[0]}</div>`+g[1].map(r=>`<div class="pr ${g[0]==='הקהילה'?'muted':''}"><div class="t"><span>${r[0]}</span><b class="num">${r[1]?r[1]+'%':'—'}</b></div><div class="bar"><i style="width:${r[1]}%"></i></div></div>`).join('')+`<div class="sub-l" style="margin:6px 0 13px">${g[2]}</div>`).join('');
   // ---- AI tools ----
   const TL=[['ניתוח מניה','ניתוח יסודי וטכני מלא לכל מניה בלחיצה','M3 12h3l3-7 4 14 3-9 2 4h3'],['בונה תיקים','בניית תיק מותאם אישית לפי פרופיל הסיכון','M4 19V5M4 19h16M8 15l4-5 3 3 5-6'],['תחזיות','תחזיות מחיר מבוססות למידת מכונה','M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z'],['סיכום חדשות','תמצית יומית של כל מה שחשוב בשוק','M4 5h16v14H4zM8 9h8M8 13h5']];
   $('#tools').innerHTML=TL.map(t=>`<div class="tool"><div class="ic"><svg viewBox="0 0 24 24"><path d="${t[2]}"/></svg></div><b>${t[0]}</b><p>${t[1]}</p><a class="btn-o" data-view="ai">נסו עכשיו</a></div>`).join('');
