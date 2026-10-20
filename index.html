@@ -738,12 +738,23 @@ body{background:var(--bg)}
 .ask3 input{flex:1;background:none;border:0;color:#fff;font:inherit;font-size:12px;outline:none;min-width:0}
 .ask3 button{width:32px;height:32px;border-radius:50%;background:var(--yl);display:grid;place-items:center;flex:none}
 .ask3 button svg{width:14px;height:14px;fill:none;stroke:#1A1600;stroke-width:2.4;stroke-linecap:round}
-.gauge{display:grid;grid-template-columns:1fr 130px;align-items:center;gap:6px}
+.gauge{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
 .gauge .lbl{font-size:11px;color:var(--tx-3)}
-.gauge .lbl b{display:block;font-size:26px;font-weight:800;color:#fff;line-height:1.1}
-.gauge .lbl em{font-style:normal;font-size:13px;font-weight:700;color:var(--up)}
-.gauge svg{width:130px;height:78px}
-.gauge .sc{display:flex;justify-content:space-between;font-size:9.5px;color:var(--tx-3);width:130px;margin:-6px 0 0 auto}
+.gauge .lbl>span{display:block;letter-spacing:.04em}
+.gauge .lbl b{display:block;font-size:46px;font-weight:800;line-height:1.05;margin-top:2px;
+ background:linear-gradient(135deg,var(--logo-1),var(--logo-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gauge .lbl em{display:inline-block;font-style:normal;font-size:12px;font-weight:800;color:var(--up);
+ background:var(--up-soft);border:1px solid color-mix(in srgb,var(--up) 38%,transparent);border-radius:99px;padding:2px 12px;margin-top:5px}
+.gauge .lbl u{display:block;text-decoration:none;font-size:10px;color:var(--tx-3);margin-top:7px}
+.gauge .gw{width:min(240px,100%)}
+.gauge svg{display:block;width:100%;height:auto;aspect-ratio:130/78}
+.gauge .sc{display:flex;justify-content:space-between;font-size:9.5px;color:var(--tx-3);width:100%;margin:-8px 0 0}
+.gbd{width:100%;display:flex;flex-direction:column;gap:8px;margin-top:2px;padding-top:12px;border-top:1px solid var(--line)}
+.gbd .r{display:flex;align-items:center;gap:9px}
+.gbd .r>span{width:92px;flex:none;text-align:right;font-size:10.5px;color:var(--tx-3)}
+.gbd .r .b{flex:1;height:5px;border-radius:99px;background:var(--line);overflow:hidden}
+.gbd .r .b i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--logo-1),var(--logo-2))}
+.gbd .r>b{width:30px;flex:none;text-align:left;font-size:10.5px;font-weight:700;color:var(--tx)}
 .pf .big3{font-size:24px;font-weight:800;color:#fff;display:flex;align-items:baseline;gap:10px}
 .pf .big3 small{font-size:13px;font-weight:700;color:var(--up)}
 .pf canvas{width:100%;height:60px;display:block;margin-top:6px}
@@ -1771,8 +1782,9 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
         <div class="card">
           <div class="card-hd"><h3>סנטימנט השוק</h3><span class="chev-l">‹</span></div>
           <div class="gauge">
-            <div class="lbl">מדד פחד ותאווה<b>61</b><em>תאווה</em></div>
-            <div><svg viewBox="0 0 130 78" id="gaugeSvg"></svg><div class="sc"><span>פחד</span><span>ניטרלי</span><span>תאווה</span></div></div>
+            <div class="lbl"><span>מדד פחד ותאווה</span><b>61</b><em>תאווה</em><u><span dir="ltr">+4</span> מאתמול · לפני שבוע 52</u></div>
+            <div class="gw"><svg viewBox="0 0 130 78" id="gaugeSvg"></svg><div class="sc"><span>פחד</span><span>ניטרלי</span><span>תאווה</span></div></div>
+            <div class="gbd" id="gbd"></div>
           </div>
         </div>
 
@@ -2909,6 +2921,9 @@ document.querySelectorAll('[data-view]:not(.nav):not(#bottombar button)').forEac
     html+=arc(0.02,0.98,css('--sur-2'),10)+arc(0.02,val/100,'url(#gg)',10);
     const [nx,ny]=P(val/100);html+=`<circle cx="${nx}" cy="${ny}" r="7" fill="${css('--tx')}" opacity=".25"/><circle cx="${nx}" cy="${ny}" r="4" fill="${css('--tx')}"/>`;
     s.innerHTML=html});
+  // ---- פירוק מדד פחד ותאווה ----
+  const FG=[['תנודתיות',58],['מומנטום שוק',72],['עוצמת מניות',64],['רוחב שוק',63],['ביקוש לאג"ח',49],['יחס Put/Call',55]];
+  $('#gbd').innerHTML=FG.map(f=>`<div class="r"><span>${f[0]}</span><div class="b"><i style="width:${f[1]}%"></i></div><b class="num">${f[1]}</b></div>`).join('');
   // ---- portfolio ----
   reg(()=>{const cv=$('#pfChart');const {c,w,h}=prep(cv,60);const d=gen(40,100,.03,.003,801);const mn=Math.min(...d),mx=Math.max(...d);const X=i=>i/(d.length-1)*w,Y=v=>h-4-(v-mn)/(mx-mn)*(h-10);
     c.beginPath();d.forEach((v,i)=>i?c.lineTo(X(i),Y(v)):c.moveTo(X(i),Y(v)));c.lineTo(w,h);c.lineTo(0,h);c.closePath();const g=c.createLinearGradient(0,0,0,h);const lv=css('--lav');g.addColorStop(0,hexA(lv,.45));g.addColorStop(1,hexA(lv,0));c.fillStyle=g;c.fill();
