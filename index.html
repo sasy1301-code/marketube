@@ -1033,6 +1033,220 @@ body{background:var(--bg)}
 .seg.sm button{font-size:10.5px;padding:4px 10px}
 .chip.live{display:inline-flex;align-items:center;gap:5px;letter-spacing:.06em}
 .chip.live::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+/* ================= עמוד הגרף ================= */
+.gpg{--gw:#2B6BE4}
+/* 6 · ציר שלבי המסחר */
+.sess{display:flex;align-items:stretch;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--sur)}
+.sess .sp{flex:1;padding:8px 12px;position:relative;border-left:1px solid var(--line)}
+.sess .sp:last-child{border-left:0}
+.sess .sp span{display:block;font-size:9.5px;color:var(--tx-3);letter-spacing:.04em}
+.sess .sp b{display:block;font-size:12px;font-weight:700;color:var(--tx-2);margin-top:2px}
+.sess .sp.done b{color:var(--tx-3)}
+.sess .sp.on{background:color-mix(in srgb,var(--up) 10%,transparent)}
+.sess .sp.on b{color:var(--up)}
+.sess .sp.on::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:var(--up)}
+.sess .sp.on span::before{content:"● ";color:var(--up);animation:mp-blip 1.8s infinite}
+/* כותרת */
+.gp-head{display:flex;flex-direction:row;align-items:center;gap:20px;flex-wrap:wrap}
+.gp-id{display:flex;align-items:center;gap:12px}
+.gp-id .ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:800;color:#fff;flex:none}
+.gp-id h1{margin:0;font-size:22px;font-weight:800;color:var(--tx);display:flex;align-items:center;gap:8px;direction:ltr}
+.gp-id .star{border:0;background:none;cursor:pointer;color:var(--tx-3);font-size:17px;line-height:1;padding:0}
+.gp-id .star:hover{color:var(--warn)}
+.gp-id span{font-size:11.5px;color:var(--tx-3)}
+.gp-px{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.gp-px b{font-size:28px;font-weight:800;color:var(--tx);line-height:1}
+.gp-px>span{font-size:14px;font-weight:700}
+.gp-px small{display:block;width:100%;font-size:10px;color:var(--tx-3);margin-top:2px}
+.gp-k{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;flex:1;min-width:260px}
+.gp-k>div{border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:var(--bg)}
+.gp-k span{display:block;font-size:9.5px;color:var(--tx-3)}
+.gp-k b{display:block;font-size:13.5px;font-weight:700;color:var(--tx);margin-top:1px}
+.gp-btn{display:flex;gap:8px;flex:none}
+.btn-yl2{background:linear-gradient(135deg,#FFC53D,#FF9F1C);color:#1C1200;border:0;font-weight:800}
+/* 7.4 · מידע על הנכס */
+.ainfo{display:flex;align-items:center;gap:9px;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;padding:9px 13px;background:var(--sur)}
+.ai-t{font-size:10px;font-weight:800;letter-spacing:.1em;color:var(--ac-2);padding-left:4px;border-left:1px solid var(--line)}
+.ai-c{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:var(--tx)}
+.ai-c em{font-style:normal;font-size:9.5px;color:var(--tx-3);font-weight:500}
+.ai-c.live i{width:6px;height:6px;border-radius:50%;background:var(--up);animation:mp-blip 1.8s infinite}
+.ai-c.live{color:var(--up)}
+/* 7.1-7.3 · כפתורים ופאנלים */
+.gact{display:flex;gap:10px;flex-wrap:wrap}
+.gb{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:9px;border-radius:12px;padding:10px 18px;cursor:pointer;font:inherit;font-size:13px;font-weight:800;
+ border:1.5px solid var(--k);color:var(--k);background:color-mix(in srgb,var(--k) 9%,transparent);transition:transform .16s,box-shadow .16s}
+.gb:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px var(--k)}
+.gb svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.gb b{font-weight:800}
+.gb span{font-size:10.5px;font-weight:700;opacity:.8;border-right:1px solid color-mix(in srgb,var(--k) 45%,transparent);padding-right:9px}
+.gb.what{--k:#22E3D0}
+.gb.ev{--k:#FFC53D}
+.gb.mv{--k:#FF2D6F}
+.gb.on{background:var(--k);color:#0B0A10;border-color:var(--k)}
+.gb.on span{border-color:rgba(0,0,0,.25)}
+.pan{border:1px solid color-mix(in srgb,var(--k) 42%,var(--line));border-radius:16px;padding:16px 18px;background:var(--sur);position:relative;overflow:hidden;animation:pan-in .25s ease-out}
+.pan::before{content:"";position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,var(--k),transparent)}
+.pan::after{content:"";position:absolute;top:-50px;right:-50px;width:170px;height:170px;border-radius:50%;background:var(--k);opacity:.1;filter:blur(34px);pointer-events:none}
+.pan>*{position:relative;z-index:2}
+@keyframes pan-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.pan-hd{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.pan-hd .e{font-size:9.5px;font-weight:800;letter-spacing:.14em;color:var(--k)}
+.pan-hd h3{margin:0;font-size:16px;font-weight:800;color:var(--tx)}
+.pan-x{margin-right:auto;border:1px solid var(--line);background:none;color:var(--tx-3);border-radius:8px;width:26px;height:26px;cursor:pointer;font-size:14px;line-height:1}
+.pan-x:hover{color:var(--tx);border-color:var(--line-2)}
+.pan-g{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px}
+.pan-c{border:1px solid var(--line);border-radius:13px;padding:12px 13px;background:var(--bg);display:flex;flex-direction:column;gap:7px}
+.pan-c .t{display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;color:var(--tx)}
+.pan-c .t i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;font-size:11px;font-style:normal;flex:none}
+.pan-c .t .w{margin-right:auto;font-size:9.5px;font-weight:700;color:var(--tx-3)}
+.pan-c p{margin:0;font-size:11px;line-height:1.55;color:var(--tx-2)}
+.pan-c ul{margin:0;padding-right:15px;font-size:11px;line-height:1.6;color:var(--tx-2)}
+.pan-c .big{font-size:26px;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--logo-1),var(--logo-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.pan-ft{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);font-size:10px;color:var(--tx-3)}
+@media(max-width:1200px){.pan-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.pan-g{grid-template-columns:1fr}}
+/* פריסה */
+.g-graph{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.gcol{display:flex;flex-direction:column;gap:16px;min-width:0}
+.gbot{display:grid;grid-template-columns:minmax(0,1fr) 196px;gap:16px;align-items:start}
+@media(max-width:1250px){.g-graph{grid-template-columns:1fr}.gbot{grid-template-columns:1fr}}
+/* סרגל הגרף */
+.ctb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:10px}
+.ctb-sep{width:1px;height:18px;background:var(--line)}
+.ctb-b{border:0;background:none;cursor:pointer;font:inherit;font-size:11.5px;color:var(--tx-2);padding:4px 8px;border-radius:7px}
+.ctb-b:hover{background:var(--sur-2);color:var(--tx)}
+.ccol{display:flex;align-items:center;gap:6px;margin-right:auto}
+.ccol>span{font-size:10px;color:var(--tx-3)}
+.ccol button{border:1px solid var(--line);background:var(--bg);color:var(--tx-2);border-radius:8px;padding:3px 10px;font:inherit;font-size:10.5px;cursor:pointer}
+.ccol button.on{border-color:var(--ac);color:var(--ac-2);background:var(--ac-soft);font-weight:700}
+.ohlc{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--tx-3);margin-bottom:4px}
+.ohlc b{color:var(--tx);font-weight:700}
+.ohlc .o{direction:ltr}
+.ctf{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
+.ctf-t{margin-right:auto;font-size:10.5px;color:var(--tx-3)}
+/* 1 · רשימת מעקב */
+.wlc .card-hd h3{gap:7px}
+.gpg .card{flex-direction:column}
+.gpg .gp-head{flex-direction:row}
+.wl-ac{display:flex;gap:4px}
+.wl-ac button{border:0;background:none;color:var(--tx-3);cursor:pointer;font-size:14px;line-height:1;padding:2px 5px;border-radius:6px}
+.wl-ac button:hover{color:var(--tx);background:var(--sur-2)}
+.gwl{width:100%;border-collapse:collapse}
+.gwl th{font-size:9.5px;font-weight:600;color:var(--tx-3);text-align:right;padding:0 4px 7px;border-bottom:1px solid var(--line)}
+.gwl th.r,.gwl td.r{text-align:left}
+.gwl td{padding:7px 4px;border-bottom:1px solid var(--line);font-size:11.5px}
+.gwl tr:last-child td{border-bottom:0}
+.gwl tbody tr{cursor:pointer}
+.gwl tbody tr:hover td{background:var(--sur-2)}
+.gwl .sy{display:flex;align-items:center;gap:7px}
+.gwl .sy i{width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:8px;font-weight:800;color:#fff;font-style:normal}
+.gwl .sy b{font-size:11.5px;color:var(--tx);direction:ltr}
+.gwl .nm{font-size:10.5px;color:var(--tx-3);direction:ltr;text-align:right}
+.gwl tr.sel td{background:color-mix(in srgb,var(--gw) 14%,transparent)}
+.gwl tr.sel td:first-child{box-shadow:inset 2px 0 0 var(--gw)}
+/* 2 · KPI 6 */
+.k6{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.k6>div{border:1px solid var(--line);border-radius:12px;padding:10px;background:var(--sur);display:flex;align-items:center;gap:8px}
+.k6 .ic{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;flex:none;background:var(--ac-soft);color:var(--ac-2)}
+.k6 .ic svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.k6 span{display:block;font-size:9.5px;color:var(--tx-3)}
+.k6 b{display:block;font-size:13px;font-weight:700;color:var(--tx);margin-top:1px}
+/* 5 · טווחים */
+.rng{display:flex;flex-direction:column;gap:14px;align-items:stretch}
+.rg{width:100%;display:block}
+.rg .rt{display:flex;flex-direction:row;align-items:center;justify-content:space-between;font-size:11px;color:var(--tx-2);margin-bottom:8px}
+.rg .rt b{font-size:12px;color:var(--tx);font-weight:700}
+.rg .rtr{position:relative;height:8px;border-radius:99px;background:linear-gradient(90deg,#16A34A,#CBA92B,#DC2626)}
+.rg .rtr i{position:absolute;top:50%;width:15px;height:15px;border-radius:50%;background:#FFC53D;border:2px solid var(--sur);transform:translate(50%,-50%);box-shadow:0 0 0 2px rgba(255,197,61,.35)}
+.rg .rlb{display:flex;flex-direction:row;align-items:flex-start;justify-content:space-between;gap:6px;margin-top:8px;font-size:9px;color:var(--tx-3)}
+.rg .rlb>span{flex:1;min-width:0}
+.rg .rlb b{display:block;font-size:12px;color:var(--tx);font-weight:700}
+.rg .rlb .rmid{text-align:center}
+.rg .rlb .rmid b{color:var(--ac-2)}
+.rg .rlb>span:last-child{text-align:left}
+/* ביצועים */
+.perf{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.perf>div{border:1px solid var(--line);border-radius:10px;padding:8px 9px;text-align:center;background:var(--bg)}
+.perf span{display:block;font-size:9.5px;color:var(--tx-3)}
+.perf b{display:block;font-size:12.5px;font-weight:800;margin-top:2px}
+/* נתוני מפתח */
+.keyd .kd{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid var(--line)}
+.keyd .kd:last-child{border-bottom:0}
+.keyd .kd span{font-size:10px;color:var(--tx-3)}
+.keyd .kd b{font-size:12px;font-weight:700;color:var(--tx)}
+/* 4 · לשוניות */
+.gtabs{display:flex;gap:2px;overflow-x:auto;border-bottom:1px solid var(--line);margin:-4px 0 14px;padding-bottom:0;scrollbar-width:thin}
+.gtabs button{flex:none;border:0;background:none;cursor:pointer;font:inherit;font-size:12px;font-weight:600;color:var(--tx-3);padding:9px 13px;position:relative;white-space:nowrap}
+.gtabs button:hover{color:var(--tx-2)}
+.gtabs button.on{color:var(--ac-2);font-weight:800}
+.gtabs button.on::after{content:"";position:absolute;inset:auto 10px -1px 10px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--logo-1),var(--logo-2))}
+.gtp{min-height:220px}
+.ovg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ovg>div{background:var(--sur);padding:10px 12px}
+.ovg span{display:block;font-size:9.5px;color:var(--tx-3)}
+.ovg b{display:block;font-size:13px;font-weight:700;color:var(--tx);margin-top:2px}
+.ovl{display:flex;gap:18px;flex-wrap:wrap;margin-top:13px;padding-top:11px;border-top:1px solid var(--line)}
+.ovl a{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;color:var(--warn);cursor:pointer}
+@media(max-width:900px){.ovg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ftab{width:100%;border-collapse:collapse;font-size:11.5px}
+.ftab th{font-size:10px;color:var(--tx-3);font-weight:600;text-align:right;padding:0 8px 8px;border-bottom:1px solid var(--line)}
+.ftab th.r,.ftab td.r{text-align:left}
+.ftab td{padding:9px 8px;border-bottom:1px solid var(--line)}
+.ftab tr:last-child td{border-bottom:0}
+.ftab tbody tr:hover td{background:var(--sur-2)}
+.ftab td.k{font-weight:700;color:var(--tx)}
+.aibox{display:flex;gap:10px;border:1px solid color-mix(in srgb,var(--warn) 38%,var(--line));background:color-mix(in srgb,var(--warn) 7%,transparent);border-radius:12px;padding:11px 13px;margin-bottom:13px}
+.aibox .ic{width:24px;height:24px;border-radius:8px;flex:none;display:grid;place-items:center;background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn)}
+.aibox .ic svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.9}
+.aibox p{margin:0;font-size:11.5px;line-height:1.6;color:var(--tx-2)}
+.aibox b{color:var(--tx)}
+.flr{border:1px solid var(--line);border-radius:12px;margin-bottom:8px;overflow:hidden;background:var(--sur)}
+.flr:last-child{margin-bottom:0}
+.flr .fh{display:flex;align-items:center;gap:10px;padding:10px 13px;cursor:pointer}
+.flr .fh:hover{background:var(--sur-2)}
+.flr .fh .dt{font-size:10.5px;color:var(--tx-3);flex:none;direction:ltr}
+.flr .fh b{font-size:12px;color:var(--tx);font-weight:700}
+.flr .fh .cv{margin-right:auto;display:flex;align-items:center;gap:8px}
+.flr .fb{padding:0 13px 13px;display:none}
+.flr.open .fb{display:block}
+.flr.open .fh{border-bottom:1px solid var(--line)}
+.flr .chev{transition:transform .2s}
+.flr.open .chev{transform:rotate(180deg)}
+.nwg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.nwg .nc{display:flex;gap:10px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--sur);cursor:pointer;transition:border-color .18s}
+.nwg .nc:hover{border-color:var(--line-2)}
+.nwg .nc .th{width:46px;height:46px;border-radius:9px;flex:none;display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff}
+.nwg .nc .m{font-size:9.5px;color:var(--tx-3);letter-spacing:.03em}
+.nwg .nc h5{margin:3px 0 3px;font-size:12px;font-weight:700;color:var(--tx);line-height:1.4}
+.nwg .nc p{margin:0;font-size:10.5px;color:var(--tx-3);line-height:1.45}
+@media(max-width:900px){.nwg{grid-template-columns:1fr}}
+.bb2{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+@media(max-width:800px){.bb2{grid-template-columns:1fr}}
+.cons{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:13px}
+.cons .big{font-size:34px;font-weight:800;background:linear-gradient(135deg,var(--up),var(--ac-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cons .bars{flex:1;min-width:220px;display:flex;flex-direction:column;gap:6px}
+.cons .bars .r{display:flex;align-items:center;gap:9px;font-size:10.5px;color:var(--tx-3)}
+.cons .bars .r span{width:60px;flex:none}
+.cons .bars .r .b{flex:1;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.cons .bars .r .b i{display:block;height:100%;border-radius:99px}
+.cons .bars .r b{width:34px;text-align:left;color:var(--tx);font-weight:700}
+.hmap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin-top:4px}
+.hmap i{display:block;height:30px;border-radius:5px;font-style:normal;font-size:8.5px;font-weight:700;color:#fff;display:grid;place-items:center;direction:ltr}
+.hmlb{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px;margin-top:4px;font-size:8.5px;color:var(--tx-3);text-align:center}
+.strat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}
+.strat .sc{border:1px solid var(--line);border-radius:13px;padding:12px 13px;background:var(--sur)}
+.strat .sc .h{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:7px}
+.strat .sc b{font-size:13px;color:var(--tx);font-weight:800}
+.strat .sc p{margin:0 0 9px;font-size:11px;line-height:1.5;color:var(--tx-2)}
+.strat .sc .f{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;color:var(--tx-3);padding-top:8px;border-top:1px solid var(--line)}
+@media(max-width:900px){.strat{grid-template-columns:1fr}}
+.trd{width:100%;border-collapse:collapse;font-size:11.5px}
+.trd th{font-size:10px;color:var(--tx-3);font-weight:600;padding:0 8px 8px;border-bottom:1px solid var(--line);text-align:right}
+.trd td{padding:6px 8px;border-bottom:1px solid var(--line)}
+.trd tr:last-child td{border-bottom:0}
+.trd .b{color:var(--up);font-weight:700}
+.trd .s{color:var(--dn);font-weight:700}
+
 /* ===== התראות אירועים חשובים (דף הבית + שוק ההון) ===== */
 .evbar{margin:0 0 14px}
 .eb-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
@@ -1690,7 +1904,7 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
   <button class="nav" data-view="radar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-4"/></svg>רדארים</button>
   <button class="nav" data-view="battle"><svg><use href="#p-shield"/></svg>באטלפילד</button>
   <button class="nav" data-soon="1"><svg><use href="#p-bell"/></svg>התראות</button>
-  <button class="nav" data-view="stock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>כלים</button>
+  <button class="nav" data-view="stock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></svg>גרף</button>
   <button class="nav" data-view="learn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5a2 2 0 0 1 2-2h5a2 2 0 0 1 2 2v15a2 2 0 0 0-2-2H3zM21 5a2 2 0 0 0-2-2h-5a2 2 0 0 0-2 2v15a2 2 0 0 1 2-2h7z"/></svg>לימוד</button>
   <div class="spacer"></div>
   <div class="promo">
@@ -2093,86 +2307,123 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
     </div>
   </section>
 
-  <!-- ================= STOCK PAGE ================= -->
-  <section class="view" id="v-stock">
-    <div class="card stk-head">
-      <div class="sym"><div class="ic" style="background:linear-gradient(135deg,#1E63E9,#4FC3F7)">NICE</div><div><h1>נייס מערכות <span class="chip chip-mute mono">NICE · TASE / NASDAQ</span></h1><div class="tags"><span class="chip chip-ac">תוכנה ארגונית</span><span class="chip chip-up"><svg><use href="#p-ai"/></svg>ציון AI 87</span><span class="chip chip-info"><svg><use href="#p-bank"/></svg>קונצנזוס אנליסטים: קנייה</span><span class="chip chip-mute">ת"א-35 · ת"א-125</span></div></div></div>
-      <div class="price-block"><div class="px num">₪ 58,420<small>/ $158.32</small></div><div class="ch num"><span class="up-c">▲ +2.14% (+1,224)</span><span class="chip chip-up">מסחר פעיל</span></div><div class="ah">נפח 1.2M · מחזור 68.4M ₪ · ממוצע 30 יום 52.1M ₪</div></div>
+  <!-- ================= עמוד הגרף ================= -->
+  <section class="view gpg" id="v-stock">
+
+    <!-- 6 · ציר שלבי המסחר -->
+    <div class="sess" id="sess"></div>
+
+    <!-- כותרת הנייר + מחיר + KPI עליון -->
+    <div class="card gp-head">
+      <div class="gp-id">
+        <div class="ic" style="background:linear-gradient(135deg,#C74634,#8B1A0E)">ORCL</div>
+        <div><h1>ORCL<button class="star" aria-label="הוסף למעקב">★</button></h1><span>Oracle Corp · NYSE</span></div>
+      </div>
+      <div class="gp-px">
+        <b class="num">151.37</b>
+        <span class="num up-c">+2.50 (+1.68%)</span>
+        <small>נכון לעכשיו · USD</small>
+      </div>
+      <div class="gp-k">
+        <div><span>פתיחה</span><b class="num">147.00</b></div>
+        <div><span>גבוה</span><b class="num">151.81</b></div>
+        <div><span>נמוך</span><b class="num">146.83</b></div>
+        <div><span>שווי שוק</span><b class="num">428.8B</b></div>
+      </div>
+      <div class="gp-btn">
+        <button class="btn btn-yl2 gpw">+ מעקב</button>
+        <button class="btn btn-ghost btn-sm">↩ מסחר</button>
+      </div>
     </div>
 
-    <div class="g-stock">
-      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
-        <div class="card">
-          <div class="card-hd"><div class="seg" id="ctype"><button class="on">נרות</button><button>קו</button><button>שטח</button></div><div class="seg tf" data-chart="stk"><button>1D</button><button>1W</button><button class="on">1M</button><button>3M</button><button>1Y</button><button>5Y</button></div></div>
+    <!-- 7.4 · מידע על הנכס -->
+    <div class="ainfo">
+      <span class="ai-t">על הנכס</span>
+      <span class="ai-c"><em>בורסה</em>NYSE · ORCL</span>
+      <span class="ai-c"><em>מספר נייר</em>68389X10</span>
+      <span class="ai-c"><em>סקטור</em>טכנולוגיה</span>
+      <span class="ai-c"><em>מגזר</em>Software – Infrastructure</span>
+      <span class="ai-c"><em>מדדים</em>S&amp;P 500 · Nasdaq-100 · S&amp;P 100</span>
+      <span class="ai-c live"><em>שלב מסחר</em><i></i>מסחר רציף</span>
+    </div>
+
+    <!-- 7.1-7.3 · כפתורי תובנה -->
+    <div class="gact">
+      <button class="gb what" data-pan="panWhat"><svg viewBox="0 0 24 24"><path d="M3 12h3l3-7 4 14 3-9 2 4h3"/></svg>מה קורה במניה?</button>
+      <button class="gb ev" data-pan="panEvent"><svg viewBox="0 0 24 24"><path d="M3 9h18M7 3v4M17 3v4M5 5h14v16H5z"/></svg><b>אירוע השבוע</b><span>אירוע מהותי</span></button>
+      <button class="gb mv" data-pan="panMove"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 10l7-7 7 7"/></svg>תנועה חריגה במניה</button>
+    </div>
+    <div class="pan" id="panWhat" hidden></div>
+    <div class="pan" id="panEvent" hidden></div>
+    <div class="pan" id="panMove" hidden></div>
+
+    <div class="g-graph">
+      <div class="gcol">
+        <!-- הגרף -->
+        <div class="card chartc">
+          <div class="ctb">
+            <div class="seg sm" id="tfInt"><button>1m</button><button>5m</button><button>15m</button><button>30m</button><button class="on">1h</button><button>4h</button><button>D</button><button>W</button><button>M</button></div>
+            <span class="ctb-sep"></span>
+            <div class="seg sm" id="ctype"><button class="on">נרות</button><button>קו</button><button>שטח</button></div>
+            <button class="ctb-b">אינדיקטורים</button>
+            <button class="ctb-b">תבניות</button>
+            <button class="ctb-b">כלים</button>
+            <span class="ctb-sep"></span>
+            <div class="ccol" id="ccol"><span>צבעי נרות</span><button class="on" data-col="classic">אדום / ירוק</button><button data-col="brand">צבעי המערכת</button></div>
+          </div>
+          <div class="ohlc" id="ohlc"></div>
           <div class="chart-wrap"><canvas id="stkChart" data-h="360"></canvas></div>
-          <div class="chart-wrap" style="margin-top:6px"><canvas id="volChart" data-h="70"></canvas></div>
-        </div>
-        <div class="g2">
-          <div class="card"><div class="card-hd"><h3><svg><use href="#p-candles"/></svg>נתוני מפתח</h3></div>
-            <div class="stat-grid">
-              <div class="stat"><div class="k">שווי שוק</div><div class="v num">₪ 36.9B</div></div>
-              <div class="stat"><div class="k">מכפיל רווח (P/E)</div><div class="v num">24.8</div></div>
-              <div class="stat"><div class="k">מכפיל עתידי</div><div class="v num">17.2</div></div>
-              <div class="stat"><div class="k">EPS (TTM)</div><div class="v num">$6.38</div></div>
-              <div class="stat"><div class="k">הכנסות (TTM)</div><div class="v num">$2.78B</div></div>
-              <div class="stat"><div class="k">צמיחה שנתית</div><div class="v num up-c">+14.6%</div></div>
-              <div class="stat"><div class="k">שולי רווח</div><div class="v num">21.3%</div></div>
-              <div class="stat"><div class="k">בטא</div><div class="v num">0.94</div></div>
-            </div>
-            <div class="range"><div class="lbls"><span>שפל 52 שבועות · <b class="num">₪ 41,050</b></span><span>שיא 52 שבועות · <b class="num">₪ 63,900</b></span></div><div class="bar"><i style="right:76%"></i></div><div class="lbls"><span>מחיר נוכחי בטווח: <b class="num">76%</b></span><span>דיבידנד: <b>אין</b></span></div></div>
-          </div>
-          <div class="card"><div class="card-hd"><h3><svg><use href="#p-bank"/></svg>תחזית אנליסטים</h3><span class="chip chip-mute">18 אנליסטים</span></div>
-            <div class="rating">
-              <div class="rw"><span>קנייה חזקה</span><div class="bar"><i style="width:56%;background:var(--up)"></i></div><b class="num">10</b></div>
-              <div class="rw"><span>קנייה</span><div class="bar"><i style="width:28%;background:var(--up);opacity:.6"></i></div><b class="num">5</b></div>
-              <div class="rw"><span>החזק</span><div class="bar"><i style="width:17%;background:var(--warn)"></i></div><b class="num">3</b></div>
-              <div class="rw"><span>מכירה</span><div class="bar"><i style="width:0%;background:var(--dn)"></i></div><b class="num">0</b></div>
-            </div>
-            <div class="target"><div><small>יעד נמוך</small><b class="num">$150</b></div><div style="border-color:var(--ac);background:var(--ac-soft)"><small>יעד ממוצע</small><b class="num" style="color:var(--ac-2)">$192</b></div><div><small>יעד גבוה</small><b class="num">$225</b></div></div>
-            <p style="margin:12px 0 0;font-size:12.5px;color:var(--tx-2)">אפסייד ממוצע של <b class="up-c num">+21.3%</b> מהמחיר הנוכחי. שלושה בתי השקעות העלו יעד בשבועיים האחרונים (Jefferies, Barclays, לאומי פרטנרס).</p>
+          <div class="chart-wrap" style="margin-top:4px"><canvas id="volChart" data-h="74"></canvas></div>
+          <div class="ctf">
+            <div class="seg sm" id="tfRange"><button>1d</button><button>5d</button><button>1m</button><button class="on">3m</button><button>6m</button><button>YTD</button><button>1y</button><button>5y</button><button>All</button></div>
+            <span class="ctf-t num">15:30:37 (UTC+3)</span>
+            <div class="seg sm"><button>%</button><button>log</button><button class="on">auto</button></div>
           </div>
         </div>
-        <div class="card about">
-          <div class="card-hd"><h3>על החברה</h3><span class="chip chip-mute">עודכן 2 בספטמבר</span></div>
-          <p>נייס מערכות היא חברת תוכנה ישראלית גלובלית המפתחת פתרונות ענן לניהול חוויית לקוח (CXaaS), אנליטיקה של אינטראקציות ופתרונות ציות למוסדות פיננסיים. פלטפורמת CXone של החברה משרתת מעל 25,000 ארגונים ב-150 מדינות, וכ-70% מהכנסותיה כבר מגיעות ממנויי ענן.</p>
-          <p>המנוע המרכזי לצמיחה בשנתיים הקרובות הוא שכבת ה-AI (Enlighten) שמחליפה נציגי שירות אנושיים במוקדים - מודל תמחור לפי צריכה שמגדיל את ההכנסה הממוצעת ללקוח. הסיכונים העיקריים: תחרות מ-Salesforce ו-Genesys, ותלות בשוק האמריקאי (כ-80% מההכנסות).</p>
-          <div class="kv"><div><span>מנכ"ל</span><b>סקוט ראסל</b></div><div><span>מטה</span><b>רעננה, ישראל</b></div><div><span>עובדים</span><b class="num">8,900</b></div><div><span>שנת יסוד</span><b class="num">1986</b></div><div><span>דוח קרוב</span><b>13 בנובמבר 2026</b></div><div><span>מחזיקים מוסדיים</span><b class="num">78%</b></div></div>
-        </div>
-        <div class="card">
-          <div class="card-hd"><h3><svg><use href="#p-news"/></svg>כתבות וניתוחים על נייס</h3><a class="more">לכל הכתבות</a></div>
-          <div class="art-list" id="stkArts"></div>
+
+        <!-- לשוניות מידע -->
+        <div class="gbot">
+          <div class="card tabsc">
+            <div class="gtabs" id="gtabs"></div>
+            <div class="gtp" id="gtp"></div>
+          </div>
+          <div class="card keyd">
+            <div class="card-hd"><h3>נתוני מפתח</h3></div>
+            <div id="keyd"></div>
+          </div>
         </div>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:16px;min-width:0">
-        <div class="card trade">
-          <div class="seg" style="width:100%" id="bs"><button class="on" style="flex:1">קנייה</button><button style="flex:1">מכירה</button></div>
-          <div class="seg" style="width:100%"><button class="on" style="flex:1">לימיט</button><button style="flex:1">שוק</button><button style="flex:1">TP/SL</button></div>
-          <div class="field"><span>מחיר (₪)</span><input class="num" value="58,420"></div>
-          <div class="field"><span>כמות</span><input class="num" value="25"><span class="u">מניות</span></div>
-          <div class="pill-row"><button>25%</button><button>50%</button><button>75%</button><button>100%</button></div>
-          <div class="row"><span>סה"כ עסקה</span><b class="num">₪ 14,605</b></div>
-          <div class="row"><span>עמלה משוערת</span><b class="num">₪ 29.2</b></div>
-          <div class="row"><span>זמין בחשבון</span><b class="num">₪ 184,300</b></div>
-          <button class="btn btn-up btn-w" id="buyBtn"><svg><use href="#p-buy"/></svg><span>קנה NICE</span></button>
-          <div class="book">
-            <div style="display:grid;grid-template-columns:1fr 1fr;font-size:11px;color:var(--tx-3);margin-bottom:6px"><span>מחיר</span><span style="text-align:left">כמות</span></div>
-            <div id="book"></div>
-          </div>
+      <div class="gcol rail">
+        <!-- 1 · רשימת מעקב -->
+        <div class="card wlc">
+          <div class="card-hd"><h3><svg><use href="#p-watchlist"/></svg>רשימת מעקב<span class="chev-l">‹</span></h3><div class="wl-ac"><button aria-label="הוסף">+</button><button aria-label="עוד">···</button></div></div>
+          <table class="gwl"><thead><tr><th>סימול</th><th>שם</th><th class="r">מחיר</th><th class="r">שינוי</th><th class="r">% שינוי</th></tr></thead><tbody id="gwlRows"></tbody></table>
         </div>
+
+        <!-- 2 · KPI -->
+        <div class="k6" id="k6"></div>
+
+        <!-- 5 · טווחי מחיר -->
+        <div class="card rng">
+          <div class="rg" id="rgDay"></div>
+          <div class="rg" id="rg52"></div>
+        </div>
+
+        <!-- ביצועים -->
         <div class="card">
-          <div class="card-hd"><h3><svg><use href="#p-calendar"/></svg>אירועים קרובים</h3></div>
-          <div class="events">
-            <div class="ev"><div class="d"><b class="num">9</b><span>ספט'</span></div><div><h5>החלטת ריבית בנק ישראל</h5><p>רגישות בינונית · מניות צמיחה</p></div></div>
-            <div class="ev"><div class="d"><b class="num">17</b><span>ספט'</span></div><div><h5>החלטת ריבית הפד (FOMC)</h5><p>השוק מתמחר 0.25% הורדה</p></div></div>
-            <div class="ev"><div class="d"><b class="num">13</b><span>נוב'</span></div><div><h5>דוח רבעון 3 של נייס</h5><p>צפי EPS: $2.96 · הכנסות: $721M</p></div></div>
-          </div>
+          <div class="card-hd"><h3><svg><use href="#p-chart"/></svg>ביצועים</h3></div>
+          <div class="perf" id="perf"></div>
         </div>
+
+        <!-- 8 · צפי עתידי -->
         <div class="card">
           <div class="card-hd"><h3><svg><use href="#p-ai"/></svg>צפי עתידי · מודל MarkeTube</h3><span class="chip chip-ac">Pro</span></div>
           <div class="chart-wrap"><canvas id="fcChart" data-h="150"></canvas></div>
-          <div class="legend" style="margin-top:8px"><span><i style="background:var(--ac)"></i>תרחיש בסיס · <b class="num">$189</b></span><span><i style="background:var(--up)"></i>אופטימי · <b class="num">$228</b></span><span><i style="background:var(--dn)"></i>פסימי · <b class="num">$141</b></span></div>
+          <div class="legend" style="margin-top:8px"><span><i style="background:var(--ac)"></i>בסיס · <b class="num">$189</b></span><span><i style="background:var(--up)"></i>אופטימי · <b class="num">$228</b></span><span><i style="background:var(--dn)"></i>פסימי · <b class="num">$141</b></span></div>
         </div>
+
+        <!-- 9 · מניות דומות -->
         <div class="card">
           <div class="card-hd"><h3><svg><use href="#p-globe"/></svg>מניות דומות</h3></div>
           <div id="similar"></div>
@@ -2180,6 +2431,7 @@ html.mt-loading,html.mt-loading body{overflow:hidden}
       </div>
     </div>
   </section>
+
   <!-- ================= CLIENT CARD ================= -->
   <section class="view" id="v-client">
     <div class="hd"><div><div class="eyebrow">ניהול תיקים</div><h1>כרטיסי לקוח</h1><div class="sub">42 לקוחות פעילים · סה"כ נכסים מנוהלים <b class="num">₪ 128.6M</b></div></div><div style="display:flex;gap:8px"><button class="btn btn-ghost btn-sm"><svg><use href="#p-news"/></svg>ייצוא דוח</button><button class="btn btn-ac btn-sm"><svg><use href="#p-portfolio"/></svg>לקוח חדש</button></div></div>
@@ -2522,7 +2774,7 @@ function lineChart(cv,series,opt={}){
 }
 function candleChart(cv,d,mode){
   const {c,w,h}=prep(cv);const padL=8,padR=62,padT=14,padB=26;const iw=w-padL-padR,ih=h-padT-padB;
-  const lo=Math.min(...d.map(x=>x.l))*.995,hi=Math.max(...d.map(x=>x.h))*1.005;const n=d.length;const bw=iw/n;const Y=v=>padT+(1-(v-lo)/(hi-lo))*ih;const up=css('--up'),dn=css('--dn'),ac=css('--ac');
+  const lo=Math.min(...d.map(x=>x.l))*.995,hi=Math.max(...d.map(x=>x.h))*1.005;const n=d.length;const bw=iw/n;const Y=v=>padT+(1-(v-lo)/(hi-lo))*ih;const up=(window.CCOL&&window.CCOL.up)||css('--up'),dn=(window.CCOL&&window.CCOL.dn)||css('--dn'),ac=css('--ac');
   c.strokeStyle=css('--grid');c.fillStyle=css('--tx-3');c.textAlign='left';c.textBaseline='middle';
   for(let k=0;k<=5;k++){const y=padT+ih*k/5;c.beginPath();c.moveTo(padL,y);c.lineTo(padL+iw,y);c.stroke();c.fillText(fmt0(hi-(hi-lo)*k/5),padL+iw+8,y)}
   c.textAlign='center';c.textBaseline='top';['6 אוג\'','13 אוג\'','20 אוג\'','27 אוג\'','3 ספט\''].forEach((l,i,a)=>c.fillText(l,padL+iw*i/(a.length-1),h-padB+9));
@@ -2541,7 +2793,7 @@ function candleChart(cv,d,mode){
   cv.onmousemove=e=>{const r=cv.getBoundingClientRect();const i=Math.floor((e.clientX-r.left-padL)/bw);if(i<0||i>=n){tt.style.display='none';return}const k=d[i];tt.innerHTML=`<b class="num">₪ ${fmt0(k.c)}</b><span class="num">פתיחה ${fmt0(k.o)} · גבוה ${fmt0(k.h)}</span><span class="num">נמוך ${fmt0(k.l)} · נפח ${fmt(k.v,1)}M</span>`;tt.style.display='block';tt.style.left=(e.clientX+14)+'px';tt.style.top=(e.clientY-10)+'px'};
   cv.onmouseleave=()=>tt.style.display='none';
 }
-function volChart(cv,d){const {c,w,h}=prep(cv);const padL=8,padR=62;const iw=w-padL-padR;const bw=iw/d.length;const mx=Math.max(...d.map(x=>x.v));const up=css('--up'),dn=css('--dn');d.forEach((k,i)=>{const bh=k.v/mx*(h-14);c.fillStyle=hexA(k.c>=k.o?up:dn,.55);c.beginPath();c.roundRect(padL+bw*i+bw*.18,h-bh,bw*.64,bh,2);c.fill()});c.fillStyle=css('--tx-3');c.textAlign='left';c.textBaseline='top';c.fillText('נפח',padL+iw+8,2)}
+function volChart(cv,d){const {c,w,h}=prep(cv);const padL=8,padR=62;const iw=w-padL-padR;const bw=iw/d.length;const mx=Math.max(...d.map(x=>x.v));const up=(window.CCOL&&window.CCOL.up)||css('--up'),dn=(window.CCOL&&window.CCOL.dn)||css('--dn');d.forEach((k,i)=>{const bh=k.v/mx*(h-14);c.fillStyle=hexA(k.c>=k.o?up:dn,.55);c.beginPath();c.roundRect(padL+bw*i+bw*.18,h-bh,bw*.64,bh,2);c.fill()});c.fillStyle=css('--tx-3');c.textAlign='left';c.textBaseline='top';c.fillText('נפח',padL+iw+8,2)}
 function donut(cv,parts){const dpr=window.devicePixelRatio||1;const S=130;cv.width=S*dpr;cv.height=S*dpr;const c=cv.getContext('2d');c.setTransform(dpr,0,0,dpr,0,0);const tot=parts.reduce((a,b)=>a+b.v,0);let a=-Math.PI/2;parts.forEach(p=>{const e=a+p.v/tot*Math.PI*2;c.beginPath();c.arc(S/2,S/2,56,a+.03,e-.03);c.strokeStyle=p.c;c.lineWidth=14;c.lineCap='round';c.stroke();a=e});c.fillStyle=css('--tx');c.font='700 20px Outfit, sans-serif';c.textAlign='center';c.textBaseline='middle';c.fillText('7',S/2,S/2-6);c.fillStyle=css('--tx-3');c.font='11px Heebo, sans-serif';c.fillText('נכסים',S/2,S/2+13)}
 function fanChart(cv){const {c,w,h}=prep(cv);const padL=8,padR=44,padT=10,padB=20;const iw=w-padL-padR,ih=h-padT-padB;const hist=gen(30,138,.04,.0025,77);const n=30,f=18;const last=hist[n-1];const base=[],upp=[],low=[];for(let i=0;i<=f;i++){const t=i/f;base.push(last*(1+.19*t));upp.push(last*(1+.44*t+.02*Math.sqrt(t)));low.push(last*(1-.11*t-.03*Math.sqrt(t)))}const lo=Math.min(...hist,...low)*.97,hi=Math.max(...upp)*1.03;const tot=n+f;const X=i=>padL+i/(tot-1)*iw,Y=v=>padT+(1-(v-lo)/(hi-lo))*ih;c.strokeStyle=css('--grid');c.fillStyle=css('--tx-3');c.textAlign='left';c.textBaseline='middle';for(let k=0;k<=3;k++){const y=padT+ih*k/3;c.beginPath();c.moveTo(padL,y);c.lineTo(padL+iw,y);c.stroke();c.fillText('$'+fmt0(hi-(hi-lo)*k/3),padL+iw+6,y)}
   c.beginPath();upp.forEach((v,i)=>i?c.lineTo(X(n-1+i),Y(v)):c.moveTo(X(n-1),Y(v)));for(let i=f;i>=0;i--)c.lineTo(X(n-1+i),Y(low[i]));c.closePath();c.fillStyle=hexA(css('--ac'),.14);c.fill();
@@ -2776,15 +3028,204 @@ $('#dvnRows').innerHTML=DVN.map(d=>`<div class="dvn"><h5>${d[0]}</h5><p>${d[1]}<
 // market chart
 reg(()=>{const tf=$('[data-chart="mkt"] .on').textContent;const n={'1D':24,'1W':7,'1M':30,'3M':90,'1Y':250,'ALL':400}[tf]||30;const a=gen(n,2700,.02,.0012,101),b=gen(n,6300,.016,.0009,102).map((v,i)=>v/6300*2700);const ma=a.map((_,i)=>a.slice(Math.max(0,i-6),i+1).reduce((x,y)=>x+y,0)/Math.min(i+1,7));lineChart($('#mktChart'),[{name:'ת"א-125',data:a,color:css('--ac'),fill:true},{name:'S&P 500 (מנורמל)',data:b,color:css('--info')},{name:'MA',data:ma,color:css('--tx-3'),width:1.2,dash:[4,4],noDot:true}],{xl:['5 אוג\'','12 אוג\'','19 אוג\'','26 אוג\'','2 ספט\''],dec:0})});
 
-// stock page
-const OH=genOHLC(45,54800,.03,.0015,11);(()=>{const k=58420/OH[OH.length-1].c;OH.forEach(x=>{x.o*=k;x.h*=k;x.l*=k;x.c*=k})})();
+// ================= עמוד הגרף =================
+window.CCOL=null;
+const OH=genOHLC(64,138,.028,.0016,11);(()=>{const k=151.37/OH[OH.length-1].c;OH.forEach(x=>{x.o*=k;x.h*=k;x.l*=k;x.c*=k})})();
 let ctype='candles';
 reg(()=>{candleChart($('#stkChart'),OH,ctype);volChart($('#volChart'),OH)});
 reg(()=>fanChart($('#fcChart')));
-const book=[[58470,420],[58460,1180],[58450,640],[58440,2310],[58430,910]].map(([p,q])=>`<div class="bl" style="--c:var(--dn);--w:${q/25}%"><span class="num dn-c">${fmt0(p)}</span><span class="num">${fmt0(q)}</span></div>`).join('')+`<div style="text-align:center;padding:5px;font-weight:700;color:var(--up)" class="num">58,420 ▲</div>`+[[58410,1540],[58400,2890],[58390,730],[58380,1120],[58370,460]].map(([p,q])=>`<div class="bl" style="--c:var(--up);--w:${q/30}%"><span class="num up-c">${fmt0(p)}</span><span class="num">${fmt0(q)}</span></div>`).join('');$('#book').innerHTML=book;
-$('#similar').innerHTML=['MSFT','ESLT','AAPL'].map(k=>{const s=bySym(k);return `<div class="mv" data-sym="${s.s}"><div class="sym">${icon(s,30)}<div><b>${s.n}</b><span class="mono">${s.s} · ${s.sec}</span></div></div><div class="p"><b class="num">${px(s,s.px)}</b>${chg(s.d)}</div></div>`}).join('');
-$('#stkArts').innerHTML=ARTS.slice(0,3).map((a,i)=>`<div class="art"><div class="th"><canvas id="sa${i}"></canvas></div><div><div class="meta"><span class="chip chip-mute" style="font-size:10.5px;padding:1px 7px">${a.tag}</span><span>${a.d}</span></div><h4>${a.h}</h4><div class="meta"><span>${a.a}</span><span>·</span><span>${a.t} קריאה</span></div></div></div>`).join('');
-ARTS.slice(0,3).forEach((a,i)=>reg(()=>artThumb($('#sa'+i),a.seed,a.c)));
+
+/* --- 6 · ציר שלבי המסחר --- */
+$('#sess').innerHTML=[['טרום-מסחר','16:00–16:30','done'],['פתיחה','16:30','done'],['מסחר רציף','16:30–23:00','on'],['נעילה','23:00',''],['אחרי-מסחר','23:00–01:00',''],['מסחר סגור','01:00–16:00','']]
+ .map(s=>`<div class="sp ${s[2]}"><span>${s[0]}</span><b class="num">${s[1]}</b></div>`).join('');
+
+/* --- הגרף: שורת OHLC + בורר צבעים --- */
+(function(){
+ const l=OH[OH.length-1];
+ $('#ohlc').innerHTML=`<span>Oracle Corp · 1h · NYSE</span><span class="o">O<b class="num">${fmt(l.o,2)}</b> H<b class="num">${fmt(l.h,2)}</b> L<b class="num">${fmt(l.l,2)}</b> C<b class="num">${fmt(l.c,2)}</b> <b class="up-c num">+1.16 (+0.77%)</b></span><span>נפח <b class="num">14.18M</b></span>`;
+ $('#ccol').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  $('#ccol').querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  window.CCOL = b.dataset.col==='brand' ? {up:css('--lav'),dn:css('--info')} : null;
+  candleChart($('#stkChart'),OH,ctype);volChart($('#volChart'),OH);});
+ $('#ctype').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  $('#ctype').querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  ctype={'נרות':'candles','קו':'line','שטח':'area'}[b.textContent]||'candles';
+  candleChart($('#stkChart'),OH,ctype);});
+})();
+
+/* --- 1 · רשימת מעקב --- */
+const GWL=[['AAPL','Apple Inc.',195.61,3.39,1.76,'#8E8E93'],['MSFT','Microsoft Corp.',408.37,3.62,0.89,'#0EA5E9'],['NVDA','NVIDIA Corp.',200.86,-3.89,-1.89,'#5FB233'],['TSLA','Tesla, Inc.',345.87,-4.44,-1.26,'#DC2626'],['ORCL','Oracle Corp.',151.37,2.50,1.68,'#C74634'],['AMZN','Amazon.com Inc.',260.28,-0.79,-0.30,'#B45309'],['META','Meta Platforms, Inc.',576.14,5.11,0.87,'#1877F2'],['GOOGL','Alphabet Inc.',167.98,1.12,0.67,'#EA4335'],['GOLD','Gold (USD)',2421.32,-37.92,-1.55,'#CBA92B'],['BTC','Bitcoin',67210.15,1534,2.34,'#F7931A'],['SPX','S&P 500',5487.84,-12.33,-0.22,'#E24C7A']];
+$('#gwlRows').innerHTML=GWL.map(r=>`<tr class="${r[0]==='ORCL'?'sel':''}" data-sym="${r[0]}"><td><div class="sy"><i style="background:${r[5]}">${r[0].slice(0,2)}</i><b>${r[0]}</b></div></td><td class="nm">${r[1]}</td><td class="r num">${fmt(r[2],2)}</td><td class="r num ${r[3]>=0?'up-c':'dn-c'}">${r[3]>=0?'+':''}${fmt(Math.abs(r[3])>=1000?r[3]:r[3],2).replace('.00','')}</td><td class="r num ${r[4]>=0?'up-c':'dn-c'}" style="font-weight:600">${r[4]>=0?'+':''}${r[4].toFixed(2)}%</td></tr>`).join('');
+
+/* --- 2 · KPI --- */
+const K6=[['פתיחה','147.00','M12 6v6l4 2'],['גבוה יומי','151.81','M4 19V5M4 19h16M8 15l4-5 3 3 5-6'],['נמוך יומי','146.83','M4 5v14M4 19h16M8 9l4 5 3-3 5 6'],['מחיר קודם','148.87','M5 3v18l4-3 3 3 3-3 4 3V3z'],['טווח יום','144.50 – 151.72','M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4'],['נפח','18.1M','M5 20V9M12 20V4M19 20v-7']];
+$('#k6').innerHTML=K6.map(k=>`<div><span class="ic"><svg viewBox="0 0 24 24"><path d="${k[2]}"/></svg></span><div><span>${k[0]}</span><b class="num">${k[1]}</b></div></div>`).join('');
+
+/* --- 5 · טווחי מחיר (יומי + 52 שבועות) --- */
+function rangeBox(el,ttl,lo,hi,cur,sub){const pct=(cur-lo)/(hi-lo)*100;
+ el.innerHTML=`<div class="rt"><span>${ttl}</span><b class="num">${fmt(cur,2)}</b></div>
+  <div class="rtr"><i style="right:${pct.toFixed(1)}%"></i></div>
+  <div class="rlb"><span><b class="num">${fmt(lo,2)}</b>${sub[0]}</span><span class="rmid"><b class="num">${pct.toFixed(0)}%</b>מיקום בטווח</span><span><b class="num">${fmt(hi,2)}</b>${sub[1]}</span></div>`}
+rangeBox($('#rgDay'),'טווח יומי',144.50,151.72,151.37,['שפל היום','גבוה היום']);
+rangeBox($('#rg52'),'טווח 52 שבועות',114.50,198.31,151.37,['שפל 52 שבועות','גבוה 52 שבועות']);
+
+/* --- ביצועים --- */
+const PF=[['יום',3.52],['שבוע',24.10],['חודש',-22.04],['3 חודשים',0.66],['6 חודשים',-23.93],['מתחילת השנה',-36.76]];
+$('#perf').innerHTML=PF.map(x=>`<div><span>${x[0]}</span><b class="num ${x[1]>=0?'up-c':'dn-c'}">${x[1]>=0?'+':''}${x[1].toFixed(2)}%</b></div>`).join('');
+
+/* --- נתוני מפתח --- */
+const KD=[['שווי שוק','428.8B'],['P/E','23.9'],['EPS','24.81'],['דיבידנד','1.38%'],['שפל 52ש','114.50'],['גבוה 52ש','198.31'],['מספר מניות','2.9B'],['נפח סחר','18.1M'],['בית מסחר','NYSE']];
+$('#keyd').innerHTML=KD.map(k=>`<div class="kd"><span>${k[0]}</span><b class="num">${k[1]}</b></div>`).join('');
+
+/* --- 9 · מניות דומות --- */
+$('#similar').innerHTML=[['מיקרוסופט','MSFT','תוכנה','$ 512.40',0.41,'#0EA5E9'],['אלביט מערכות','ESLT','ביטחוני','₪ 141,200',0.86,'#8B5CF6'],['אפל','AAPL','טכנולוגיה','$ 238.90',0.72,'#8E8E93']]
+ .map(s=>`<div class="mv" data-sym="${s[1]}"><div class="sym"><div class="ic" style="background:${s[5]};width:30px;height:30px;font-size:9px">${s[1]}</div><div><b>${s[0]}</b><span class="mono">${s[1]} · ${s[2]}</span></div></div><div class="p"><b class="num">${s[3]}</b>${chg(s[4])}</div></div>`).join('');
+
+/* --- 7.1-7.3 · פאנלים --- */
+const PANS={
+ panWhat:{k:'#22E3D0',e:'STOCK SCAN',t:'מה קורה במניה?',body:`
+  <div class="pan-g">
+   <div class="pan-c"><div class="t"><i style="background:rgba(34,227,208,.16);color:#22E3D0">◎</i>מצב מעורב<span class="w">ציון 4+</span></div><div class="big">4+</div><p>שינויים אסטרטגיים בניכוי אירית תשואה. שני אותות חיוביים מול אחד שלילי.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--up-soft);color:var(--up)">↑</i>תרחיש שורי<span class="w">BULL</span></div><p>הביקוש לענן ול-AI ממשיך להאיץ; צבר ההזמנות גדל והמרווח הגולמי נשמר מעל 73%. פריצה מעל $155 פותחת יעד ל-$168.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--dn-soft);color:var(--dn)">↓</i>תרחיש דובי<span class="w">BEAR</span></div><p>מכפיל גבוה מול צמיחה מואטת בליבה; היחלשות רוחב השוק בתוכנה וירידה של 4% בעוצמת המסחר מרמזות על מיצוי.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--warn-soft);color:var(--warn)">!</i>סיכונים לעקוב<span class="w">RISK</span></div><ul><li>דוח רבעוני ב-10.12</li><li>תחרות מ-AWS ו-Azure</li><li>חוב נטו מול תזרים חופשי</li></ul></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--ac-soft);color:var(--ac-2)">◇</i>דיווחים אחרונים<span class="w">FILINGS</span></div><ul><li>22.10 · דיווח בעל עניין (Form 4)</li><li>08.10 · דיווח ראשוני (Form 3)</li><li>01.10 · שינוי בהנהלה (8-K)</li></ul></div>
+   <div class="pan-c"><div class="t"><i style="background:rgba(34,227,208,.16);color:#22E3D0">⟳</i>מה מניע את התנועה<span class="w">DRIVERS</span></div><ul><li>מחזור גבוה מהממוצע ×1.4</li><li>סנטימנט קהילתי חיובי 61%</li><li>שדרוג יעד מחיר ע״י RBC</li></ul></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--info-soft);color:var(--info)">◷</i>טווח קצר<span class="w">30 יום</span></div><p>אופק הניתוח 30 ימים. נקודת ההכרעה: סגירה שבועית מעל $155 בליווי מחזור מעל הממוצע.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--ac-soft);color:var(--ac-2)">✦</i>סיכום AI<span class="w">SUMMARY</span></div><p>הנתונים מצביעים על מגמה חיובית זהירה: מומנטום חיובי לצד מחזור שאינו תומך במלואו. מומלץ לעקוב אחרי הדוח הקרוב.</p></div>
+  </div>
+  <div class="pan-ft">הסריקה מבוססת על נתונים ציבוריים ודיווחים מ-72 השעות האחרונות · מידע ולא ייעוץ השקעות.</div>`},
+ panEvent:{k:'#FFC53D',e:'MATERIAL EVENT · 22.10.2026',t:'אירוע השבוע — ORCL',body:`
+  <div class="pan-g" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+   <div class="pan-c" style="grid-column:span 2"><div class="t"><i style="background:rgba(255,197,61,.18);color:#FFC53D">◉</i>מהות האירוע<span class="w">22.10.2026</span></div><p>אסיפה כללית מיום 22.10.26 — החלפת תקנון החברה, מינוי דירקטורים, פטור ושיפוי, ותנאי כהונת מנכ״ל ויו״ר דירקטוריון.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--ac-soft);color:var(--ac-2)">?</i>מה בודקים כזה<span class="w">CHECK</span></div><p>שינוי בהנהלה, רכישה או מכירה, חוזה גדול, פיטורים, restructuring או אירוע משפטי.</p></div>
+   <div class="pan-c" style="grid-column:span 2"><div class="t"><i style="background:var(--info-soft);color:var(--info)">≡</i>פרטי האירוע מתוך הדיווח</div><p>אושרו החלפת התקנון, הענקת פטור ושיפוי לדירקטורים שאינם מקרב בעלי השליטה, ואושרו תנאי כהונתו של המנכ״ל, כולל פטור ושיפוי.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--warn-soft);color:var(--warn)">◆</i>משמעות למניה</div><p>שינויים אלו עשויים להגדיל את הגמישות הניהולית ולחזק את מבנה הממשל, אך גם להעלות שאלות בקרב המשקיעים לגבי אופן השיפוי.</p></div>
+   <div class="pan-c" style="grid-column:span 3"><div class="t"><i style="background:var(--up-soft);color:var(--up)">↗</i>תגובה צפויה</div><p>יתכן שתנובה מוגבלת מהמשקיעים; חלק עשויים לראות בצעדים אלו חיזוק להתייעלות ניהולית, בעוד אחרים עשויים להביע חשש מפני הקלות בבעלי השליטה.</p></div>
+  </div>
+  <div class="pan-ft">לדיווח המקורי ↗ · מידע ולא ייעוץ השקעות.</div>`},
+ panMove:{k:'#FF2D6F',e:'UNUSUAL MOVE',t:'תנועה חריגה במניה',body:`
+  <div class="pan-g">
+   <div class="pan-c"><div class="t"><i style="background:rgba(255,45,111,.16);color:#FF2D6F">⚡</i>עוצמת התנועה<span class="w">LIVE</span></div><div class="big">1.68%</div><p>שינוי יומי מול סטיית תקן יומית ממוצעת של 1.02% — פי 1.6 מהרגיל.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--ac-soft);color:var(--ac-2)">▤</i>מחזור<span class="w">VOLUME</span></div><div class="big">×1.42</div><p>18.1M מול ממוצע 30 יום של 12.7M. המחזור תומך בתנועה.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--warn-soft);color:var(--warn)">◷</i>מתי זה קרה<span class="w">TIMING</span></div><p>עיקר התנועה התרחשה ב-45 הדקות הראשונות אחרי הפתיחה, עם קפיצה נוספת סביב 19:20.</p></div>
+   <div class="pan-c"><div class="t"><i style="background:var(--up-soft);color:var(--up)">✦</i>הסבר AI<span class="w">WHY</span></div><p>שדרוג יעד מחיר ע״י RBC ל-$270 יחד עם ציפיות לדוח הרבעוני. אין דיווח מיידי שמסביר את מלוא התנועה.</p></div>
+  </div>
+  <div class="pan-ft">הסבר אוטומטי על בסיס חדשות, דיווחים ונתוני מסחר · מידע ולא ייעוץ השקעות.</div>`}
+};
+$$('.gact .gb').forEach(btn=>btn.addEventListener('click',()=>{
+ const id=btn.dataset.pan, el=$('#'+id), was=!el.hidden;
+ $$('.pan').forEach(p=>p.hidden=true); $$('.gact .gb').forEach(b=>b.classList.remove('on'));
+ if(!was){const d=PANS[id];
+  el.style.setProperty('--k',d.k);
+  el.innerHTML=`<div class="pan-hd"><div><div class="e">${d.e}</div><h3>${d.t}</h3></div><button class="pan-x" aria-label="סגור">✕</button></div>${d.body}`;
+  el.hidden=false; btn.classList.add('on');
+  el.querySelector('.pan-x').addEventListener('click',()=>{el.hidden=true;btn.classList.remove('on')});
+  el.scrollIntoView({block:'nearest',behavior:'smooth'});}
+}));
+
+/* --- 4 · לשוניות המידע --- */
+const GT=[
+ ['סקירה',()=>`<div class="ovg">
+   <div><span>שווי שוק</span><b class="num">428.8B USD</b></div><div><span>מגזר</span><b>Software – Infrastructure</b></div><div><span>תעשייה</span><b>טכנולוגיה</b></div><div><span>מטבע</span><b>USD</b></div>
+   <div><span>P/E</span><b class="num">23.9</b></div><div><span>EPS</span><b class="num">24.81</b></div><div><span>דיבידנד</span><b class="num">1.38%</b></div><div><span>נפח מסחר</span><b class="num">18.1M</b></div>
+   <div><span>טווח יום</span><b class="num">144.50 – 151.72</b></div><div><span>טווח 52 שבועות</span><b class="num">114.50 – 198.31</b></div><div><span>מספר מניות</span><b class="num">2.9B</b></div><div><span>בית מסחר</span><b>NYSE</b></div>
+  </div>
+  <p style="margin:13px 0 0;font-size:12px;line-height:1.7;color:var(--tx-2)">Oracle Corporation מפתחת ומשווקת תשתיות ענן, בסיסי נתונים ויישומים ארגוניים. מנוע הצמיחה המרכזי הוא OCI — תשתית הענן שמשרתת עומסי AI — לצד מעבר לקוחות ממודל רישיונות למנויים. הסיכונים העיקריים: תחרות מ-AWS, Azure ו-Google Cloud, ורמת חוב גבוהה יחסית מול התזרים החופשי.</p>
+  <div class="ovl"><a>יחסי משקיעים ↗</a><a>דוחות כספיים ↗</a><a>אתר החברה ↗</a></div>`],
+ ['שור מול דוב',()=>`<div class="bb2">
+   <div class="bb-c up"><div class="t">▲ התרחיש השורי</div><p>מומנטום עליון: המניה עלתה 24.1% בשבוע האחרון עם מחזור גבוה מהממוצע. פריצה מעל $155 פותחת יעד טכני ל-$168. צבר ההזמנות בענן גדל ב-41% והמרווח הגולמי נשמר מעל 73%.</p></div>
+   <div class="bb-c dn"><div class="t">▼ התרחיש הדובי</div><p>המניה נסחרת במכפיל 23.9 מול צמיחה מואטת בליבה. ירידה של 22% בחודש האחרון וסטיית תקן גבוהה מרמזות על תנודתיות. רמת החוב מול התזרים החופשי מחייבת מעקב.</p></div>
+  </div>
+  <div class="bb-dec" style="margin-top:11px"><span>נקודת ההכרעה</span><b>סגירה שבועית מעל $155 בליווי מחזור מעל 15M — אחרת תרחיש הדשדוש נשאר בתוקף</b></div>
+  <div class="ovl"><a style="color:var(--up)">אנליסטים: 11 חיובי · 6 ניטרלי · 1 שלילי</a><a style="color:var(--tx-2)">יעד ממוצע $192 (+26.8%)</a></div>`],
+ ['מה המומחים חושבים',()=>`<div class="cons">
+   <div><div class="big num">61%</div><span style="font-size:10.5px;color:var(--tx-3)">אופטימיים</span></div>
+   <div class="bars">
+     <div class="r"><span>אופטימיים</span><div class="b"><i style="width:61%;background:var(--up)"></i></div><b class="num">61%</b></div>
+     <div class="r"><span>ניטרליים</span><div class="b"><i style="width:34%;background:var(--warn)"></i></div><b class="num">34%</b></div>
+     <div class="r"><span>שליליים</span><div class="b"><i style="width:5%;background:var(--dn)"></i></div><b class="num">5%</b></div>
+   </div>
+  </div>
+  <div class="aibox"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z"/></svg></span><p>מתוך <b>18 אנליסטים</b> שסיקרו את המניה — יעד מחיר ממוצע <b>$192</b>, אפסייד של <b class="up-c">+26.8%</b>. שלושה בתי השקעות העלו יעד בשבועיים האחרונים.</p></div>
+  <table class="ftab"><thead><tr><th>תאריך</th><th>בית השקעות</th><th class="r">דירוג</th><th class="r">יעד מחיר</th></tr></thead><tbody>
+   ${[['2026-10-15','Morgan Stanley','Equal-Weight','$238'],['2026-10-13','RBC Capital','Outperform','$270'],['2026-10-10','Truist Securities','Hold','$240'],['2026-08-31','Susquehanna','Neutral','$235'],['2026-07-24','Citigroup','Buy','$245'],['2026-07-24','Susquehanna','Neutral','$225']].map(r=>`<tr><td class="num" dir="ltr">${r[0]}</td><td class="k">${r[1]}</td><td class="r">${r[2]}</td><td class="r num">${r[3]}</td></tr>`).join('')}
+  </tbody></table>`],
+ ['ביצועים',()=>{const M=[3.54,-21.68,0.91,4.71,28.03,5.67,10.47,4.57,5.96,11.24,-2.4,1.8];
+   const col=v=>v>=0?`rgba(22,163,74,${Math.min(.3+Math.abs(v)/30,.95)})`:`rgba(220,38,38,${Math.min(.3+Math.abs(v)/30,.95)})`;
+   return `<div class="ovg" style="grid-template-columns:repeat(4,minmax(0,1fr))">
+    <div><span>תשואה 52 שבועות</span><b class="num dn-c">-14.91%</b></div><div><span>ירידה מהשיא</span><b class="num dn-c">-25.69%</b></div><div><span>תנודתיות שנתית</span><b class="num">37.50%</b></div><div><span>תשואה מצטברת</span><b class="num up-c">+24.8%</b></div>
+   </div>
+   <div style="margin-top:14px"><div style="font-size:11.5px;color:var(--tx-2);margin-bottom:7px">מפת תשואות חודשית · 2026</div>
+    <div class="hmap">${M.map(v=>`<i style="background:${col(v)}">${v>0?'+':''}${v.toFixed(1)}</i>`).join('')}</div>
+    <div class="hmlb">${['ינו','פבר','מרץ','אפר','מאי','יוני','יולי','אוג','ספט','אוק','נוב','דצמ'].map(m=>`<span>${m}</span>`).join('')}</div>
+   </div>
+   <div class="aibox" style="margin:14px 0 0"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 5-6"/></svg></span><p>המניה פיגרה אחרי <b>S&amp;P 500</b> ב-12 החודשים האחרונים, אך הציגה תשואה מצטברת חיובית מאז תחילת 2026. הירידה המרבית מהשיא עמדה על <b class="dn-c">-25.69%</b>.</p></div>`}],
+ ['אסטרטגיות',()=>`<div class="strat">
+   ${[['מומנטום','פריצה מעל ממוצע נע 50 עם מחזור גבוה מהממוצע.','אות פעיל','up','מאז 14.10 · +8.4%'],
+      ['ערך','מכפיל רווח מול ממוצע הסקטור ותזרים חופשי חיובי.','ניטרלי','warn','מכפיל 23.9 מול 21.4 בסקטור'],
+      ['דיבידנד','תשואת דיבידנד ויציבות החלוקה לאורך זמן.','אות חלש','dn','1.38% · שיעור חלוקה 59.8%'],
+      ['מעקב ממוצעים','מיקום המחיר מול MA20, MA50 ו-MA200.','אות פעיל','up','מעל כל שלושת הממוצעים'],
+      ['סטיית תקן','תנודתיות מול הממוצע ההיסטורי של הנייר.','שים לב','warn','37.5% · גבוה מהרגיל'],
+      ['סנטימנט קהילה','יחס הדיון החיובי מול השלילי ב-48 השעות.','אות פעיל','up','61% חיובי · 176 אזכורים']]
+     .map(s=>`<div class="sc"><div class="h"><b>${s[0]}</b><span class="chip chip-${s[3]==='up'?'up':s[3]==='dn'?'dn':'warn'}">${s[2]}</span></div><p>${s[1]}</p><div class="f"><span>${s[4]}</span><span>←</span></div></div>`).join('')}
+  </div>`],
+ ['דוחות כספיים',()=>`<div class="aibox"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 19V5M4 19h16M8 15l4-5 3 3 5-6"/></svg></span><p><b>בשורה התחתונה:</b> בשנת 2025 הכנסות החברה עלו ב-<b class="up-c">7.6%</b> ל-67.54 מיליארד, והרווח הנקי עלה ב-<b class="up-c">75.9%</b> ל-10.59 מיליארד. העסק צומח והרווחיות משתפרת — הכנסות ו/או רווחים בצמיחה.</p></div>
+  <div style="display:flex;gap:8px;margin-bottom:12px"><div class="seg sm"><button class="on">שנתי</button><button>רבעוני</button></div><div class="seg sm"><button class="on">עיקרי הדוחות</button><button>רווח והפסד</button><button>מאזן</button><button>תזרים מזומנים</button></div></div>
+  <table class="ftab"><thead><tr><th>פריט</th><th class="r">2025</th><th class="r">שינוי</th><th class="r">2024</th><th class="r">2023</th><th class="r">2022</th></tr></thead><tbody>
+   ${[['הכנסות','67.54 מלד׳',7.6,'62.75 מלד׳','61.86 מלד׳','60.53 מלד׳'],
+      ['רווח תפעולי','12.49 מלד׳',24,'10.07 מלד׳','9.38 מלד׳','8.17 מלד׳'],
+      ['רווח נקי','10.59 מלד׳',75.9,'6.02 מלד׳','7.5 מלד׳','1.64 מלד׳'],
+      ['רווח מדולל למניה','11.17',73.7,'6.43','8.14','1.8'],
+      ['הון עצמי','32.65 מלד׳',19.6,'27.31 מלד׳','22.53 מלד׳','23.84 מלד׳'],
+      ['תזרים מפעילות שוטפת','13.19 מלד׳',-1.9,'13.45 מלד׳','13.93 מלד׳','10.44 מלד׳']]
+     .map(r=>`<tr><td class="k">${r[0]}</td><td class="r num" style="font-weight:700">${r[1]}</td><td class="r num ${r[2]>=0?'up-c':'dn-c'}">${r[2]>=0?'↑':'↓'} ${Math.abs(r[2])}%</td><td class="r num">${r[3]}</td><td class="r num">${r[4]}</td><td class="r num">${r[5]}</td></tr>`).join('')}
+  </tbody></table>`],
+ ['דיבידנדים',()=>`<div class="ovg" style="grid-template-columns:repeat(6,minmax(0,1fr))">
+   <div><span>תאריך X אחרון</span><b>טרם פורסם</b></div><div><span>תאריך תשלום</span><b class="num">≈ 24.08.2026</b></div><div><span>חלוקה עתידית</span><b>טרם פורסם</b></div><div><span>חלוקה אחרונה</span><b class="num">$1.690</b></div><div><span>סך 12 חודשים</span><b class="num">$6.740</b></div><div><span>תשואת דיבידנד</span><b class="num">2.79%</b></div>
+  </div>
+  <div style="font-size:11.5px;color:var(--tx-2);margin:14px 0 8px">היסטוריית חלוקות · שיעור חלוקה מהרווח <b class="num">59.82%</b></div>
+  <table class="ftab"><thead><tr><th>תאריך X</th><th>תאריך תשלום</th><th class="r">סכום</th></tr></thead><tbody>
+   ${[['10.08.2026','24.08.2026','$1.690'],['08.05.2026','22.05.2026','$1.690'],['10.02.2026','24.02.2026','$1.680'],['10.11.2025','24.11.2025','$1.680'],['08.08.2025','22.08.2025','$1.680'],['09.05.2025','23.05.2025','$1.680'],['10.02.2025','24.02.2025','$1.670']]
+     .map(r=>`<tr><td class="num" dir="ltr">${r[0]}</td><td class="num" dir="ltr">${r[1]}</td><td class="r num" style="font-weight:700">${r[2]}</td></tr>`).join('')}
+  </tbody></table>`],
+ ['דיווחים',()=>`<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px"><div class="seg sm"><button class="on">כל הדיווחים</button><button>מהותי</button><button>בעלי עניין</button><button>כספי</button><button>הנהלה</button></div><span style="margin-right:auto;font-size:10px;color:var(--tx-3)">עודכן 19:29</span></div>
+  ${[['2026-10-08','דיווח בעל עניין ראשוני (Form 3)','מעקב','3'],
+     ['2026-10-01','דיווח בעל עניין (Form 4)','מעקב','4'],
+     ['2026-10-01','דיווח בעל עניין (Form 4)','מעקב','4'],
+     ['2026-10-01','שינוי בהנהלה או בדירקטוריון (8-K)','משמעותי','8-K']]
+    .map((f,i)=>`<div class="flr" data-fl="${i}">
+     <div class="fh"><span class="dt num">${f[0]}</span><span class="chip chip-mute num">${f[3]}</span><b>${f[1]}</b><span class="cv"><span class="chip ${f[2]==='משמעותי'?'chip-ac':'chip-mute'}">${f[2]}</span><span class="chev">⌄</span></span></div>
+     <div class="fb">
+       <div style="font-size:11.5px;font-weight:700;color:var(--tx);margin:11px 0 4px">דיווח כללי</div>
+       <div style="font-size:10.5px;color:var(--tx-3);margin-bottom:10px">מה בודקים כאן: עדכון שוטף — לא בהכרח מסמנת לבדה תנועה חדה.</div>
+       <div style="display:flex;gap:10px;margin-bottom:11px"><span class="chip chip-mute">לצפייה במקור (SEC EDGAR) ↗</span><span class="chip chip-ac">✦ סיכום AI</span></div>
+       <div class="aibox" style="border-color:var(--line);background:var(--bg)"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z"/></svg></span><div>
+         <p style="margin-bottom:7px"><b>מה פורסם:</b> הצבעה על אישור מינוי פירמת רואי חשבון PricewaterhouseCoopers ל-2026 עם דמי ביקורת כוללים של $18,070 אלף ב-2025 ו-$17,923 אלף ב-2024.</p>
+         <p style="margin-bottom:7px"><b>משמעות למניה:</b> מינוי מחדש צפוי לתמוך ביציבות הדיווחים ובביטחון המשקיעים בבקרה הפיננסית של החברה לאורך זמן.</p>
+         <p><b>תגובה צפויה:</b> לא צפויים שינויים משמעותיים במחיר המניה כתוצאה מהדיווח, כיוון שמדובר בתהליך רגיל ומתוכנן של ניהול רואי חשבון.</p>
+       </div></div>
+     </div></div>`).join('')}`],
+ ['חדשות',()=>`<div style="font-size:10.5px;color:var(--tx-3);margin-bottom:11px">חדשות ואנליסטים נבדקים אחרונים · לפי שמסקיים מסוקנת — כדאי לעבור ללשונית <b>דיווחים</b> ולבדוק אם יש דיווח רשמי באותו יום.</div>
+  <div class="nwg">${[['YAHOO','24.10.2026','שלוש מניות שרשרת האספקה החשופות לאיום הסיני בייצור האמריקאי','הסיפור הגאופוליטי של סין לדיכוי חשמליים זולים ממשיך להכות את תעשיית הרכב של ארה״ב ואירופה ללחוץ.','#C74634'],
+   ['SEEKINGALPHA','24.10.2026','טסלה ו-SpaceX: 5 סיבות מדוע המיזוג הוא רעיון גרוע','ניתוח מעמיק של ההיגיון העסקי מאחורי מיזוג אפשרי בין שתי החברות של אילון מאסק.','#0EA5E9'],
+   ['YAHOO','24.10.2026','מאסק: המיזוג של טסלה הוא ״אתגר לא פשוט״','אלון מאסק דיבר באירוע של SpaceX באוקטובר על המורכבות של המהלך.','#8B5CF6'],
+   ['YAHOO','24.10.2026','כבר יודעים שטסלה כושלת במדד מרכזי לפני פרסום הדוחות','טסלה הופיעה 13 פעמים ברשימת המדדים שלא עמדו בציפיות האנליסטים.','#16A34A'],
+   ['YAHOO','24.10.2026','תוכנית פעולה לשוק המניות: מדריך שבוע טרום בחירות','משקיעים מתמודדים עם שבוע כבד שכולל את אלפבית, אמזון, פייסבוק של הפד ומיקום מוקדם לבחירות.','#FFC53D'],
+   ['YAHOO','24.10.2026','דוחות Q3 של טסלה חושפים לחץ חזק יותר על השוליים','טסלה דיווחה על רווח של $0.24 למניה, ירידה מול הצפי של האנליסטים.','#FF2D6F']]
+   .map(n=>`<div class="nc"><div class="th" style="background:linear-gradient(135deg,${n[4]},#0A0912)">${n[0].slice(0,1)}</div><div><div class="m">${n[0]} · ${n[1]}</div><h5>${n[2]}</h5><p>${n[3]}</p></div></div>`).join('')}</div>`],
+ ['עסקאות אחרונות',()=>`<div style="display:flex;gap:8px;align-items:center;margin-bottom:11px"><span class="chip chip-dn live">LIVE</span><span style="font-size:10.5px;color:var(--tx-3)">העסקאות האחרונות שבוצעו במניה · מתעדכן בזמן אמת</span></div>
+  <table class="trd"><thead><tr><th>שעה</th><th class="r">מחיר</th><th class="r">כמות</th><th class="r">שווי</th><th class="r">כיוון</th></tr></thead><tbody>
+   ${[['15:30:37',151.37,1240,'B'],['15:30:36',151.35,480,'B'],['15:30:34',151.32,2100,'S'],['15:30:31',151.36,760,'B'],['15:30:28',151.30,3420,'S'],['15:30:25',151.33,920,'B'],['15:30:22',151.28,1580,'S'],['15:30:19',151.31,640,'B'],['15:30:15',151.26,2840,'S'],['15:30:11',151.29,1120,'B']]
+     .map(t=>`<tr><td class="num" dir="ltr">${t[0]}</td><td class="r num" style="font-weight:700">${fmt(t[1],2)}</td><td class="r num">${fmt0(t[2])}</td><td class="r num">$${fmt0(t[1]*t[2])}</td><td class="r ${t[3]==='B'?'b':'s'}">${t[3]==='B'?'קנייה':'מכירה'}</td></tr>`).join('')}
+  </tbody></table>`]
+];
+$('#gtabs').innerHTML=GT.map((t,i)=>`<button class="${i===0?'on':''}" data-gt="${i}">${t[0]}</button>`).join('');
+function showTab(i){$('#gtp').innerHTML=GT[i][1]();
+ $$('#gtp .flr .fh').forEach(fh=>fh.addEventListener('click',()=>fh.parentElement.classList.toggle('open')));}
+showTab(0);
+$('#gtabs').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ $('#gtabs').querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');showTab(+b.dataset.gt)});
 
 // clients
 let curClient=0;
@@ -2818,10 +3259,10 @@ $$('.nav').forEach(b=>b.onclick=()=>{if(b.dataset.soon){toast('בקרוב - בפ
 document.addEventListener('click',e=>{const buy=e.target.closest('[data-buy]');if(buy){e.stopPropagation();toast(`הוראת קנייה ל-${buy.dataset.buy} נוספה לסל`);return}
   const cl=e.target.closest('[data-c]');if(cl){selectClient(+cl.dataset.c);return}
   const row=e.target.closest('[data-sym]');if(row&&!row.classList.contains('nav')){show('stock');return}
-  const seg=e.target.closest('.seg button');if(seg){seg.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));seg.classList.add('on');if(seg.parentElement.id==='ctype'){ctype=['candles','line','area'][[...seg.parentElement.children].indexOf(seg)]}if(seg.parentElement.id==='bs'){const i=[...seg.parentElement.children].indexOf(seg);$('#buyBtn').className='btn btn-w '+(i?'btn-dn':'btn-up');$('#buyBtn').innerHTML='<svg><use href="#p-'+(i?'sell':'buy')+'"/></svg><span>'+(i?'מכור':'קנה')+' NICE</span>'}charts.forEach(f=>f())}
+  const seg=e.target.closest('.seg button');if(seg){seg.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));seg.classList.add('on');if(seg.parentElement.id==='ctype'){ctype=['candles','line','area'][[...seg.parentElement.children].indexOf(seg)]}charts.forEach(f=>f())}
   const tab=e.target.closest('.tabs button');if(tab){tab.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));tab.classList.add('on')}
 });
-$('#buyBtn').onclick=()=>toast($('#buyBtn').textContent.trim().startsWith('קנה')?'הוראת קנייה ל-25 מניות NICE נשלחה':'הוראת מכירה ל-25 מניות NICE נשלחה');
+
 
 try{const t=localStorage.getItem('mt-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}
 let rt;window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>charts.forEach(f=>f()),120)});
